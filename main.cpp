@@ -45,29 +45,21 @@ int main(int argc, char *argv[]){
     alive.push_back(new unit(argv[1],stod(argv[2]),stod(argv[3])));
     alive.push_back(new unit(argv[4],stod(argv[5]),stod(argv[6])));
 
-    printStatus(alive);
-    while(alive.size() > 1){
-        printAttack(alive[0]->getName(), alive[1]->getName());
-        alive[1]->loseHp(alive[0]);
-        printStatus(alive);
-        if (!(alive[1]->isAlive())) {
-            cout << alive[1]->getName() << " died. " << alive[0]->getName() << " wins.\n";
-            dead.push_back(alive[1]);
-            alive.erase(alive.begin()+1);
-            continue;
-        }
+	printStatus(alive);
+	int attacker = 0; //eldonti, hogy melyik karakter tamad epp
+	while (alive.size() > 1) {
 
-        printAttack(alive[1]->getName(), alive[0]->getName());
-        alive[0]->loseHp(alive[1]);
-        printStatus(alive);
-        if (!(alive[0]->isAlive())) {
-            cout << alive[0]->getName() << " died. " << alive[1]->getName() << " wins.\n";
-            dead.push_back(alive[0]);
-            alive.erase(alive.begin());
-            continue;
-        
-        }
-    }
+		printAttack(alive[attacker]->getName(), alive[!attacker]->getName());
+		alive[!attacker]->loseHp(alive[attacker]);
+		printStatus(alive);
+		if (!(alive[!attacker]->isAlive())) {
+			cout << alive[1]->getName() << " dies. " << alive[attacker]->getName() << " wins.\n";
+			dead.push_back(alive[!attacker]);
+			alive.erase(alive.begin() + 1);
+		}
+		if (attacker) attacker = 0; //atallitja a tamado karaktert
+		else attacker = 1;
+	}
 
     for (int i = 0; i < alive.size(); i++) delete alive[i];
 	for (int i = 0; i < alive.size(); i++) delete dead[i];
