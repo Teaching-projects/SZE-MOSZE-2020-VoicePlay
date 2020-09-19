@@ -1,13 +1,13 @@
 #include "unit.h"
 
 //  getter fügvények
-const double unit::getHp () { return hp; }
-const double unit::getDmg () { return dmg; }
-const std::string unit::getName () { return name; }
+double unit::getHp () const { return hp; }
+double unit::getDmg () const { return dmg; }
+std::string unit::getName () const { return name; }
 
-const bool unit::isAlive () { return (hp>0) ? true : false; }
+bool unit::isAlive () const { return (hp>0) ? true : false; }
 
-void unit::loseHp(unit *attacker){
+void unit::loseHp(unit const *attacker){
         hp -= attacker->getDmg();
         if (hp<0) hp=0;
     }

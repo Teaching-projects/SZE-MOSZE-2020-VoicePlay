@@ -11,11 +11,11 @@ public:
     unit(std::string name, double hp, double dmg): name(name), hp(hp), dmg(dmg) {}
 
     //  getter fügvények
-    const double getHp ();
-    const double getDmg ();
-    const std::string getName ();
+    double getHp() const;
+    double getDmg() const;
+    std::string getName() const ;
 
-    const bool isAlive();
+    bool isAlive() const;
 
-    void loseHp(unit *attacker);
+    void loseHp(unit const *attacker);
 };
