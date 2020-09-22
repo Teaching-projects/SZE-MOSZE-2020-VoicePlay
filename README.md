@@ -1,1 +1,3 @@
 # SZE-MOSZE-2020-VoicePlay
+**How it works (currently):**
+The main function utilizes 2 vector containers to store the "dead" and "alive" unit type entities. At first both units are in the "alive" vector and the while loop iterates until the size of the vector is larger than 1. The while loops contains an attack "phase" for both characters and the necessary outputs. Once a unit is dead it's moved to the "dead" vector and the while loop exits, there is a quick clean-up of potential memory leaks and the program exits.
