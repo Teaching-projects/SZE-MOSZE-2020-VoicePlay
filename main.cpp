@@ -15,13 +15,27 @@ void printAttack(string const &n1, string const &n2) {
 
 bool battle(unit* const u1, unit* u2, vector<unit*> const alive){ 
 /// az u1 unit tamadja az u2-ot ((az alive atadasa csak az elvart kimenttel valo megegyezes miatt szukseges a kovetkezo feladattol mar nem kell))
-	printAttack(u1->getName(), u2->getName());
-	u2->loseHp(u1);
-	printStatus(alive);
-	return (u2->isAlive()) ? true : false; // ha a defender meghalt return false
+    printAttack(u1->getName(), u2->getName());
+    u2->loseHp(u1);
+    printStatus(alive);
+    return (u2->isAlive()) ? true : false; // ha a defender meghalt return false
+}
+
+bool fileExists(string fname) {
+    ifstream f(fname);
+    if (f.fail()) {
+        cout << fname << " does not exist!" << endl;
+        return false;
+	}
+    return true;
 }
 
 int main(int argc, char *argv[]){
+
+    if (!(fileExists(argv[1]) && fileExists(argv[1]))) {
+        return 0;
+    }
+
     vector<unit*> alive;
     vector<unit*> dead;
 
@@ -33,16 +47,18 @@ int main(int argc, char *argv[]){
     unit* defender = alive[1];
     while (alive.size() > 1) {	/// place-holder loop, csak amig valamelyik feladat mast nem ker
         if (!(battle(attacker,defender,alive))){
-			cout << defender->getName() << " died. " << attacker->getName() << " wins.\n";
-			dead.push_back(defender);
-			alive.resize(alive.size()-1); 
-			//deleting defender var caused segmentation fault, instead alive's size is being reduced by one and defender is being added to the "dead" vector
-			continue;
-		}
-		unit* temp = attacker;
-		attacker = defender;
-		defender = temp;
-	}
+            cout << defender->getName() << " died. " << attacker->getName() << " wins.\n";
+            dead.push_back(defender);
+            alive.resize(alive.size()-1); 
+            //deleting defender var caused segmentation fault, instead alive's size is being reduced by one and defender is being added to the "dead" vector
+            continue;
+        }
+        unit* temp = attacker;
+        attacker = defender;
+        defender = temp;
+    }
     for (auto a: alive) delete a;
     for (auto d: dead) delete d;
+
+    return 0;
 }
