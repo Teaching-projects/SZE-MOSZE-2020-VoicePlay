@@ -9,6 +9,13 @@ bool battle(unit* const u1, unit* u2){
     return (u2->isAlive()) ? true : false; // if defender is dead, return false
 }
 
+void output(unit* const atk) {
+	ofstream output;
+	output.open("output.txt");
+	output << atk->getName() << " " << atk->getHp() << endl;
+	output.close();
+}
+
 bool fileExists(string fname) {
     ifstream f(fname);
     if (f.fail()) {
@@ -35,7 +42,8 @@ int main(int argc, char *argv[]){
     while (alive.size() > 1) {	
         if (!(battle(attacker,defender))){
 			cout << attacker->getName() << " wins. Remaining HP: " << attacker->getHp() << endl;
-            dead.push_back(defender);
+			output(attacker);
+			dead.push_back(defender);
             alive.resize(alive.size()-1); 
             //deleting defender var caused segmentation fault, instead alive's size is being reduced by one and defender is being added to the "dead" vector
             continue;
