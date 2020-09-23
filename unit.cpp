@@ -20,14 +20,11 @@ void unit::parseUnit(std::string fname){
     std::getline(f,t);
     t = t.substr(t.find(": \"")+3);
     name = t.substr(0,t.size()-2);
-    std::cout << name << '\n';
     std::getline(f,t);
     t = t.substr(t.find(": ")+2);
-    std::cout << t << '\n';
     hp = std::stod(t);
     std::getline(f,t);
     t = t.substr(t.find(": ")+2);
-    std::cout << t << '\n';
     dmg = std::stod(t);
     f.close();
 }
