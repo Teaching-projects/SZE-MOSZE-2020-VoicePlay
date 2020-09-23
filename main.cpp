@@ -25,8 +25,8 @@ int main(int argc, char *argv[]){
     vector<unit*> alive;
     vector<unit*> dead;
 
-    alive.push_back(new unit(argv[1],stod(argv[2]),stod(argv[3])));
-    alive.push_back(new unit(argv[4],stod(argv[5]),stod(argv[6])));
+    alive.push_back(new unit(argv[1]));
+    alive.push_back(new unit(argv[2]));
 
     printStatus(alive);
     unit* attacker = alive[0];

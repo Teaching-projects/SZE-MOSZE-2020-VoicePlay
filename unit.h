@@ -1,14 +1,16 @@
 #pragma once
 
 #include <string>
+#include <fstream>
+#include <iostream>
 
 class unit {
 private:
-    const std::string name;
+    std::string name;
     double hp;  
-    const double  dmg; // health point, damage point
+    double  dmg; // health point, damage point
 public:
-    unit(std::string name, double hp, double dmg): name(name), hp(hp), dmg(dmg) {}
+    unit(std::string fname) { parseUnit(fname);}
 
     //  getter fügvények
     double getHp() const;
@@ -18,4 +20,6 @@ public:
     bool isAlive() const;
 
     void loseHp(unit const *attacker);
+
+    void parseUnit(std::string fname);
 };
