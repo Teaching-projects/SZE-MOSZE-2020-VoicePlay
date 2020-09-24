@@ -15,8 +15,8 @@ int main(int argc, char *argv[]){
     vector<unit*> dead;
 try
 {
-    alive.push_back(new unit(argv[1]));
-    alive.push_back(new unit(argv[2]));
+    alive.push_back(unit::parseUnit(argv[1]));
+    alive.push_back(unit::parseUnit(argv[1]));
 }
 catch(const string e)
 {

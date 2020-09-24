@@ -6,11 +6,11 @@
 
 class unit {
 private:
-    std::string name;
+    const std::string name;
     double hp;  
-    double  dmg; // health point, damage point
+    const double  dmg; // health point, damage point
 public:
-    unit(std::string fname) { parseUnit(fname);}
+    unit(std::string name, double hp, double dmg): name(name), hp(hp), dmg(dmg) {}
 
     //  getter fügvények
     double getHp() const;
@@ -21,5 +21,5 @@ public:
 
     void loseHp(unit const *attacker);
 
-    void parseUnit(std::string fname);
+    static unit* parseUnit(std::string fname);
 };
