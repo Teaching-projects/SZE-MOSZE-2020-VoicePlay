@@ -1,6 +1,0 @@
-units/unit_one.json units/unit_two.json
-units/unit_two.json units/unit_one.json
-units/unit_one.json units/unit_three.json
-units/unit_three.json units/unit_one.json
-units/unit_three.json units/unit_two.json
-units/unit_two.json units/unit_three.json

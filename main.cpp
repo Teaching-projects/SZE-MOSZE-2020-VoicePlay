@@ -16,7 +16,7 @@ int main(int argc, char *argv[]){
 try
 {
     alive.push_back(unit::parseUnit(argv[1]));
-    alive.push_back(unit::parseUnit(argv[1]));
+    alive.push_back(unit::parseUnit(argv[2]));
 }
 catch(const string e)
 {
@@ -28,7 +28,7 @@ catch(const string e)
 
     unit* attacker = alive[0];
     unit* defender = alive[1];
-    while (alive.size() > 1) {	
+    while (alive.size() > 1) {
         if (!(battle(attacker,defender))){
             cout << attacker->getName() << " wins. Remaining HP: " << attacker->getHp() << endl;
             //deleting defender var caused segmentation fault, instead alive's size is being reduced by one and defender is being added to the "dead" vector
@@ -42,4 +42,6 @@ catch(const string e)
     }
     for (auto a: alive) delete a;
     for (auto d: dead) delete d;
+    delete defender;
+    delete attacker;
 }
