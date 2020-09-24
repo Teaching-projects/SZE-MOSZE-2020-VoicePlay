@@ -17,10 +17,3 @@ do
 		fi
 	done
 done
-
-DIFF=$(diff $FILE exp_output.txt) 
-if [ "$DIFF" != "" ] 
-then
-    echo "ERROR: there are diferences"
-	exit -1
-fi
