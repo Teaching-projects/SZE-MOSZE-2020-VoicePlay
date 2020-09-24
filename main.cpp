@@ -25,27 +25,26 @@ bool fileExists(string fname) {
     return true;
 }
 
-int main(int argc, char *argv[]){
+int main(){
 
-    if (!(fileExists(argv[1]) && fileExists(argv[1]))) {
+    string unit1, unit2;
+    cin >> unit1 >> unit2;
+    if (!(fileExists(unit1) && fileExists(unit2))) {
         return 0;
     }
 
     vector<unit*> alive;
-    vector<unit*> dead;
 
-    alive.push_back(new unit(argv[1]));
-    alive.push_back(new unit(argv[2]));
+    alive.push_back(new unit(unit1));
+    alive.push_back(new unit(unit2));
 
     unit* attacker = alive[0];
     unit* defender = alive[1];
-    while (alive.size() > 1) {	
+    while ((attacker->getHp()>0) && (defender->getHp()>0)) {	
         if (!(battle(attacker,defender))){
 			cout << attacker->getName() << " wins. Remaining HP: " << attacker->getHp() << endl;
 			output(attacker);
-			dead.push_back(defender);
-            alive.resize(alive.size()-1); 
-            //deleting defender var caused segmentation fault, instead alive's size is being reduced by one and defender is being added to the "dead" vector
+
             continue;
         }
         unit* temp = attacker;
@@ -53,7 +52,6 @@ int main(int argc, char *argv[]){
         defender = temp;
     }
     for (auto a: alive) delete a;
-    for (auto d: dead) delete d;
 
     return 0;
 }
