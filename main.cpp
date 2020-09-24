@@ -9,13 +9,6 @@ bool battle(unit* const u1, unit* u2){
     return (u2->isAlive()) ? true : false; // if defender is dead, return false
 }
 
-void output(unit* const atk) {
-	ofstream output;
-	output.open("output.txt");
-	output << atk->getName() << " " << atk->getHp() << endl;
-	output.close();
-}
-
 bool fileExists(string fname) {
     ifstream f(fname);
     if (f.fail()) {
@@ -42,9 +35,8 @@ int main(){
     unit* defender = alive[1];
     while ((attacker->getHp()>0) && (defender->getHp()>0)) {	
         if (!(battle(attacker,defender))){
-			cout << attacker->getName() << " wins. Remaining HP: " << attacker->getHp() << endl;
-			output(attacker);
-
+            cout << attacker->getName() << " wins. Remaining HP: " << attacker->getHp() << endl;
+			
             continue;
         }
         unit* temp = attacker;
