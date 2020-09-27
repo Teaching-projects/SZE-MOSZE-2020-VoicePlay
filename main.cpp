@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <algorithm>    
 #include "unit.h"
 
 using namespace std;
@@ -32,8 +33,10 @@ catch(const string e)
         if (!(battle(attacker,defender))){
             cout << attacker->getName() << " wins. Remaining HP: " << attacker->getHp() << endl;
             //deleting defender var caused segmentation fault, instead alive's size is being reduced by one and defender is being added to the "dead" vector
-			dead.push_back(defender);   
-			alive.resize(alive.size()-1); 
+			dead.push_back(defender);
+			//alive.resize(alive.size()-1);
+            auto it = std::find(alive.begin(), alive.end(), defender);
+            if (it != alive.end()) { alive.erase(it); }
             continue;
         }
         unit* temp = attacker;
@@ -42,6 +45,4 @@ catch(const string e)
     }
     for (auto a: alive) delete a;
     for (auto d: dead) delete d;
-    delete defender;
-    delete attacker;
 }
