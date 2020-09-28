@@ -1,6 +1,8 @@
 #pragma once
 
 #include <string>
+#include <fstream>
+#include <iostream>
 
 class unit {
 private:
@@ -18,4 +20,6 @@ public:
     bool isAlive() const;
 
     void loseHp(unit const *attacker);
+
+    static unit* parseUnit(std::string fname);
 };
