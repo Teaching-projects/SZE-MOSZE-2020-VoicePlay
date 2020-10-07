@@ -1,5 +1,8 @@
 #pragma once
 
+#include <map>
+#include <sstream>
+
 class jsonparser{
 private:
 public:
@@ -8,5 +11,26 @@ public:
         std::string tmp = st.substr(st.find('"')+1);
         if (tmp.find('"') == std::string::npos) throw "invalid json syntax"; // if doesn't contain throw
         return tmp.substr(0,tmp.find('"'));
+    }
+    static map<string, string>  istrmInp(std::istringstream& f){ // read the given istream file and convert the data to a map
+        map<string, string> parsed;  
+        std::string t = "";
+        while (true) {
+            //t = f.str();
+            getline(f, t);
+            cout << t << " asd \n";
+            if (t.find('{') != std::string::npos) continue;
+            if (t.find('}') != std::string::npos) break;
+            try {
+                std::string p1 = jsonparser::rFVbQ(t);
+                if ( parsed.find(p1) != parsed.end()) throw "double declaration of variable name\n";
+                parsed.insert(pair<std::string, std::string>(p1,t.substr(t.find(": ")+2))); //insert var name and value as strings
+            }
+            catch(const char* e)    {
+                std::cerr << e << '\n';
+                std::exit(-1);
+            }               
+        }
+        return parsed;
     }
 };
