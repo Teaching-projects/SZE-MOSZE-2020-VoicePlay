@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>    
+#include <map>
 #include "unit.h"
 #include "jsonparser.h"
 
@@ -15,19 +16,10 @@ int main(int argc, char *argv[]){
 
     vector<unit*> alive;
     vector<unit*> dead;
-try
-{
+
     alive.push_back(unit::parseUnit(argv[1]));
     alive.push_back(unit::parseUnit(argv[2]));
-}
-catch(const string e)
-{
-    std::cerr << e << '\n';
-    for (auto a: alive) delete a;
-    for (auto d: dead) delete d;
-    return -1;
-}
-
+    
     unit* attacker = alive[0];
     unit* defender = alive[1];
     while (alive.size() > 1) {

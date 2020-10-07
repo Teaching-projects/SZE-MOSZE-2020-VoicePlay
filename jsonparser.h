@@ -1,30 +1,29 @@
 #pragma once
 
-#include <map>
-#include <sstream>
+#include <sstream>      // std::istringstream
+#include <map> 
+#include <fstream>
 
 class jsonparser{
 private:
 public:
-    static std::string rFVbQ (std::string st){   // alias: returnFirstValuebetweenQuotationmarks, finds the first substring that sits between " marks and returns it
+    static std::string rFVbQ (std::string st){   // alias: returnFirstValuebetweenQuotationmarks, finds the first substd::string that sits between " marks and returns it
         if (st.find('"') == std::string::npos) throw "invalid json syntax"; // if doesn't contain throw
         std::string tmp = st.substr(st.find('"')+1);
         if (tmp.find('"') == std::string::npos) throw "invalid json syntax"; // if doesn't contain throw
         return tmp.substr(0,tmp.find('"'));
     }
-    static map<string, string>  istrmInp(std::istringstream& f){ // read the given istream file and convert the data to a map
-        map<string, string> parsed;  
+    static std::map<std::string, std::string>  istrmInp(std::stringstream& f){ // read the given istream file and convert the data to a map
+        std::map<std::string, std::string> parsed;
         std::string t = "";
         while (true) {
-            //t = f.str();
             getline(f, t);
-            cout << t << " asd \n";
             if (t.find('{') != std::string::npos) continue;
             if (t.find('}') != std::string::npos) break;
             try {
                 std::string p1 = jsonparser::rFVbQ(t);
                 if ( parsed.find(p1) != parsed.end()) throw "double declaration of variable name\n";
-                parsed.insert(pair<std::string, std::string>(p1,t.substr(t.find(": ")+2))); //insert var name and value as strings
+                parsed.insert(std::pair<std::string, std::string>(p1,t.substr(t.find(": ")+2))); //insert var name and value as std::strings
             }
             catch(const char* e)    {
                 std::cerr << e << '\n';
@@ -33,8 +32,8 @@ public:
         }
         return parsed;
     }
-    static map<string, string>  fileInp(std::string fname){ // read lines from file and convert to istream
-        map<string, string> parsed;
+    static std::map<std::string, std::string>  fileInp(std::string fname){ // read lines from file and convert to istream
+        std::map<std::string, std::string> parsed;
         std::ifstream f(fname);   
         std::string t,w;
         if (!f) throw fname+" file does not exist!" ;
@@ -43,11 +42,11 @@ public:
                 w+=t+'\n';            
         }
         f.close();
-        istringstream istr(w);
+        std::stringstream istr(w);
         return jsonparser::istrmInp(istr);
     }
-    static map<string, string>  strInp(std::string str){    // convert the given string to istream
-        istringstream f(str);
+    static std::map<std::string, std::string>  strInp(std::string str){    // convert the given std::string to istream
+        std::stringstream f(str);
         return jsonparser::istrmInp(f);
     }
 };
