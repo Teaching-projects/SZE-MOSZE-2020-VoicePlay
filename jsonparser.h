@@ -33,4 +33,21 @@ public:
         }
         return parsed;
     }
+    static map<string, string>  fileInp(std::string fname){ // read lines from file and convert to istream
+        map<string, string> parsed;
+        std::ifstream f(fname);   
+        std::string t,w;
+        if (!f) throw fname+" file does not exist!" ;
+        while (!f.eof()) {
+                std::getline(f,t);
+                w+=t+'\n';            
+        }
+        f.close();
+        istringstream istr(w);
+        return jsonparser::istrmInp(istr);
+    }
+    static map<string, string>  strInp(std::string str){    // convert the given string to istream
+        istringstream f(str);
+        return jsonparser::istrmInp(f);
+    }
 };
