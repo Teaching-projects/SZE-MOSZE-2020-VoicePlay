@@ -3,6 +3,7 @@
 //  getter fügvények
 double unit::getHp () const { return hp; }
 double unit::getDmg () const { return dmg; }
+double unit::getAcd () const { return acd; }
 std::string unit::getName () const { return name; }
 
 bool unit::isAlive () const { return (hp>0) ? true : false; }
@@ -18,6 +19,7 @@ unit* unit::parseUnit(std::string fname){
         std::string n = "";
         double h = -1;
         double d = -1;
+        double a = -1;
         if (!f) throw fname+" file does not exist!" ;
         while (!f.eof()) {
                 std::getline(f,t);
@@ -30,8 +32,11 @@ unit* unit::parseUnit(std::string fname){
                 }else if((t.find("dmg") != std::string::npos) && d == -1){
                         t = t.substr(t.find(": ")+2);
                         d = std::stod(t);
+                }else if((t.find("acd") != std::string::npos) && a == -1){
+                        t = t.substr(t.find(": ")+2);
+                        a = std::stod(t);
                 }
         }
         f.close();
-        return new unit(n,h,d);
+        return new unit(n,h,d,a);
 }

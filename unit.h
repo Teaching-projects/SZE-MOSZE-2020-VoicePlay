@@ -9,12 +9,14 @@ private:
     const std::string name;
     double hp;  
     const double  dmg; // health point, damage point
+    const double acd;
 public:
-    unit(std::string name, double hp, double dmg): name(name), hp(hp), dmg(dmg) {}
+    unit(std::string name, double hp, double dmg, double acd): name(name), hp(hp), dmg(dmg), acd(acd) {}
 
     //  getter fügvények
     double getHp() const;
     double getDmg() const;
+    double getAcd() const;
     std::string getName() const ;
 
     bool isAlive() const;
