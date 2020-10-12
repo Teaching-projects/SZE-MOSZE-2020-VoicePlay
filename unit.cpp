@@ -3,7 +3,7 @@
 //  getter fügvények
 double unit::getHp () const { return hp; }
 double unit::getDmg () const { return dmg; }
-double unit::getAcd () const { return acd; }
+double unit::getAcd () const { return attackcooldown; }
 std::string unit::getName () const { return name; }
 
 
@@ -12,9 +12,27 @@ void unit::loseHp(unit const *attacker){
         if (hp<0) hp=0;
     }
 
-bool unit::battle(unit* u1){
+bool unit::battle(unit const *u1){
     loseHp(u1);
     return (getHp()>0) ? true : false; // if defender is dead, return false
+}
+
+bool unit::attackOrDefend(unit const *defender, double &atctime, double &deftime){
+        if(atctime == deftime){ //if both timers have the same number, attacker remains attacker
+            atctime = getAcd();
+            deftime = defender->getAcd();
+            return true;
+        }
+        else if(atctime>deftime) { //if defender is the faster in the round, they become attacker
+            atctime -= deftime;
+            deftime = defender->getAcd();
+            return false;
+        }
+        else { //if attacker is the faster, they remain attacker
+            deftime -= atctime;
+            atctime = getAcd();
+            return true;
+        }
 }
 
 unit* unit::parseUnit(std::string fname){
