@@ -6,12 +6,16 @@ double unit::getDmg () const { return dmg; }
 double unit::getAcd () const { return acd; }
 std::string unit::getName () const { return name; }
 
-bool unit::isAlive () const { return (hp>0) ? true : false; }
 
 void unit::loseHp(unit const *attacker){
         hp -= attacker->getDmg();
         if (hp<0) hp=0;
     }
+
+bool unit::battle(unit* u1){
+    loseHp(u1);
+    return (getHp()>0) ? true : false; // if defender is dead, return false
+}
 
 unit* unit::parseUnit(std::string fname){
         std::ifstream f(fname);   

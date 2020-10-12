@@ -5,11 +5,6 @@
 
 using namespace std;
 
-bool battle(unit* const u1, unit* u2){ 
-    u2->loseHp(u1);
-    return (u2->isAlive()) ? true : false; // if defender is dead, return false
-}
-
 int main(int argc, char *argv[]){
 
     vector<unit*> alive;
@@ -34,7 +29,7 @@ catch(const string e)
     double deftime = defender->getAcd();
     
     for(int i = 0; i<2; i++){
-        if (!(battle(attacker, defender))){
+        if (!(defender->battle(attacker))){
             cout << attacker->getName() << " wins. Remaining HP: " << attacker->getHp() << endl;
 			dead.push_back(defender);
             auto it = std::find(alive.begin(), alive.end(), defender);
@@ -63,7 +58,7 @@ catch(const string e)
             atctime = attacker->getAcd();
         }
 
-        if (!(battle(attacker,defender))){
+        if (!(defender->battle(attacker))){
             cout << attacker->getName() << " wins. Remaining HP: " << attacker->getHp() << endl;
             //deleting defender var caused segmentation fault, instead alive's size is being reduced by one and defender is being added to the "dead" vector
 			dead.push_back(defender);

@@ -10,6 +10,7 @@ private:
     double hp;  
     const double  dmg; // health point, damage point
     const double acd;
+    void loseHp(unit const *attacker);
 public:
     unit(std::string name, double hp, double dmg, double acd): name(name), hp(hp), dmg(dmg), acd(acd) {}
 
@@ -19,9 +20,8 @@ public:
     double getAcd() const;
     std::string getName() const ;
 
-    bool isAlive() const;
 
-    void loseHp(unit const *attacker);
+    bool battle(unit* u1);
 
     static unit* parseUnit(std::string fname);
 };
