@@ -27,7 +27,7 @@ public:
             }
             catch(const char* e)    {
                 std::cerr << e << '\n';
-                std::exit(-1);
+                //std::exit(-1);
             }               
         }
         return parsed;

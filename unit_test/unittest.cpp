@@ -1,5 +1,5 @@
-#include "../unit.h"
-#include "../jsonparser.h"
+#include "unit.h"
+#include "jsonparser.h"
 
 #include <string>
 #include <map>
@@ -24,16 +24,11 @@ TEST(Multest, fileException){
     unit expected("TestUnit", 64, 32);
     std::string fname = "unit2test.jso";
     const std::string exp = fname+" file does not exist!" ;
-    
-        try
-        {
-            unit* result = unit::parseUnit(fname);
-        }
-        catch(const std::string e)
-        {
-            EXPECT_STREQ(exp.c_str(), e.c_str());
-            //throw;
-        }
+    try {
+        unit* result = unit::parseUnit(fname);
+    } catch(const std::string e) {
+        EXPECT_STREQ(exp.c_str(), e.c_str());
+    }
 };
 
 
