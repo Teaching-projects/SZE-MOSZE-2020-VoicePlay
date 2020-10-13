@@ -27,8 +27,8 @@ TEST(Multest, fileException){
     try {
         unit* result = unit::parseUnit(fname);
     } catch(const std::string e) {
-        EXPECT_STREQ(exp.c_str(), e.c_str());
-    }
+        EXPECT_STREQ(exp.c_str(), e.c_str());    //throw;
+        }
 };
 
 
