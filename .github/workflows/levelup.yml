@@ -1,0 +1,26 @@
+name: Level up
+
+on:
+  push
+
+jobs:
+  checking:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Valgrind and Cppcheck
+        run: sudo apt-get install -y valgrind cppcheck
+      - name: Warnings and report generation
+        run: cppcheck *.cpp --enable=warning --error-exitcode=1
+        run: cppcheck *.cpp --enable=all --output-file=report.txt
+      - uses: actions/upload-artifact@v2
+        with:
+          path: ./report.txt
+      - name: Build
+      - run: g++ -std=c++17 *.cpp
+      - name: Check memory leak
+      - run: valgrind --error-exitcode=1 --leak-check=full ./a.out units/unit_1.json units/unit_2.json
+      - name: Run tests
+      - run: ./testing.sh
+      - name: Check differences
+      - run: diff output.txt exp_output.txt

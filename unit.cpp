@@ -1,8 +1,10 @@
+#include <math.h>
 #include "unit.h"
 
 //  getter fegvenyek
 double unit::getHp() const { return hp; }
 double unit::getDmg() const { return dmg; }
+double unit::getMaxhp() const { return maxhp; }
 std::string unit::getName() const { return name; }
 double player::getExp() const { return exp; }
 double player::getLvl() const { return lvl; }
@@ -19,8 +21,8 @@ void player::gainXP(unit const* attacker) {
     while (exp >= 100) {
         lvl++;
         exp = exp - 100;
-        hp = attacker->getHp() * 1.1;
-        dmg = dmg * 1.1;
+        this->heal(std::round(getMaxhp() * 1.1));
+        this->boostDmg(std::round(getDmg() * 1.1));
     }
 }
 
@@ -49,15 +51,6 @@ unit* unit::parseUnit(std::string fname) {
     f.close();
     return new unit(n, h, d);
 }
-
-/*void player::loseHp(unit const* attacker){        //gain xp when hit
-    this->unit::loseHp(attacker);   //the plíer::loseHp cant acces the player hp so this call is necessary
-    if (this->isAlive()) {    //if player not dead gain xp (shouldnt be needed just sanity check)
-        gainXP(attacker);
-    }
-
-}
-*/
 
 player* player::parsePlayer(std::string fname) {
     std::ifstream f(fname);
