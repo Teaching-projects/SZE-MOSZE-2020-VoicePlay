@@ -11,7 +11,7 @@ jobs:
     name: Deploy to github pages
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@attackspeed
+      - uses: actions/checkout@master
       - run: sudo apt-get install doxygen
       - run: sudo apt-get install graphviz
       - run: doxygen doxconf
