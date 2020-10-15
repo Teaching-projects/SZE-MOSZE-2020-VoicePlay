@@ -2,7 +2,7 @@ var indexSectionsWithContent =
 {
   0: "abgpsu",
   1: "u",
-  2: "abgpu",
+  2: "abgp",
   3: "s"
 };
 
