@@ -14,21 +14,21 @@ void unit::loseHp(unit const *attacker){
 
 bool unit::battle(unit const *u1){
     loseHp(u1);
-    return (getHp()>0) ? true : false; // if defender is dead, return false
+    return (getHp()>0) ? true : false;
 }
 
 bool unit::attackOrDefend(unit const *defender, double &atctime, double &deftime){
-        if(atctime == deftime){ //if both timers have the same number, attacker remains attacker
+        if(atctime == deftime){
             atctime = getAcd();
             deftime = defender->getAcd();
             return true;
         }
-        else if(atctime>deftime) { //if defender is the faster in the round, they become attacker
+        else if(atctime>deftime) {
             atctime -= deftime;
             deftime = defender->getAcd();
             return false;
         }
-        else { //if attacker is the faster, they remain attacker
+        else {
             deftime -= atctime;
             atctime = getAcd();
             return true;
@@ -46,8 +46,8 @@ unit* unit::parseUnit(std::string fname){
         while (!f.eof()) {
                 std::getline(f,t);
                 if((t.find("name") != std::string::npos) && n == ""){
-                        t = t.substr(t.find(": \"")+3); //trim string
-                        n = t.substr(0,t.size()-2);  //further trim string and make name equal
+                        t = t.substr(t.find(": \"")+3);
+                        n = t.substr(0,t.size()-2);
                 }else if((t.find("hp") != std::string::npos) && h == -1){
                         t = t.substr(t.find(": ")+2);
                         h = std::stod(t);
