@@ -10,9 +10,10 @@ jobs:
       - uses: actions/checkout@v2
       - name: Valgrind and Cppcheck
         run: sudo apt-get install -y valgrind cppcheck
-      - name: Warnings and report generation
+      - name: Warnings 
         run: cppcheck *.cpp --enable=warning --error-exitcode=1
-        run: cppcheck *.cpp --enable=all --output-file=report.txt
+      - name: Report generation
+        run: cppcheck *.cpp --enable=performance --enable=style --output-file=report.txt
       - uses: actions/upload-artifact@v2
         with:
           path: ./report.txt
