@@ -1,5 +1,7 @@
 {
-  "name" : "Sally",
-  "hp" : 45,
-  "dmg" : 30
+  "name": "Sally",
+  "hp": 45,
+  "dmg": 30,
+  "exp": 0,
+  "lvl": 1
 }
