@@ -12,7 +12,7 @@ private:
 public:
     unit(std::string name, double hp, double dmg) : name(name), hp(hp), dmg(dmg), maxhp(hp) {}
 
-    //  getter függvények
+    //  getter f�ggv�nyek
     double getHp() const;
     double getDmg() const;
     double getMaxhp() const;
@@ -32,12 +32,11 @@ public:
 
 class player : public unit {
 private:
-    const std::string name;
-    double hp, dmg, exp, lvl, maxhp; // health point, damage point, experience, level
+    double exp, lvl, maxhp; // health point, damage point, experience, level
 public:
     player(std::string name, double hp, double dmg, double exp, double lvl) : unit(name, hp, dmg), exp(exp), lvl(lvl), maxhp(hp) {}
 
-    //getter függvények
+    //getter f�ggv�nyek
     double getExp() const;
     double getLvl() const;
 
