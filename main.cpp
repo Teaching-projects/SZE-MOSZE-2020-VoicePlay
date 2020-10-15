@@ -26,6 +26,7 @@ int main(int argc, char *argv[]){ ///< Command line arguments
     
     /**
     * \brief This block checks if the file exsists and can be read by parseUnit method. If not, it deletes the vectors.
+    * \exception If file doesn't exsist or doesn't contain the necessary data
     */
     try
     {

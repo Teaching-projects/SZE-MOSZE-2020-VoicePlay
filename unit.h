@@ -29,25 +29,26 @@ private:
     const double attackcooldown; ///< the cooldown time between the attacks of the same unit
     void loseHp(unit const *attacker); ///< private method that decreases the health points of the unit by the attacker's damage
 public:
-    /**
-    * \brief This is the constructor for the unit class.
-    */
     unit(std::string name, double hp, double dmg, double acd): name(name), hp(hp), dmg(dmg), attackcooldown(acd) {}
 
     /**
     * \brief This is a simple getter function for current health points.
+    * \return The character's health points
     */
     double getHp() const;
     /**
     * \brief This is a simple getter function for damage points.
+    * \return The character's damage points
     */
     double getDmg() const;
     /**
     * \brief This is a simple getter function for cooldown time.
+    * \return The character's cooldown time
     */
     double getAcd() const;
     /**
     * \brief This is a simple getter function for unit's name.
+    * \return The character's name
     */
     std::string getName() const ;
 
