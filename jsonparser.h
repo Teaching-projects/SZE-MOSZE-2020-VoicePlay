@@ -37,7 +37,7 @@ public:
                     //std::cerr << "no key found";
                     continue;
                 case -3:
-                    std::cerr << "Invalid json syntax\n";
+                    std::cerr << "Invalid json syntax";
                     std::exit(-1);
                 }
             }               
