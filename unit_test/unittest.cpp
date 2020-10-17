@@ -20,15 +20,29 @@ TEST(Multest, allElementsFilled){
     EXPECT_NE(NULL, result->getDmg());
     EXPECT_NE(NULL, result->getHp());
 };
+TEST(Multest, faultySyntax){
+    unit expected("TestUnit", 64, 32);
+    std::string fname = "faultyunit.json";
+    EXPECT_DEATH( { 
+        try {
+            unit* result = unit::parseUnit(fname);
+        } catch(const int& e) {
+            EXPECT_EQ(e,-3);
+        }
+    }, "Invalid json syntax\n");
+
+};
 TEST(Multest, fileException){
     unit expected("TestUnit", 64, 32);
     std::string fname = "unit2test.jso";
     const std::string exp = fname+" file does not exist!" ;
-    try {
-        unit* result = unit::parseUnit(fname);
-    } catch(const std::string e) {
-        EXPECT_STREQ(exp.c_str(), e.c_str());    //throw;
+    EXPECT_DEATH({
+        try {
+            unit* result = unit::parseUnit(fname);
+        } catch(const std::string e) {
+            EXPECT_STREQ(exp.c_str(), e.c_str());    //throw;
         }
+    }, fname+" file does not exist!");
 };
 
 
