@@ -22,9 +22,11 @@ public:
             try {
                 std::string p1 = jsonparser::rFVbQ(t);
                 if ( parsed.find(p1) != parsed.end()) throw -1;
-                auto d = t.find(": ");
-                if ( d != std::string::npos) throw -3;
-                parsed.insert(std::pair<std::string, std::string>(p1,t.substr(d+2))); //insert var name and value as std::strings
+                else{
+                    auto d = t.find(": ");
+                    if ( d == std::string::npos) throw -3;
+                    parsed.insert(std::pair<std::string, std::string>(p1,t.substr(d+2))); //insert var name and value as std::strings
+                }
             }
             catch(const int& e){
                 switch (e) {
