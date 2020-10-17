@@ -29,7 +29,7 @@ TEST(Multest, faultySyntax){
         } catch(const int& e) {
             EXPECT_EQ(e,-3);
         }
-    }, "Invalid json syntax\n");
+    }, "Invalid json syntax");
 
 };
 TEST(Multest, fileException){
