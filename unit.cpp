@@ -58,5 +58,5 @@ unit* unit::parseUnit(std::string fname){
                 else if(itr->first == "acd") a = stod(itr->second);
                 else continue;
         }
-        return new unit(n,h,d);
+        return new unit(n,h,d,a);
 }
