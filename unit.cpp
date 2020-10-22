@@ -8,18 +8,41 @@
 //  getter fügvények
 double unit::getHp () const { return hp; }
 double unit::getDmg () const { return dmg; }
+double unit::getAcd () const { return attackcooldown; }
 std::string unit::getName () const { return name; }
 
-bool unit::isAlive () const { return (hp>0) ? true : false; }
 
 void unit::loseHp(unit const *attacker){
         hp -= attacker->getDmg();
         if (hp<0) hp=0;
     }
 
+bool unit::battle(unit const *u1){
+    loseHp(u1);
+    return (getHp()>0) ? true : false;
+}
+
+bool unit::attackOrDefend(unit const *defender, double &atctime, double &deftime){
+        if(atctime == deftime){
+            atctime = getAcd();
+            deftime = defender->getAcd();
+            return true;
+        }
+        else if(atctime>deftime) {
+            atctime -= deftime;
+            deftime = defender->getAcd();
+            return false;
+        }
+        else {
+            deftime -= atctime;
+            atctime = getAcd();
+            return true;
+        }
+}
+
 unit* unit::parseUnit(std::string fname){
         std::string n;
-        double d,h;
+        double d,h,a;
         std::map<std::string,std::string> m;
         try{
             m = jsonparser::fileInp(fname);
@@ -32,6 +55,7 @@ unit* unit::parseUnit(std::string fname){
                 if(itr->first == "name") n = jsonparser::rFVbQ(itr->second);
                 else if(itr->first == "dmg") d = stod(itr->second);
                 else if(itr->first == "hp") h = stod(itr->second);
+                else if(itr->first == "acd") a = stod(itr->second);
                 else continue;
         }
         return new unit(n,h,d);
