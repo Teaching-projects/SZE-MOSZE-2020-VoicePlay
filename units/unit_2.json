@@ -1,5 +1,6 @@
 {
   "name" : "Sally",
   "hp" : 45,
-  "dmg" : 30
+  "dmg" : 30,
+  "acd" : 1
 }
