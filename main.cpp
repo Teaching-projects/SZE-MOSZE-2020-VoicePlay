@@ -1,7 +1,9 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>    
+#include <map>
 #include "unit.h"
+#include "jsonparser.h"
 
 using namespace std;
 

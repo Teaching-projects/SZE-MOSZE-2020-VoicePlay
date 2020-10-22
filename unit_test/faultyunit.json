@@ -1,0 +1,6 @@
+{
+    "name" : "TestUnit",
+    "hp" : 64,
+    "dmg"  32,
+    "acd" : 3
+}
