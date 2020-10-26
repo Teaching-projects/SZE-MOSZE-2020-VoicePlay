@@ -2,6 +2,7 @@
 #include <vector>
 #include <algorithm>    
 #include "unit.h"
+#include "player.h"
 
 using namespace std;
 
