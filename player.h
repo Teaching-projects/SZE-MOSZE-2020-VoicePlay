@@ -11,9 +11,14 @@ public:
     //getter fuggvenyek
     double getExp() const;
     double getLvl() const;
+    double getMaxhp() const;
 
     static player* parsePlayer(std::string fname);
 
     double dealDamage(unit* const u);
-    //void loseHp(unit const* attacker); // re-def
+    void heal(double d) {   //heal unit to d hp
+        hp = d;
+        maxhp = d;
+    }     
+    void boostDmg(double d) { dmg = d; } //boost damage to d
 };

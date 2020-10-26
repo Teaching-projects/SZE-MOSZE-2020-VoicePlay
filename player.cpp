@@ -3,6 +3,7 @@
 
 double player::getExp() const { return exp; }
 double player::getLvl() const { return lvl; }
+double player::getMaxhp() const { return maxhp; }
 
 void player::gainXP(unit const* u) {
     if (u->getHp() <= this->getDmg()) exp += u->getHp();

@@ -3,7 +3,6 @@
 //  getter fuggvenyek
 double unit::getHp() const { return hp; }
 double unit::getDmg() const { return dmg; }
-double unit::getMaxhp() const { return maxhp; }
 std::string unit::getName() const { return name; }
 
 bool unit::isAlive() const { return (hp > 0) ? true : false; }

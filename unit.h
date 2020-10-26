@@ -5,17 +5,16 @@
 #include <iostream>
 
 class unit {
-private:
+protected:
     const std::string name;
-    double hp, maxhp;
+    double hp;
     double dmg; //health point, damage point
 public:
-    unit(std::string name, double hp, double dmg) : name(name), hp(hp), dmg(dmg), maxhp(hp) {}
+    unit(std::string name, double hp, double dmg) : name(name), hp(hp), dmg(dmg) {}
 
     //getter fuggvenyek
     double getHp() const;
     double getDmg() const;
-    double getMaxhp() const;
     std::string getName() const;
 
     bool isAlive() const;
@@ -25,9 +24,5 @@ public:
 
     static unit* parseUnit(std::string fname);
 
-    void heal(double d) {
-        hp = d;
-        maxhp = d;
-    }     //heal unit to d hp
-    void boostDmg(double d) { dmg = d; } //boost damage to d
+
 };
