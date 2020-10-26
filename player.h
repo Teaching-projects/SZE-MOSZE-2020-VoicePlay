@@ -5,6 +5,11 @@ class player : public unit {
 private:
     double exp, lvl, maxhp; //experience, level, maximum health point
     void gainXP(unit const* u);
+    void heal(double d) {   //heal unit to d hp
+        hp = d;
+        maxhp = d;
+    }     
+    void boostDmg(double d) { dmg = d; } //boost damage to d
 public:
     player(std::string name, double hp, double dmg, double exp, double lvl) : unit(name, hp, dmg), exp(exp), lvl(lvl), maxhp(hp) {}
 
@@ -16,9 +21,4 @@ public:
     static player* parsePlayer(std::string fname);
 
     double dealDamage(unit* const u);
-    void heal(double d) {   //heal unit to d hp
-        hp = d;
-        maxhp = d;
-    }     
-    void boostDmg(double d) { dmg = d; } //boost damage to d
 };
