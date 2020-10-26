@@ -3,6 +3,7 @@
 #include <sstream>      // std::istringstream
 #include <map> 
 #include <fstream>
+#include <iostream>
 
 class jsonparser{
 private:

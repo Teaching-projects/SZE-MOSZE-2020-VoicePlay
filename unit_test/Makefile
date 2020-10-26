@@ -67,10 +67,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/vbence/EGYETEM/Mosze/SZE-MOSZE-2020-VoicePlay/unit_test
+CMAKE_SOURCE_DIR = /home/vbence/EGYETEM/Mosze/SZE-MOSZE-2020-VoicePlay-levelup/SZE-MOSZE-2020-VoicePlay/unit_test
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/vbence/EGYETEM/Mosze/SZE-MOSZE-2020-VoicePlay/unit_test
+CMAKE_BINARY_DIR = /home/vbence/EGYETEM/Mosze/SZE-MOSZE-2020-VoicePlay-levelup/SZE-MOSZE-2020-VoicePlay/unit_test
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -89,7 +89,7 @@ rebuild_cache/fast: rebuild_cache
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
-	/usr/bin/cmake-gui -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/usr/bin/ccmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -99,9 +99,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/vbence/EGYETEM/Mosze/SZE-MOSZE-2020-VoicePlay/unit_test/CMakeFiles /home/vbence/EGYETEM/Mosze/SZE-MOSZE-2020-VoicePlay/unit_test//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/vbence/EGYETEM/Mosze/SZE-MOSZE-2020-VoicePlay-levelup/SZE-MOSZE-2020-VoicePlay/unit_test/CMakeFiles /home/vbence/EGYETEM/Mosze/SZE-MOSZE-2020-VoicePlay-levelup/SZE-MOSZE-2020-VoicePlay/unit_test//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/vbence/EGYETEM/Mosze/SZE-MOSZE-2020-VoicePlay/unit_test/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/vbence/EGYETEM/Mosze/SZE-MOSZE-2020-VoicePlay-levelup/SZE-MOSZE-2020-VoicePlay/unit_test/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -142,32 +142,32 @@ runTests/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/runTests.dir/build.make CMakeFiles/runTests.dir/build
 .PHONY : runTests/fast
 
-unit.o: unit.cpp.o
+home/vbence/EGYETEM/Mosze/SZE-MOSZE-2020-VoicePlay-levelup/SZE-MOSZE-2020-VoicePlay/unit.o: home/vbence/EGYETEM/Mosze/SZE-MOSZE-2020-VoicePlay-levelup/SZE-MOSZE-2020-VoicePlay/unit.cpp.o
 
-.PHONY : unit.o
+.PHONY : home/vbence/EGYETEM/Mosze/SZE-MOSZE-2020-VoicePlay-levelup/SZE-MOSZE-2020-VoicePlay/unit.o
 
 # target to build an object file
-unit.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/runTests.dir/build.make CMakeFiles/runTests.dir/unit.cpp.o
-.PHONY : unit.cpp.o
+home/vbence/EGYETEM/Mosze/SZE-MOSZE-2020-VoicePlay-levelup/SZE-MOSZE-2020-VoicePlay/unit.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/runTests.dir/build.make CMakeFiles/runTests.dir/home/vbence/EGYETEM/Mosze/SZE-MOSZE-2020-VoicePlay-levelup/SZE-MOSZE-2020-VoicePlay/unit.cpp.o
+.PHONY : home/vbence/EGYETEM/Mosze/SZE-MOSZE-2020-VoicePlay-levelup/SZE-MOSZE-2020-VoicePlay/unit.cpp.o
 
-unit.i: unit.cpp.i
+home/vbence/EGYETEM/Mosze/SZE-MOSZE-2020-VoicePlay-levelup/SZE-MOSZE-2020-VoicePlay/unit.i: home/vbence/EGYETEM/Mosze/SZE-MOSZE-2020-VoicePlay-levelup/SZE-MOSZE-2020-VoicePlay/unit.cpp.i
 
-.PHONY : unit.i
+.PHONY : home/vbence/EGYETEM/Mosze/SZE-MOSZE-2020-VoicePlay-levelup/SZE-MOSZE-2020-VoicePlay/unit.i
 
 # target to preprocess a source file
-unit.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/runTests.dir/build.make CMakeFiles/runTests.dir/unit.cpp.i
-.PHONY : unit.cpp.i
+home/vbence/EGYETEM/Mosze/SZE-MOSZE-2020-VoicePlay-levelup/SZE-MOSZE-2020-VoicePlay/unit.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/runTests.dir/build.make CMakeFiles/runTests.dir/home/vbence/EGYETEM/Mosze/SZE-MOSZE-2020-VoicePlay-levelup/SZE-MOSZE-2020-VoicePlay/unit.cpp.i
+.PHONY : home/vbence/EGYETEM/Mosze/SZE-MOSZE-2020-VoicePlay-levelup/SZE-MOSZE-2020-VoicePlay/unit.cpp.i
 
-unit.s: unit.cpp.s
+home/vbence/EGYETEM/Mosze/SZE-MOSZE-2020-VoicePlay-levelup/SZE-MOSZE-2020-VoicePlay/unit.s: home/vbence/EGYETEM/Mosze/SZE-MOSZE-2020-VoicePlay-levelup/SZE-MOSZE-2020-VoicePlay/unit.cpp.s
 
-.PHONY : unit.s
+.PHONY : home/vbence/EGYETEM/Mosze/SZE-MOSZE-2020-VoicePlay-levelup/SZE-MOSZE-2020-VoicePlay/unit.s
 
 # target to generate assembly for a file
-unit.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/runTests.dir/build.make CMakeFiles/runTests.dir/unit.cpp.s
-.PHONY : unit.cpp.s
+home/vbence/EGYETEM/Mosze/SZE-MOSZE-2020-VoicePlay-levelup/SZE-MOSZE-2020-VoicePlay/unit.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/runTests.dir/build.make CMakeFiles/runTests.dir/home/vbence/EGYETEM/Mosze/SZE-MOSZE-2020-VoicePlay-levelup/SZE-MOSZE-2020-VoicePlay/unit.cpp.s
+.PHONY : home/vbence/EGYETEM/Mosze/SZE-MOSZE-2020-VoicePlay-levelup/SZE-MOSZE-2020-VoicePlay/unit.cpp.s
 
 unittest.o: unittest.cpp.o
 
@@ -205,9 +205,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... runTests"
-	@echo "... unit.o"
-	@echo "... unit.i"
-	@echo "... unit.s"
+	@echo "... home/vbence/EGYETEM/Mosze/SZE-MOSZE-2020-VoicePlay-levelup/SZE-MOSZE-2020-VoicePlay/unit.o"
+	@echo "... home/vbence/EGYETEM/Mosze/SZE-MOSZE-2020-VoicePlay-levelup/SZE-MOSZE-2020-VoicePlay/unit.i"
+	@echo "... home/vbence/EGYETEM/Mosze/SZE-MOSZE-2020-VoicePlay-levelup/SZE-MOSZE-2020-VoicePlay/unit.s"
 	@echo "... unittest.o"
 	@echo "... unittest.i"
 	@echo "... unittest.s"

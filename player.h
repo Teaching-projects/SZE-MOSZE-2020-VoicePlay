@@ -11,7 +11,7 @@ private:
     }     
     void boostDmg(double d) { dmg = d; } //boost damage to d
 public:
-    player(std::string name, double hp, double dmg, double exp, double lvl) : unit(name, hp, dmg), exp(exp), lvl(lvl), maxhp(hp) {}
+    player(std::string name, double hp, double dmg, double a, double exp, double lvl) : unit(name, hp, dmg, a), exp(exp), lvl(lvl), maxhp(hp) {}
 
     //getter fuggvenyek
     double getExp() const;
