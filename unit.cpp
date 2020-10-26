@@ -1,40 +1,63 @@
+#include <map>
+#include <iterator>
+#include <string>
+#include <fstream>
 #include "unit.h"
-
-//  getter fuggvenyek
-double unit::getHp() const { return hp; }
-double unit::getDmg() const { return dmg; }
-std::string unit::getName() const { return name; }
+#include "jsonparser.h"
 
 bool unit::isAlive() const { return (hp > 0) ? true : false; }
+
+//  getter fügvények
+double unit::getHp () const { return hp; }
+double unit::getDmg () const { return dmg; }
+double unit::getAcd () const { return attackcooldown; }
+std::string unit::getName () const { return name; }
 
 void unit::loseHp(unit* attacker) {
     hp -= attacker->dealDamage(this);
     if (hp <= 0) hp = 0;   // hp cant be < 0 
 }
 
-unit* unit::parseUnit(std::string fname) {
-    std::ifstream f(fname);
-    std::string t;
-    std::string n = "";
-    double h = -1;
-    double d = -1;
-    if (!f) throw fname + " file does not exist!";
-    while (!f.eof()) {
-        std::getline(f, t);
-        if ((t.find("name") != std::string::npos) && n == "") {
-            t = t.substr(t.find(": \"") + 3); //trim string
-            n = t.substr(0, t.size() - 2);  //further trim string and make name equal
-        }
-        else if ((t.find("hp") != std::string::npos) && h == -1) {
-            t = t.substr(t.find(": ") + 2);
-            h = std::stod(t);
-        }
-        else if ((t.find("dmg") != std::string::npos) && d == -1) {
-            t = t.substr(t.find(": ") + 2);
-            d = std::stod(t);
-        }
-    }
-    f.close();
-    return new unit(n, h, d);
+bool unit::battle(unit const *u1){
+    loseHp(u1);
+    return (getHp()>0) ? true : false;
 }
 
+bool unit::attackOrDefend(unit const *defender, double &atctime, double &deftime){
+        if(atctime == deftime){
+            atctime = getAcd();
+            deftime = defender->getAcd();
+            return true;
+        }
+        else if(atctime>deftime) {
+            atctime -= deftime;
+            deftime = defender->getAcd();
+            return false;
+        }
+        else {
+            deftime -= atctime;
+            atctime = getAcd();
+            return true;
+        }
+}
+
+unit* unit::parseUnit(std::string fname){
+        std::string n;
+        double d,h,a;
+        std::map<std::string,std::string> m;
+        try{
+            m = jsonparser::fileInp(fname);
+        }catch(const std::string e){
+                std::cerr << e << '\n';
+                std::exit( -1);
+        }        
+        std::map<std::string, std::string>::iterator itr;
+        for (itr = m.begin(); itr != m.end(); ++itr) {
+                if(itr->first == "name") n = jsonparser::rFVbQ(itr->second);
+                else if(itr->first == "dmg") d = stod(itr->second);
+                else if(itr->first == "hp") h = stod(itr->second);
+                else if(itr->first == "acd") a = stod(itr->second);
+                else continue;
+        }
+        return new unit(n,h,d,a);
+}

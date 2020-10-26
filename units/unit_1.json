@@ -1,7 +1,8 @@
 {
-  "name": "Maple",
-  "hp": 1500,
-  "dmg": 70,
+  "name" : "Maple",
+  "hp" : 150,
+  "dmg" : 10,
+  "acd" : 3,
   "exp": 0,
   "lvl": 1
 }
