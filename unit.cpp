@@ -5,8 +5,6 @@
 #include "unit.h"
 #include "jsonparser.h"
 
-bool unit::isAlive() const { return (hp > 0) ? true : false; }
-
 //  getter fügvények
 double unit::getHp () const { return hp; }
 double unit::getDmg () const { return dmg; }
