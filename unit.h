@@ -21,7 +21,7 @@ public:
     bool isAlive() const;
 
     virtual void loseHp(unit* attacker);
-    virtual double dealDamage() { return getDmg(); }
+    virtual double dealDamage(unit* const u) { return getDmg(); }
 
     static unit* parseUnit(std::string fname);
 

@@ -4,14 +4,20 @@
 double player::getExp() const { return exp; }
 double player::getLvl() const { return lvl; }
 
-void player::gainXP(unit const* attacker) {
-    exp += attacker->getDmg();
+void player::gainXP(unit const* u) {
+    if (u->getHp() <= this->getDmg()) exp += u->getHp();
+    else exp += this->getDmg();
     while (exp >= 100) {
         lvl++;
         exp = exp - 100;
         this->heal(std::round(getMaxhp() * 1.1));
         this->boostDmg(std::round(getDmg() * 1.1));
     }
+}
+
+double player::dealDamage(unit* const u){
+    gainXP(u);
+    return getDmg();
 }
 
 player* player::parsePlayer(std::string fname) {

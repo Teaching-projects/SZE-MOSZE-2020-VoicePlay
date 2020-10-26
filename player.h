@@ -4,7 +4,7 @@
 class player : public unit {
 private:
     double exp, lvl, maxhp; //experience, level, maximum health point
-    void gainXP(unit const* attacker);
+    void gainXP(unit const* u);
 public:
     player(std::string name, double hp, double dmg, double exp, double lvl) : unit(name, hp, dmg), exp(exp), lvl(lvl), maxhp(hp) {}
 
@@ -14,6 +14,6 @@ public:
 
     static player* parsePlayer(std::string fname);
 
-    double dealDamage();
+    double dealDamage(unit* const u);
     //void loseHp(unit const* attacker); // re-def
 };

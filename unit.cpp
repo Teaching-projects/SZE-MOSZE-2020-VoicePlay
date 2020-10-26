@@ -9,7 +9,7 @@ std::string unit::getName() const { return name; }
 bool unit::isAlive() const { return (hp > 0) ? true : false; }
 
 void unit::loseHp(unit* attacker) {
-    hp -= attacker->dealDamage();
+    hp -= attacker->dealDamage(this);
     if (hp <= 0) hp = 0;   // hp cant be < 0 
 }
 
