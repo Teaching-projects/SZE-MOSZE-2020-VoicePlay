@@ -26,7 +26,7 @@ protected:
     const std::string name; ///< the name of the unit
     double hp;  ///< the starting health points of the unit
     double  dmg; ///< the damage the unit deals to another character in a round
-    const double attackcooldown; ///< the cooldown time between the attacks of the same unit
+    double attackcooldown; ///< the cooldown time between the attacks of the same unit
     void loseHp(unit *attacker); ///< private method that decreases the health points of the unit by the attacker's damage
 public:
     unit(std::string name, double hp, double dmg, double acd): name(name), hp(hp), dmg(dmg), attackcooldown(acd) {}

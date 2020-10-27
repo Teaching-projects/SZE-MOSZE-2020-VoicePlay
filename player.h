@@ -10,6 +10,7 @@ private:
         maxhp = d;
     }     
     void boostDmg(double d) { dmg = d; } //boost damage to d
+    void changeAcd(double d) { attackcooldown=d;}
 public:
     player(std::string name, double hp, double dmg, double a, double exp, double lvl) : unit(name, hp, dmg, a), exp(exp), lvl(lvl), maxhp(hp) {}
 

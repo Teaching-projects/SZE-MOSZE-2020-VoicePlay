@@ -33,7 +33,7 @@ int main(int argc, char *argv[]){ ///< Command line arguments
     */
     try
     {
-        alive.push_back(unit::parseUnit(argv[1]));
+        alive.push_back(player::parseUnit(argv[1]));
         alive.push_back(unit::parseUnit(argv[2]));
     }
     catch(const string e)

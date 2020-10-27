@@ -18,6 +18,7 @@ void player::gainXP(unit const* u) {
         exp = exp - 100;
         this->heal(std::round(getMaxhp() * 1.1));
         this->boostDmg(std::round(getDmg() * 1.1));
+        this->changeAcd(std::round(getAcd()*0.9));
     }
 }
 
