@@ -5,7 +5,6 @@
 #include "unit.h"
 #include "jsonparser.h"
 
-//  getter fügvények
 double unit::getHp () const { return hp; }
 double unit::getDmg () const { return dmg; }
 double unit::getAcd () const { return attackcooldown; }
@@ -13,12 +12,11 @@ std::string unit::getName () const { return name; }
 
 void unit::loseHp(unit *attacker) {
     hp -= attacker->dealDamage(this);
-    if (hp <= 0) hp = 0;   // hp cant be < 0 
+    if (hp <= 0) hp = 0;
 }
 
 bool unit::battle(unit *u1){
     this->loseHp(u1);
-    //loseHp(u1);
     return (getHp()>0) ? true : false;
 }
 

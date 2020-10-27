@@ -1,6 +1,23 @@
+/**
+* \class jsonparser
+*
+* \brief jsonparser class
+*
+* This class contains the file reading logic of the project.
+*
+* \author Voros Bence, team VoicePlay
+*
+* \version 1.0
+*
+* \date 2020/10/27 21:45
+*
+* Created on: 2020/10/27 21:45
+
+*/
+
 #pragma once
 
-#include <sstream>      // std::istringstream
+#include <sstream>
 #include <map> 
 #include <fstream>
 #include <iostream>
@@ -8,6 +25,10 @@
 class jsonparser{
 private:
 public:
+    /**
+    * \brief This function finds the strings between " characters.
+    * \return The string between " characters
+    */
     static std::string rFVbQ (std::string st){   // alias: returnFirstValuebetweenQuotationmarks, finds the first substd::string that sits between " marks and returns it
         auto fstr = st.find('"');
         if (fstr == std::string::npos) throw -2; // if doesn't contain throw
@@ -15,7 +36,12 @@ public:
         if (sstr == std::string::npos) throw -2; // if doesn't contain throw
         return st.substr(fstr+1,sstr);
     }
-    static std::map<std::string, std::string>  istrmInp(std::stringstream& f){ // read the given istream file and convert the data to a map
+
+    /**
+    * \brief This function reads the file given to it, converts into map, and throws exceptions if it does not match the expected format.
+    * \return map converted from the data given to the function
+    */
+    static std::map<std::string, std::string>  istrmInp(std::stringstream& f){
         std::map<std::string, std::string> parsed;
         std::string t = "";
         while (!f.eof()) {
@@ -45,7 +71,12 @@ public:
         }
         return parsed;
     }
-    static std::map<std::string, std::string>  fileInp(std::string fname){ // read lines from file and convert to istream
+
+    /**
+    * \brief This function converts the file to istream.
+    * \return The map created by istrmINP() function from the file
+    */
+    static std::map<std::string, std::string>  fileInp(std::string fname){
         std::map<std::string, std::string> parsed;
         std::ifstream f(fname);   
         std::string t,w;
@@ -58,7 +89,12 @@ public:
         std::stringstream istr(w);
         return jsonparser::istrmInp(istr);
     }
-    static std::map<std::string, std::string>  strInp(std::string str){    // convert the given std::string to istream
+
+    /**
+    * \brief This function converts a given string to istream.
+    * \return The map created by istrmINP() function from a string
+    */
+    static std::map<std::string, std::string>  strInp(std::string str){
         std::stringstream f(str);
         return jsonparser::istrmInp(f);
     }
