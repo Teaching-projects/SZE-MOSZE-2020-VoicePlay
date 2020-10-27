@@ -63,6 +63,8 @@ $(function() {
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
+<a href="#pro-methods">Protected Member Functions</a> &#124;
+<a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="classunit-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">unit Class Reference</div>  </div>
@@ -73,11 +75,19 @@ $(function() {
  <a href="classunit.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="unit_8h_source.html">unit.h</a>&gt;</code></p>
+<div class="dynheader">
+Inheritance diagram for unit:</div>
+<div class="dyncontent">
+<div class="center"><img src="classunit__inherit__graph.png" border="0" usemap="#unit_inherit__map" alt="Inheritance graph"/></div>
+<map name="unit_inherit__map" id="unit_inherit__map">
+<area shape="rect" id="node2" href="classplayer.html" title="player class " alt="" coords="5,80,63,107"/>
+</map>
+<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a07086af878fcf13f1b1d1ae9a5249d25"><td class="memItemLeft" align="right" valign="top"><a id="a07086af878fcf13f1b1d1ae9a5249d25"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>unit</b> (std::string name, double hp, double dmg, double acd)</td></tr>
+&#160;</td><td class="memItemRight" valign="bottom"><b>unit</b> (std::string <a class="el" href="classunit.html#abc53cc772f6fda7d91fde3784823f395">name</a>, double <a class="el" href="classunit.html#a0319635b19e4fbecfeea1ea7a46530a9">hp</a>, double <a class="el" href="classunit.html#af8cadc270dc793d8f00fd71592c0ad7c">dmg</a>, double acd)</td></tr>
 <tr class="separator:a07086af878fcf13f1b1d1ae9a5249d25"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7f7d51ea2c5533a76796d025ea5c4833"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classunit.html#a7f7d51ea2c5533a76796d025ea5c4833">getHp</a> () const</td></tr>
 <tr class="memdesc:a7f7d51ea2c5533a76796d025ea5c4833"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is a simple getter function for current health points.  <a href="#a7f7d51ea2c5533a76796d025ea5c4833">More...</a><br /></td></tr>
@@ -94,19 +104,48 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a182d74c578118dd886617f81cd0dd5e3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classunit.html#a182d74c578118dd886617f81cd0dd5e3">attackOrDefend</a> (<a class="el" href="classunit.html">unit</a> const *attacker, double &amp;atctime, double &amp;deftime)</td></tr>
 <tr class="memdesc:a182d74c578118dd886617f81cd0dd5e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is the method that counts the leftover time of the unit after a round and decides who attacks next.  <a href="#a182d74c578118dd886617f81cd0dd5e3">More...</a><br /></td></tr>
 <tr class="separator:a182d74c578118dd886617f81cd0dd5e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abebe4c4fa21e8fcb96dfa42f00dd49df"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classunit.html#abebe4c4fa21e8fcb96dfa42f00dd49df">battle</a> (<a class="el" href="classunit.html">unit</a> const *u1)</td></tr>
-<tr class="memdesc:abebe4c4fa21e8fcb96dfa42f00dd49df"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method decides whether the attacked character is still alive or not.  <a href="#abebe4c4fa21e8fcb96dfa42f00dd49df">More...</a><br /></td></tr>
-<tr class="separator:abebe4c4fa21e8fcb96dfa42f00dd49df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ff8bc07e33fda5e188212007249bd24"><td class="memItemLeft" align="right" valign="top"><a id="a8ff8bc07e33fda5e188212007249bd24"></a>
+virtual double&#160;</td><td class="memItemRight" valign="bottom"><b>dealDamage</b> (<a class="el" href="classunit.html">unit</a> *const u)</td></tr>
+<tr class="separator:a8ff8bc07e33fda5e188212007249bd24"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a03f85b94a8b130433e007577688aacba"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classunit.html#a03f85b94a8b130433e007577688aacba">battle</a> (<a class="el" href="classunit.html">unit</a> *u1)</td></tr>
+<tr class="memdesc:a03f85b94a8b130433e007577688aacba"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method decides whether the attacked character is still alive or not.  <a href="#a03f85b94a8b130433e007577688aacba">More...</a><br /></td></tr>
+<tr class="separator:a03f85b94a8b130433e007577688aacba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a7667b6539a75c074bd68872dba5615f5"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classunit.html">unit</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classunit.html#a7667b6539a75c074bd68872dba5615f5">parseUnit</a> (std::string fname)</td></tr>
 <tr class="memdesc:a7667b6539a75c074bd68872dba5615f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method reads the parameters from the json files.  <a href="#a7667b6539a75c074bd68872dba5615f5">More...</a><br /></td></tr>
 <tr class="separator:a7667b6539a75c074bd68872dba5615f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
+Protected Member Functions</h2></td></tr>
+<tr class="memitem:aa2abd626cf95bb20a72ecf75190997bd"><td class="memItemLeft" align="right" valign="top"><a id="aa2abd626cf95bb20a72ecf75190997bd"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classunit.html#aa2abd626cf95bb20a72ecf75190997bd">loseHp</a> (<a class="el" href="classunit.html">unit</a> *attacker)</td></tr>
+<tr class="memdesc:aa2abd626cf95bb20a72ecf75190997bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">private method that decreases the health points of the unit by the attacker's damage <br /></td></tr>
+<tr class="separator:aa2abd626cf95bb20a72ecf75190997bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
+<tr class="memitem:abc53cc772f6fda7d91fde3784823f395"><td class="memItemLeft" align="right" valign="top"><a id="abc53cc772f6fda7d91fde3784823f395"></a>
+const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classunit.html#abc53cc772f6fda7d91fde3784823f395">name</a></td></tr>
+<tr class="memdesc:abc53cc772f6fda7d91fde3784823f395"><td class="mdescLeft">&#160;</td><td class="mdescRight">the name of the unit <br /></td></tr>
+<tr class="separator:abc53cc772f6fda7d91fde3784823f395"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0319635b19e4fbecfeea1ea7a46530a9"><td class="memItemLeft" align="right" valign="top"><a id="a0319635b19e4fbecfeea1ea7a46530a9"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classunit.html#a0319635b19e4fbecfeea1ea7a46530a9">hp</a></td></tr>
+<tr class="memdesc:a0319635b19e4fbecfeea1ea7a46530a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">the starting health points of the unit <br /></td></tr>
+<tr class="separator:a0319635b19e4fbecfeea1ea7a46530a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af8cadc270dc793d8f00fd71592c0ad7c"><td class="memItemLeft" align="right" valign="top"><a id="af8cadc270dc793d8f00fd71592c0ad7c"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classunit.html#af8cadc270dc793d8f00fd71592c0ad7c">dmg</a></td></tr>
+<tr class="memdesc:af8cadc270dc793d8f00fd71592c0ad7c"><td class="mdescLeft">&#160;</td><td class="mdescRight">the damage the unit deals to another character in a round <br /></td></tr>
+<tr class="separator:af8cadc270dc793d8f00fd71592c0ad7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff36c1a9b37e2c983f9599d2dd4b9769"><td class="memItemLeft" align="right" valign="top"><a id="aff36c1a9b37e2c983f9599d2dd4b9769"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classunit.html#aff36c1a9b37e2c983f9599d2dd4b9769">attackcooldown</a></td></tr>
+<tr class="memdesc:aff36c1a9b37e2c983f9599d2dd4b9769"><td class="mdescLeft">&#160;</td><td class="mdescRight">the cooldown time between the attacks of the same unit <br /></td></tr>
+<tr class="separator:aff36c1a9b37e2c983f9599d2dd4b9769"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>unit class </p>
-<p>This class contains fighting units, currently up to two at a time</p>
+<p>This class contains the second fighting unit, which fights with the player, contained by player class</p>
 <dl class="section author"><dt>Author</dt><dd>Kovacs Kira, team VoicePlay</dd></dl>
 <dl class="section version"><dt>Version</dt><dd>1.0</dd></dl>
 <dl class="section date"><dt>Date</dt><dd>2020/10/15 6:58</dd></dl>
@@ -156,8 +195,8 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="abebe4c4fa21e8fcb96dfa42f00dd49df"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abebe4c4fa21e8fcb96dfa42f00dd49df">&#9670;&nbsp;</a></span>battle()</h2>
+<a id="a03f85b94a8b130433e007577688aacba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a03f85b94a8b130433e007577688aacba">&#9670;&nbsp;</a></span>battle()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -165,7 +204,7 @@ Static Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">bool unit::battle </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classunit.html">unit</a> const *&#160;</td>
+          <td class="paramtype"><a class="el" href="classunit.html">unit</a> *&#160;</td>
           <td class="paramname"><em>u1</em></td><td>)</td>
           <td></td>
         </tr>

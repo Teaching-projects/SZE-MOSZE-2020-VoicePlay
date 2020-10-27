@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['getacd',['getAcd',['../classunit.html#afbe6efbf2316ba836949546cebeae3a2',1,'unit']]],
-  ['getdmg',['getDmg',['../classunit.html#adf81efb6fef1fb953fdc0194281257ee',1,'unit']]],
-  ['gethp',['getHp',['../classunit.html#a7f7d51ea2c5533a76796d025ea5c4833',1,'unit']]],
-  ['getname',['getName',['../classunit.html#a7a8906186e2c3ae5c050f32b0c1369e8',1,'unit']]]
+  ['dealdamage',['dealDamage',['../classplayer.html#a4ffcc6c9d3f483f3a8645bba67fa01cc',1,'player']]],
+  ['dmg',['dmg',['../classunit.html#af8cadc270dc793d8f00fd71592c0ad7c',1,'unit']]]
 ];
