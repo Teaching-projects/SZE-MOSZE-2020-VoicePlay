@@ -4,6 +4,7 @@
 #include <map>
 #include "unit.h"
 #include "jsonparser.h"
+#include "player.h"
 
 using namespace std;
 
@@ -32,7 +33,7 @@ int main(int argc, char *argv[]){ ///< Command line arguments
     */
     try
     {
-        alive.push_back(unit::parseUnit(argv[1]));
+        alive.push_back(player::parseUnit(argv[1]));
         alive.push_back(unit::parseUnit(argv[2]));
     }
     catch(const string e)
@@ -49,7 +50,6 @@ int main(int argc, char *argv[]){ ///< Command line arguments
     double atctime = attacker->getAcd(); ///< Attacker's time that will be counted down to progress battle
     double deftime = defender->getAcd(); ///< Defender's time that will be counted down to progress battle
     
-
     /**
     * \brief This loop contains the first two hits.
     */
@@ -81,6 +81,6 @@ int main(int argc, char *argv[]){ ///< Command line arguments
         attacker = alive[0];
         defender = alive[1];
     }
-    for (auto a: alive) delete a;
-    for (auto d: dead) delete d;
+    for (auto a : alive) delete a;
+    for (auto d : dead) delete d;
 }

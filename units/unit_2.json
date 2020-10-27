@@ -2,5 +2,7 @@
   "name" : "Sally",
   "hp" : 45,
   "dmg" : 30,
-  "acd" : 1
+  "acd" : 1,
+  "exp": 0,
+  "lvl": 1
 }
