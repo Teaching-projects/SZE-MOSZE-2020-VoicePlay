@@ -1,0 +1,9 @@
+{
+    "lore" : "The lowest rank of the undead, zombies befoul much of the wilderness of the Western Kingdoms, as well as the tombs and crypts of the whole of Sanctuary. Zombies serve the darkness blindly and without thought, attacking only with their bare hands. They move slowly, but with relentless determination, seeking to consume the flesh of the living. They are simple-minded and easily outwitted, but in large groups can overwhelm the unwary.",
+
+
+    "name" : "Zombie",
+    "health_points" : 10, 
+    "damage" : 1, "attack_cooldown" : 2.8,
+    "race" : "undead"
+}
