@@ -1,5 +1,5 @@
 #include "../unit.h"
-#include "../jsonparser.h"
+#include "../JSON.h"
 
 #include <string>
 #include <map>
@@ -10,15 +10,15 @@ TEST(Multest, resAsExpected){
     unit* result = unit::parseUnit("unit2test.json");
 
     EXPECT_EQ(expected.getName(), result->getName());
-    EXPECT_DOUBLE_EQ(expected.getDmg(), result->getDmg());
-    EXPECT_DOUBLE_EQ(expected.getHp(), result->getHp());
+    EXPECT_DOUBLE_EQ(expected.getDamage(), result->getDamage());
+    EXPECT_DOUBLE_EQ(expected.getHealthPoints(), result->getHealthPoints());
 };
 TEST(Multest, allElementsFilled){
     unit* result = unit::parseUnit("unit2test.json");
 
     EXPECT_NE("", result->getName());
-    EXPECT_NE(NULL, result->getDmg());
-    EXPECT_NE(NULL, result->getHp());
+    EXPECT_NE(NULL, result->getDamage());
+    EXPECT_NE(NULL, result->getHealthPoints());
 };
 TEST(Multest, faultySyntax){
     unit expected("TestUnit", 64, 32,3);
