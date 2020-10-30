@@ -19,7 +19,7 @@ void Hero::gainXP(unit const* u) {
         exp = exp - experience_per_level;
         this->heal(getMaxHealthPoints()+health_point_bonus_per_level);
         this->boostDmg(getDamage()+damage_bonus_per_level);
-        this->changeAcd(std::round(getAttackCoolDown()*cooldown_multiplier_per_level));
+        this->changeAcd(getAttackCoolDown()*cooldown_multiplier_per_level);
     }
 }
 
