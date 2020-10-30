@@ -51,7 +51,6 @@ int main(int argc, char** argv){
         std::list<Monster> monsters;
         for (const auto& monster_file : monster_files)
             monsters.push_back(Monster::parse(monster_file));        
-
         while (hero.isAlive() && !monsters.empty()) {
             std::cout 
                 << hero.getName() << "(" << hero.getLevel()<<")"
@@ -70,8 +69,3 @@ int main(int argc, char** argv){
     } catch (const JSON::ParseException& e) {bad_exit(4);}
     return 0;
 }
-/*int main(int argc, char** argv){
-    
-    Monster m = Monster::parse(argv[1]);
-    std::cout << m.getName()<<" "<<m.getHealthPoints()<<" "<<m.getDamage()<<" "<<m.getAttackCoolDown()<<"\n";
-}*/

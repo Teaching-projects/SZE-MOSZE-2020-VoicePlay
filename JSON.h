@@ -95,14 +95,13 @@ public:
             else{
                 return 1;
             }
-        }else if (s == "monsters"){
+        }else if (s == "monsters")
             if(monsters.empty()) return 0;
-            else{
-                std::istringstream sa(monsters);
+        else{
+                //std::istringstream sa(monsters);
                 return 1;
             }
-            return -1;
-        }
+        return -1;
     }
     template <typename T>
     T get(std::string s){
