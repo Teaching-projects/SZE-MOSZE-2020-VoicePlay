@@ -10,6 +10,8 @@ jobs:
       - uses: actions/checkout@v2
       - name: Valgrind and Cppcheck
         run: sudo apt-get install -y valgrind cppcheck
+      - name: Update gcc
+        run: sudo apt-get update gcc
       - name: Warnings 
         run: cppcheck *.cpp --enable=warning --error-exitcode=1
       - name: Report generation
