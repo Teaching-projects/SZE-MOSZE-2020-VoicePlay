@@ -6,14 +6,8 @@ if test -f $FILE
 then
 	rm $FILE
 fi
-
-for unit1 in units/* 
+n = 1
+for unit1 in scenarios/* 
 do
-	for unit2 in units/* 
-  do
-	if [ $unit1 != $unit2 ]
-    then
-			./a.out $unit1 $unit2 >> $FILE
-		fi
-	done
+	./a.out $unit1 >> $FILE
 done

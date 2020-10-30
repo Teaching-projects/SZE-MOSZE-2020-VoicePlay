@@ -1,6 +1,10 @@
-Sally wins. Remaining HP: 25
-Lala wins. Remaining HP: 30
-Sally wins. Remaining HP: 35
-Sally wins. Remaining HP: 15
-Lala wins. Remaining HP: 30
-Sally wins. Remaining HP: 15
+Prince Aidan of Khanduras(1) vs Fallen
+Prince Aidan of Khanduras(1) vs Fallen
+Prince Aidan of Khanduras(1) vs Zombie
+Prince Aidan of Khanduras(2) vs Fallen
+Prince Aidan of Khanduras(3) vs Blood Raven
+The hero won.
+Prince Aidan of Khanduras: LVL12
+   HP: 160/160
+  DMG: 25
+  ACD: 1
