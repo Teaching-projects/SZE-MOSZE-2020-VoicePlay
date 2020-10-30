@@ -1,0 +1,6 @@
+Prince Aidan of Khanduras(1) vs Blood Raven
+The hero died.
+Prince Aidan of Khanduras: LVL1
+   HP: 0/30
+  DMG: 3
+  ACD: 1.1
