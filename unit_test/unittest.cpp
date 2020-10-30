@@ -157,7 +157,30 @@ TEST(Multest, AtkOrDfnd){ //damage greather than unit hp
     double deftime= u->getAcd();
     EXPECT_EQ(re.attackOrDefend(u,actime,deftime), false);
 };
+TEST(Multest, whitespacetest1){ //damage greather than unit hp
+    unit expected("TestUnit", 64, 32, 3);
+    unit* result = unit::parseUnit("whitespaceunit1.json");
 
+    EXPECT_EQ(expected.getName(), result->getName());
+    EXPECT_DOUBLE_EQ(expected.getDmg(), result->getDmg());
+    EXPECT_DOUBLE_EQ(expected.getHp(), result->getHp());
+};
+TEST(Multest, whitespacetest2){ //damage greather than unit hp
+    unit expected("TestUnit", 64, 32, 3);
+    unit* result = unit::parseUnit("whitespaceunit2.json");
+
+    EXPECT_EQ(expected.getName(), result->getName());
+    EXPECT_DOUBLE_EQ(expected.getDmg(), result->getDmg());
+    EXPECT_DOUBLE_EQ(expected.getHp(), result->getHp());
+};
+TEST(Multest, multiVarsInOneLine){
+    unit expected("TestUnit", 64, 32, 3);
+    unit* result = unit::parseUnit("unit2test2.json");
+
+    EXPECT_EQ(expected.getName(), result->getName());
+    EXPECT_DOUBLE_EQ(expected.getDmg(), result->getDmg());
+    EXPECT_DOUBLE_EQ(expected.getHp(), result->getHp());
+};
 int main(int argc, char **argv){
     ::testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();
