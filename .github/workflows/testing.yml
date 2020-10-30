@@ -9,7 +9,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: update gcc
-        run: sudo apt --only-upgrade install g++-8 gcc-8
-      - run: g++-8 -std=c++17 -lstdc++fs *.cpp
+        run: sudo apt --only-upgrade install g++-10 gcc-10
+      - run: g++-10 -std=c++17 *.cpp
       - run: ./testing.sh
       - run: diff output.txt exp_output.txt
