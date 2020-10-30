@@ -22,7 +22,7 @@ jobs:
       - name: Build
         run: g++-8 -std=c++17 -lstdc++fs *.cpp
       - name: Check memory leak
-        run: valgrind --error-exitcode=1 --leak-check=full ./a.out units/unit_1.json units/unit_2.json
+        run: valgrind --error-exitcode=1 --leak-check=full ./a.out scneario1.json
       - name: Run tests
         run: ./testing.sh
       - name: Check differences
