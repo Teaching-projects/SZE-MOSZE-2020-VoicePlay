@@ -1,9 +1,14 @@
 #pragma once
-#include "unit.h"
 
-class player : public unit {
+#include "unit.h"
+#include "Monster.h"
+
+class Hero : public unit {
 private:
     double exp, lvl, maxhp; //experience, level, maximum health point
+
+    //double experience_per_level, health_point_bonus_per_level, damage_bonus_per_level, cooldown_multiplier_per_level;
+
     void gainXP(unit const* u);
     void heal(double d) {   //heal unit to d hp
         hp = d;
@@ -12,14 +17,23 @@ private:
     void boostDmg(double d) { dmg = d; } //boost damage to d
     void changeAcd(double d) { attackcooldown=d;}
 public:
-    player(std::string name, double hp, double dmg, double a, double exp, double lvl) : unit(name, hp, dmg, a), exp(exp), lvl(lvl), maxhp(hp) {}
+    double experience_per_level, health_point_bonus_per_level, damage_bonus_per_level, cooldown_multiplier_per_level;
 
+    Hero(std::string name, double hp, double dmg, double a, double exp, double lvl, double experience_per_level, double health_point_bonus_per_level, double damage_bonus_per_level, double cooldown_multiplier_per_level) 
+                : unit(name, hp, dmg, a), exp(exp), lvl(lvl), maxhp(hp), experience_per_level(experience_per_level), 
+                    health_point_bonus_per_level(health_point_bonus_per_level), 
+                    damage_bonus_per_level(damage_bonus_per_level), cooldown_multiplier_per_level(cooldown_multiplier_per_level) {}
+    Hero(Hero* l): unit(l->getName(),l->getHealthPoints(),l->getDamage(),
+                        l->getAttackCoolDown()), exp(l->getExp()), lvl(l->getLevel()), maxhp(l->getMaxHealthPoints()), experience_per_level(l->experience_per_level), 
+                    health_point_bonus_per_level(l->health_point_bonus_per_level), 
+                    damage_bonus_per_level(l->damage_bonus_per_level), cooldown_multiplier_per_level(l->cooldown_multiplier_per_level){};
     //getter fuggvenyek
     double getExp() const;
-    double getLvl() const;
-    double getMaxhp() const;
+    double getLevel() const;
+    double getMaxHealthPoints() const;
 
-    static player* parsePlayer(std::string fname);
+    static Hero* parse(std::string fname);
 
     double dealDamage(unit* const u);
+    void fightTilDeath(Monster &m);
 };
