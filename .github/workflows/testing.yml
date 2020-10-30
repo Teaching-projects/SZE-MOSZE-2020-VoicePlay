@@ -9,7 +9,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Update gcc
-        run: sudo apt-get update gcc
+        run: sudo apt-get Update
+        run: sudo apt --only-upgrade install gcc
       - run: g++ -std=c++17 -lstdc++fs *.cpp
       - run: ./testing.sh
       - run: diff output.txt exp_output.txt
