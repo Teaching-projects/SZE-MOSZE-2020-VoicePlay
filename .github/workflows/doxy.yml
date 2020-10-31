@@ -3,7 +3,7 @@ name: doxy.yml
 on:
   push:
     branches:
-      - attackspeed
+      - documentation
       - gh-pages
 
 jobs:
