@@ -3,7 +3,7 @@
 *
 * \brief unit class
 *
-* This class contains fighting units, currently up to two at a time
+* This class contains the second fighting unit, which fights with the player, contained by player class
 *
 * \author Kovacs Kira, team VoicePlay
 *

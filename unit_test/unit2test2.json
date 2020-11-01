@@ -1,0 +1,7 @@
+{
+    "name" : "TestUnit", "exp" : 0,
+    "hp" : 64,
+    "dmg" : 32,
+    "acd" : 3,
+    "lvl" : 1
+  }
