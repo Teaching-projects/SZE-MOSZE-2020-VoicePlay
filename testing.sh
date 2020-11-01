@@ -1,7 +1,7 @@
 #!/bin/bash
 
 FILE=output.txt
-INPF=scneario1.json
+INPF=scenario1.json
 
 if test -f $FILE
 then
