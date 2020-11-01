@@ -1,4 +1,4 @@
-name: Testing
+name: refract test
 
 on:
   push
@@ -11,5 +11,7 @@ jobs:
       - name: update gcc
         run: sudo apt --only-upgrade install g++-10 gcc-10
       - run: g++-10 -std=c++17 *.cpp
-      - run: ./testing.sh
-      - run: diff output.txt exp_output.txt
+      - run: ./a.out scenario1.json >> out1.txt
+      - run: ./a.out scenario2.json >> out2.txt
+      - run: diff output1.txt out1.txt
+      - run: diff output2.txt out2.txt
