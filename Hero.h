@@ -26,7 +26,9 @@ public:
     Hero(Hero* l): unit(l->getName(),l->getHealthPoints(),l->getDamage(),
                         l->getAttackCoolDown()), exp(l->getExp()), lvl(l->getLevel()), maxhp(l->getMaxHealthPoints()), experience_per_level(l->experience_per_level), 
                     health_point_bonus_per_level(l->health_point_bonus_per_level), 
-                    damage_bonus_per_level(l->damage_bonus_per_level), cooldown_multiplier_per_level(l->cooldown_multiplier_per_level){};
+                    damage_bonus_per_level(l->damage_bonus_per_level), cooldown_multiplier_per_level(l->cooldown_multiplier_per_level){
+                        delete l;
+                    }
     //getter fuggvenyek
     double getExp() const;
     double getLevel() const;
