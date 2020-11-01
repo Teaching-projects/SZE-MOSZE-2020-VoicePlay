@@ -27,9 +27,9 @@ protected:
     double hp;  ///< the starting health points of the unit
     double  dmg; ///< the damage the unit deals to another character in a round
     double attackcooldown; ///< the cooldown time between the attacks of the same unit
-    void loseHp(unit *attacker); ///< private method that decreases the health points of the unit by the attacker's damage
 public:
     unit(std::string name, double hp, double dmg, double acd): name(name), hp(hp), dmg(dmg), attackcooldown(acd) {}
+    void loseHp(unit *attacker); ///< public method that decreases the health points of the unit by the attacker's damage
 
     /**
     * \brief This is a simple getter function for current health points.
@@ -60,7 +60,7 @@ public:
     bool attackOrDefend(unit const *attacker, double &atctime, double &deftime);
 
     //virtual void loseHp(unit* attacker);
-    virtual double dealDamage(unit* const u) { return this->getDamage(); }
+    virtual double dealDamage(unit* const u);
     /**
     * \brief This method decides whether the attacked character is still alive or not.
     * \param u1 the attacker unit

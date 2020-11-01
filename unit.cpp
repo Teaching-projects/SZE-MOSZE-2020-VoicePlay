@@ -11,9 +11,10 @@ double unit::getDamage () const { return dmg; }
 double unit::getAttackCoolDown () const { return attackcooldown; }
 std::string unit::getName () const { return name; }
 bool unit::isAlive() const { return hp>0 ? true : false;}
-
+double unit::dealDamage(unit* const u){ 
+    return (u->getHealthPoints()-this->getDamage()); }
 void unit::loseHp(unit *attacker) {
-    hp -= attacker->dealDamage(this);
+    hp = attacker->dealDamage(this);
     if (hp <= 0) hp = 0;   // hp cant be < 0 
 }
 

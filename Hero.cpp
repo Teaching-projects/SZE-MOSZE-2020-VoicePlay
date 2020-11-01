@@ -24,8 +24,15 @@ void Hero::gainXP(unit const* u) {
 }
 
 double Hero::dealDamage(unit* const u){
+    /*std::cout << this->getName()<<" - lvl"<<this->getLevel()<<
+        " (hp:"<<this->getHealthPoints()<<"/"<<this->getMaxHealthPoints()<<", dmg:"<<this->getDamage()<<" cd:"<<this->getAttackCoolDown()
+                    <<" xp:"<<this->getExp()
+            <<") attacks "<<u->getName()<<" ("<<u->getHealthPoints()<< " dmg"<<u->getDamage()<<" cd"<<u->getAttackCoolDown()<<")\n";
+            */
+    double ret = u->getHealthPoints()-this->getDamage();
     gainXP(u);
-    return getDamage();
+    
+    return ret;
 }
 
 Hero* Hero::parse(std::string fname) {
@@ -68,42 +75,106 @@ void ifUnitDead(unit* const attacker, unit* const defender, std::vector<unit*> &
 }
 
 void Hero::fightTilDeath(Monster &m){
-    std::vector<unit*> alive;
-    alive.push_back(this);
-    alive.push_back(&m);
-    unit* attacker = alive[0]; ///< Initial attacker character
-    unit* defender = alive[1]; ///< Initial defender character
-    double atctime = attacker->getAttackCoolDown(); 
-    double deftime = defender->getAttackCoolDown();
+    /*std::cout <<"---------------\n";
+    std::cout << this->getName()<<" - lvl"<<this->getLevel()<<
+        " (hp:"<<this->getHealthPoints()<<"/"<<this->getMaxHealthPoints()<<", dmg:"<<this->getDamage()<<" cd:"<<this->getAttackCoolDown()
+                    <<" xp:"<<this->getExp()
+            <<") fights "<<m.getName()<<" ("<<m.getHealthPoints()<< " dmg"<<m.getDamage()<<" cd"<<m.getAttackCoolDown()<<")\n";
+    std::cout <<"---------------\n";
+*/
+    unit* faster; ///< Initial attacker character
+    unit* slower; ///< Initial defender character
+    double fasterCD;
+    //double atctime = attacker->getAttackCoolDown(); 
+    //double deftime = defender->getAttackCoolDown();
     
         /**
     * \brief This loop contains the first two hits.
     */
-    for(int i = 0; i<2; i++){
-        if (alive.size()>1 && (!(defender->battle(attacker)))){
-            ifUnitDead(attacker, defender, alive);
-            continue;
-        }
-        else{
-            unit* temp = attacker;
-            attacker = defender;
-            defender = temp;
-        }
-    } 
+    if(getAttackCoolDown() < m.getAttackCoolDown()){
+        fasterCD = getAttackCoolDown();
+        faster = this;
+        slower = &m;
+    }else{
+        fasterCD = m.getAttackCoolDown();
+        faster = &m;
+        slower = this;
+    }
+    /*
+    slower->loseHp(faster);
+    faster->loseHp(slower);*/
+    double timer = 0.0;   
+     
         /**
     * \brief This loop contains the timed attacks.
     */
-    while (alive.size() > 1) {
-        if(!(attacker->attackOrDefend(defender, atctime, deftime))){
-            attacker = alive[1];
-            defender = alive[0];
+    while (isAlive() && m.isAlive()) {
+        timer +=fasterCD;
+        if(slower->getAttackCoolDown()<timer){
+            faster->loseHp(slower);
+            if(faster->isAlive()){
+                slower->loseHp(faster);
+                timer -= slower->getAttackCoolDown();
+            }
+        }else if (slower->getAttackCoolDown() > timer){
+            slower->loseHp(faster);
+        }else{
+            m.loseHp(this);
+            if(m.isAlive()){
+                this->loseHp(&m);
+            }
+            timer = 0.0;
         }
-
-        if (!(defender->battle(attacker))){
-            ifUnitDead(attacker, defender, alive);
-            continue;
-        }
-        attacker = alive[0];
-        defender = alive[1];
+        //timer += fasterCD;
     }
 }
+/*void Hero::fightTilDeath(Monster &enemy){
+    unit* fUnit;
+	unit* sUnit;
+	double fasterUnitCD;
+
+	if (getAttackCoolDown() < enemy.getAttackCoolDown())
+	{
+		fasterUnitCD = getAttackCoolDown();
+		fUnit = this;
+		sUnit = &enemy;
+	}
+	else
+	{
+		fasterUnitCD = enemy.getAttackCoolDown();
+		fUnit = &enemy;
+		sUnit = this;
+	}
+
+	dealDamage(&enemy);
+	enemy.dealDamage(this);
+	double timer = 0.0;
+
+	while (isAlive() && enemy.isAlive())
+	{
+		timer += fasterUnitCD;
+		if (sUnit->getAttackCoolDown() < timer)
+		{
+			sUnit->dealDamage(fUnit);
+			if (fUnit->isAlive())
+			{
+				fUnit->dealDamage(sUnit);
+				timer -= sUnit->getAttackCoolDown();
+			}
+		}
+		else if (sUnit->getAttackCoolDown() > timer)
+		{
+			fUnit->dealDamage(sUnit);
+		}
+		else
+		{
+			dealDamage(&enemy);
+			if (enemy.isAlive())
+			{
+				enemy.dealDamage(this);
+			}
+			timer = 0.0;
+		}
+		timer += fasterUnitCD;
+	}
+}*/
