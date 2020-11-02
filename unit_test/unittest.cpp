@@ -60,11 +60,12 @@ TEST(Multest, fileException){
 };
 TEST(Multest, stringParsTest){
     //std::string inp="{\n  \"k1\" : \"This is a test: ' 1 ! \",\n  \"k2\" : 12 ,\n  \"k3\" : \"Name\" \n }";
-    std::string inp="{\n  \"k1\" : \"This is a test: ' 1 ! \",\n  \"k2\" : 12 ,\n  \"k3\" : \"Name\"\n }";
+    //std::string inp="{\"k1\" : \"This is a test: ' 1 ! \",\n  \"k2\" : 12 ,\n  \"k3\" : \"Name\"\n }"
+    std::string inp="{\n \"k3\" : \"Name\" \n}";
     std::map<std::string, std::string> exp;
-        exp.insert(std::pair<std::string, std::string> ("k1", " \"This is a test: ' 1 ! \","));
-        exp.insert(std::pair<std::string, std::string> ("k2", " 12 ,"));
-        exp.insert(std::pair<std::string, std::string> ("k3", " \"Name\""));
+        //exp.insert(std::pair<std::string, std::string> ("k1", " \"This is a test: ' 1 ! \","));
+        //exp.insert(std::pair<std::string, std::string> ("k2", " 12 ,"));
+        exp.insert(std::pair<std::string, std::string> ("k3", "Name"));
     std::map<std::string, std::string> res = JSONparser::strInp(inp);
     for(auto v: res){
         std::cout << v.first << " "<< v.second<<"\n";

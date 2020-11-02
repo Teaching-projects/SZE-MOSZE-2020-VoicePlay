@@ -65,9 +65,9 @@ unit* unit::parseUnit(std::string fname){
         {
             JSON attributes = JSON::parseFromFile(fname);
             n = attributes.get<std::string>("name");
-            h = attributes.get<double>("base_health_points");
-            d = attributes.get<double>("base_damage");
-            a = attributes.get<double>("base_attack_cooldown");
+            h = attributes.get<double>("health_points");
+            d = attributes.get<double>("damage");
+            a = attributes.get<double>("attack_cooldown");
         }
         catch (const std::out_of_range&)
         {
