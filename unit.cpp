@@ -45,20 +45,34 @@ bool unit::attackOrDefend(unit const *defender, double &atctime, double &deftime
 unit* unit::parseUnit(std::string fname){
         std::string n;
         double d,h,a;
-        std::map<std::string,std::string> m;
+        MAP m;
         try{
             m = JSONparser::fileInp(fname);
         }catch(const std::string e){
                 std::cerr << e << '\n';
                 std::exit( -1);
         }        
+        /*       
         std::map<std::string, std::string>::iterator itr;
         for (itr = m.begin(); itr != m.end(); ++itr) {
                 if(itr->first == "name") n = JSONparser::rFVbQ(itr->second);
-                else if(itr->first == "dmg") d = stod(itr->second);
-                else if(itr->first == "hp") h = stod(itr->second);
-                else if(itr->first == "acd") a = stod(itr->second);
+                else if(itr->first == "damage") d = stod(itr->second);
+                else if(itr->first == "health_points") h = stod(itr->second);
+                else if(itr->first == "attack_cooldown") a = stod(itr->second);
                 else continue;
+        }*/
+        try
+        {
+            JSON attributes = JSON::parseFromFile(fname);
+            n = attributes.get<std::string>("name");
+            h = attributes.get<double>("base_health_points");
+            d = attributes.get<double>("base_damage");
+            a = attributes.get<double>("base_attack_cooldown");
+        }
+        catch (const std::out_of_range&)
+        {
+            //infile.close();
+            throw(JSON::ParseException());
         }
         return new unit(n,h,d,a);
 }
