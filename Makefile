@@ -26,7 +26,7 @@ Report_generation:
 	cppcheck *.cpp --enable=performance --enable=style --output-file=report.txt
 
 Check_mem_leak:
-	valgrind --error-exitcode=1 --leak-check=full ./a.out units/unit_1.json units/unit_2.json
+	valgrind --error-exitcode=1 --leak-check=full ./a.out scenario1.json
 
 Run_tests:
 	bash -c "./testing.sh"
