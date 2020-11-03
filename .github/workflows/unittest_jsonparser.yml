@@ -12,6 +12,6 @@ jobs:
         run: sudo apt install libgtest-dev && cd /usr/src/gtest && sudo cmake . && sudo make && sudo cp *.a /usr/lib && sudo ln -s /usr/lib/libgtest.a /usr/local/lib/libgtest.a && sudo ln -s /usr/lib/libgtest_main.a /usr/local/lib/libgtest_main.a
       - uses: actions/checkout@v2
       - name: Build
-        run: cmake unit_test/CMakeLists.txt && make -C unit_test/
+        run: make Build
       - name: Run tests
-        run: cd unit_test/ && ./runTests
+        run: make Run_tests2

@@ -12,9 +12,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
-      - run: sudo apt-get install doxygen
-      - run: sudo apt-get install graphviz
-      - run: doxygen doxconf
+      - run: make Install_doxygen
+      - run: make Install_graphviz
+      - run: make Creating_documentation
       - name: Push git subdir branch
 
         uses: s0/git-publish-subdir-action@v2.4.0
