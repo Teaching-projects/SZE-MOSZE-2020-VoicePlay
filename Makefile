@@ -1,5 +1,5 @@
 OBJS := main.o player.o unit.o
-CC := g++
+CC := g++-10
 CFLAGS := -Wall -std=c++17
 
 
