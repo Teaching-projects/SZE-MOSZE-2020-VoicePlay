@@ -11,6 +11,6 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Build
-        run: cmake unit_test/CMakeLists.txt && make -C unit_test/
+        run: make Build
       - name: Run tests
-        run: cd unit_test/ && ./runTests
+        run: make Run_tests2
