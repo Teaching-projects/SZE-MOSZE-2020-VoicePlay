@@ -41,13 +41,7 @@ Hero* Hero::parse(std::string fname) {
     double epl, hpbpl, dbpl, cmpl;
 
    MAP m;
-    //fname = JSONparser::rFVbQ(fname);
-    try{
-        m = JSONparser::fileInp(fname);
-    }catch(const std::string e){
-            std::cerr << e << '\n';
-            std::exit( -1);
-    }        
+    //fname = JSONparser::rFVbQ(fname);      
     /*std::map<std::string, std::string>::iterator itr;
     for (itr = m.begin(); itr != m.end(); ++itr) {
             if(itr->first == "name") n = JSONparser::rFVbQ(itr->second);

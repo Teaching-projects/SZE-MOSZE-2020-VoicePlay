@@ -58,6 +58,7 @@ TEST(Multest, fileException){
         }
     }, fname+" file does not exist!");
 };
+/* 
 TEST(Multest, stringParsTest){
     //std::string inp="{\n  \"k1\" : \"This is a test: ' 1 ! \",\n  \"k2\" : 12 ,\n  \"k3\" : \"Name\" \n }";
     //std::string inp="{\"k1\" : \"This is a test: ' 1 ! \",\n  \"k2\" : 12 ,\n  \"k3\" : \"Name\"\n }"
@@ -75,6 +76,7 @@ TEST(Multest, stringParsTest){
     }
     EXPECT_EQ(true, map_compare(res, exp));
 };
+*/
 TEST(Multest, uselessKeysinJson){
     unit expected("TestUnit", 64, 32, 3);
     unit* result = unit::parseUnit("uselessKeys.json");
