@@ -1,6 +1,6 @@
 OBJS := main.o player.o unit.o
 CC := g++
-CFLAGS := -std=c++17 -Wall -Werror -g
+CFLAGS := -Wall -std=c++17
 
 
 
