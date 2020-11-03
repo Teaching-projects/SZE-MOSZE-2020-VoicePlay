@@ -11,7 +11,7 @@ jobs:
       - name: Valgrind and Cppcheck
         run: make Install_Valgrind_and_Cppcheck
       - name: Warnings 
-        run: make warnings
+        run: make Warnings
       - name: Report generation
         run: make Report_generation
       - uses: actions/upload-artifact@v2

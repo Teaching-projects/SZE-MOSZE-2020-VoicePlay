@@ -34,9 +34,6 @@ Run_tests:
 Check_differences:
 	diff output.txt exp_output.txt
 
-Install_gtest:
-	sudo apt install libgtest-dev && cd /usr/src/gtest && sudo cmake . && sudo make && sudo cp *.a /usr/lib && sudo ln -s /usr/lib/libgtest.a /usr/local/lib/libgtest.a && sudo ln -s /usr/lib/libgtest_main.a /usr/local/lib/libgtest_main.a
-
 Build:
 	cmake unit_test/CMakeLists.txt && make -C unit_test/
 
