@@ -34,7 +34,6 @@ private:
                 try {
                     std::string p1,val;
                     while(t!=""){
-                        //std::cout << t <<" first\n";
                         p1 = JSONparser::rFVbQ(t);
                         if ( parsed.find(p1) != parsed.end()) throw -1;
                         else{
@@ -55,7 +54,6 @@ private:
                                 t = t.substr(t.find(val)+val.size());
                                 t = t.substr(t.find_first_of("\n,")+1);
                             }
-                            //std::cout << val <<" second\n";
                             parsed.insert(std::pair<std::string, std::string>(p1,val));
                         }
                     }
@@ -89,18 +87,25 @@ private:
             std::map<std::string, std::string> tmp = JSONparser::istrmInp(istr);
             for (auto v: tmp){
                 try{
-                    //std::cout << v.first << "  num: "<<std::stod(v.second)<<"\n";
                     parsed.insert(std::pair<std::string, std::variant<std::string,int,double>>(v.first,std::stod(v.second)));
                 }catch(const std::invalid_argument& ia){
-                    //std::cout << v.first << "  str: "<<v.second<<"\n";
                     parsed.insert(std::pair<std::string, std::variant<std::string,int,double>>(v.first,JSONparser::rFVbQ(v.second)));
                 }
             }
             return parsed;
         }
-        static std::map<std::string, std::string>  strInp(std::string str){    // convert the given std::string to istream
+        static MAP  strInp(std::string str){    // convert the given std::string to istream
+            MAP parsed;
             std::stringstream f(str);
-            return JSONparser::istrmInp(f);
+            std::map<std::string, std::string> tmp = JSONparser::istrmInp(f);
+            for (auto v: tmp){
+                try{
+                    parsed.insert(std::pair<std::string, std::variant<std::string,int,double>>(v.first,std::stod(v.second)));
+                }catch(const std::invalid_argument& ia){
+                    parsed.insert(std::pair<std::string, std::variant<std::string,int,double>>(v.first,JSONparser::rFVbQ(v.second)));
+                }
+            }
+            return parsed;
         }
 
 };
@@ -108,11 +113,12 @@ public:
     JSON(MAP content): content(content) {}
     static JSON parseFromFile(std::string fname){
         MAP res = JSONparser::fileInp(fname);
-        //res["monsters"].erase(remove(res["monsters"].begin(), res["monsters"].end(), '"'), res["monsters"].end()); //remove " from string
-        //res["monsters"].erase(std::remove(res["monsters"].begin(), res["monsters"].end(), '"'), res["monsters"].end());
         return JSON(res);
     }
-
+    static JSON parseFromString(std::string str){
+        MAP res = JSONparser::strInp(str);
+        return JSON(res);
+    }
 	int count(const std::string& key)
 	{
 		if (content.count(key)) return 1;

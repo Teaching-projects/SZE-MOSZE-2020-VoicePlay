@@ -35,28 +35,9 @@ Hero* Hero::parse(std::string fname) {
     double d = -1.0;
     double h = -1.0;
     double a = -1.0;
-    //double e = 0;
-    //double l = 1;
 
     double epl, hpbpl, dbpl, cmpl;
 
-   MAP m;
-    //fname = JSONparser::rFVbQ(fname);      
-    /*std::map<std::string, std::string>::iterator itr;
-    for (itr = m.begin(); itr != m.end(); ++itr) {
-            if(itr->first == "name") n = JSONparser::rFVbQ(itr->second);
-            else if(itr->first == "base_damage") d = stod(itr->second);
-            else if(itr->first == "base_health_points") h = stod(itr->second);
-            else if(itr->first == "base_attack_cooldown") a = stod(itr->second);
-            //else if(itr->first == "exp") e = stod(itr->second);
-            //else if(itr->first == "lvl") l = stod(itr->second);
-
-            else if(itr->first == "experience_per_level") epl = stod(itr->second);
-            else if(itr->first == "health_point_bonus_per_level") hpbpl = stod(itr->second);
-            else if(itr->first == "damage_bonus_per_level") dbpl = stod(itr->second);
-            else if(itr->first == "cooldown_multiplier_per_level") cmpl = stod(itr->second);
-            else continue;
-    }*/
     try
 	{
 		JSON attributes = JSON::parseFromFile(fname);
