@@ -20,7 +20,6 @@ void unit::loseHp(unit *attacker) {
 
 bool unit::battle(unit *u1){
     this->loseHp(u1);
-    //loseHp(u1);
     return (getHealthPoints()>0) ? true : false;
 }
 
@@ -55,7 +54,6 @@ unit* unit::parseUnit(std::string fname){
         }
         catch (const std::out_of_range&)
         {
-            //infile.close();
             throw(JSON::ParseException());
         }
         catch (const std::string e){

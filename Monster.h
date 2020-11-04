@@ -9,15 +9,6 @@ public:
     static Monster parse(std::string fname){
         std::string n;
         double d,h,a;
-        /*       
-        std::map<std::string, std::string>::iterator itr;
-        for (itr = m.begin(); itr != m.end(); ++itr) {
-                if(itr->first == "name") n = JSONparser::rFVbQ(itr->second);
-                else if(itr->first == "damage") d = stod(itr->second);
-                else if(itr->first == "health_points") h = stod(itr->second);
-                else if(itr->first == "attack_cooldown") a = stod(itr->second);
-                else continue;
-        }*/
         try
         {
             JSON attributes = JSON::parseFromFile(fname);
