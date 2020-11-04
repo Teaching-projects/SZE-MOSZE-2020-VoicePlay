@@ -1,5 +1,5 @@
-OBJS := main.o player.o unit.o
-CC := g++
+OBJS := main.o unit.o Hero.o
+CC := g++-10
 CFLAGS := -Wall -std=c++17
 
 
@@ -7,13 +7,13 @@ CFLAGS := -Wall -std=c++17
 run_cpps: $(OBJS)
 	$(CC) $(CFLAGS) -o a.out $(OBJS)
 
-player.o: player.cpp player.h jsonparser.h
-	$(CC) $(CFLAGS) -c player.cpp
+Hero.o: Hero.cpp Hero.h JSON.h
+	$(CC) $(CFLAGS) -c Hero.cpp
 
-unit.o: unit.cpp unit.h jsonparser.h
+unit.o: unit.cpp unit.h JSON.h
 	$(CC) $(CFLAGS) -c unit.cpp
 
-main.o: main.cpp player.h unit.h jsonparser.h
+main.o: main.cpp Hero.h Monster.h JSON.h
 	$(CC) $(CFLAGS) -c main.cpp
 
 Install_Valgrind_and_Cppcheck:
@@ -26,7 +26,7 @@ Report_generation:
 	cppcheck *.cpp --enable=performance --enable=style --output-file=report.txt
 
 Check_mem_leak:
-	valgrind --error-exitcode=1 --leak-check=full ./a.out units/unit_1.json units/unit_2.json
+	valgrind --error-exitcode=1 --leak-check=full ./a.out scenario1.json
 
 Run_tests:
 	bash -c "./testing.sh"

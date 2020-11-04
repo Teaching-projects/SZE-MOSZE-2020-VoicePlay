@@ -6,10 +6,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: update gcc
+        run: sudo apt --only-upgrade install g++-10 gcc-10
       - name: Install gtest
         run: sudo apt install libgtest-dev && cd /usr/src/gtest && sudo cmake . && sudo make && sudo cp *.a /usr/lib && sudo ln -s /usr/lib/libgtest.a /usr/local/lib/libgtest.a && sudo ln -s /usr/lib/libgtest_main.a /usr/local/lib/libgtest_main.a
       - uses: actions/checkout@v2
-
       - name: Build
         run: make Build
       - name: Run tests
