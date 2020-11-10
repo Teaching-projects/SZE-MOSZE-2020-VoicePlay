@@ -2,18 +2,14 @@ name: doxy.yml
 
 on:
   push:
-    branches:
-      - documentation
-      - gh-pages
 
 jobs:
   deploy:
     name: Deploy to github pages
     runs-on: ubuntu-latest
+    container: kkira07/doxygen:latest
     steps:
       - uses: actions/checkout@master
-      - run: make Install_doxygen
-      - run: make Install_graphviz
       - run: make Creating_documentation
       - name: Push git subdir branch
 
