@@ -6,10 +6,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    container: kkira07/test:latest
     steps:
       - uses: actions/checkout@v2
-      - name: update gcc
-        run: sudo apt --only-upgrade install g++-10 gcc-10
       - run: make run_cpps
       - run: make Run_tests
       - run: make Check_differences
