@@ -67,7 +67,7 @@ public:
 
 	template<typename T>
 	T get(const std::string& key){
-        std::cout << key << " get \n";
+        //std::cout << key << " get \n";
 		T returner = std::get<T>(content.at(key));
 		return returner;
 	}

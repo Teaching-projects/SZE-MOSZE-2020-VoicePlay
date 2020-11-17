@@ -49,7 +49,7 @@ int main(int argc, char** argv){
 //std::cout << "outsides"<< "\neddig ok\n";
     try { 
         Hero hero{Hero::parse(hero_file)};
-        std::cout << "hero parse ok"<< "\neddig ok\n";
+        //std::cout << "hero parse ok"<< "\neddig ok\n";
         std::list<Monster> monsters;
         for (const auto& monster_file : monster_files)
             monsters.push_back(Monster::parse(monster_file));        

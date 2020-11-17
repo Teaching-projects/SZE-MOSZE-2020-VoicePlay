@@ -25,7 +25,7 @@ public:
                         l->getAttackCoolDown()), exp(l->getExp()), lvl(l->getLevel()), maxhp(l->getMaxHealthPoints()), experience_per_level(l->experience_per_level), 
                     health_point_bonus_per_level(l->health_point_bonus_per_level), 
                     damage_bonus_per_level(l->damage_bonus_per_level), cooldown_multiplier_per_level(l->cooldown_multiplier_per_level){
-                        delete l;
+                        //delete l;
                     }
     //getter fuggvenyek
     double getExp() const;
