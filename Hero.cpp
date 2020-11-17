@@ -41,9 +41,12 @@ Hero* Hero::parse(std::string fname) {
     try
 	{
 		JSON attributes = JSON::parseFromFile(fname);
+        std::cout << "parse f"<< "\neddig ok\n";
 		n = attributes.get<std::string>("name");
 		h = attributes.get<double>("base_health_points");
+        std::cout << "get hp"<< "\neddig ok\n";
 		d = attributes.get<double>("base_damage");
+        std::cout << "get dmg"<< "\neddig ok\n";
 		a = attributes.get<double>("base_attack_cooldown");
         epl = attributes.get<double>("experience_per_level");
         hpbpl = attributes.get<double>("health_point_bonus_per_level");
