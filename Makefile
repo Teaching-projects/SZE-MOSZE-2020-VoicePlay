@@ -1,4 +1,4 @@
-OBJS := main.o unit.o Hero.o
+OBJS := main.o unit.o Hero.o JSON.o
 CC := g++-10
 CFLAGS := -Wall -std=c++17
 
