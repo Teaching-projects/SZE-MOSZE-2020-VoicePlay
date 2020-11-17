@@ -5,12 +5,14 @@ on: push
 jobs:
   build:
     runs-on: ubuntu-latest
+    container: kkira07/test:latest
     steps:
-      - name: Install gtest
-        run: sudo apt install libgtest-dev && cd /usr/src/gtest && sudo cmake . && sudo make && sudo cp *.a /usr/lib && sudo ln -s /usr/lib/libgtest.a /usr/local/lib/libgtest.a && sudo ln -s /usr/lib/libgtest_main.a /usr/local/lib/libgtest_main.a
+      - name: Gtest CMake
+        run: cd /usr/src/gtest && cmake CMakeLists.txt && make
+      - name: Symbolic links
+        run: ln -st /usr/lib/ /usr/src/gtest/libgtest.a && ln -st /usr/lib/ /usr/src/gtest/libgtest_main.a
       - uses: actions/checkout@v2
-
       - name: Build
-        run: cmake unit_test/CMakeLists.txt && make -C unit_test/
+        run: make Build
       - name: Run tests
-        run: cd unit_test/ && ./runTests
+        run: make Run_tests2

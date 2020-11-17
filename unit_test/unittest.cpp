@@ -7,17 +7,6 @@
 #include <cmath>
 #include <gtest/gtest.h>
 
-bool map_compare (std::map<std::string, std::string> const &lhs, std::map<std::string, std::string> const &rhs) {
-    if (lhs.size() != rhs.size()) return false;
-    else{
-        //std::equal()
-        for(auto v: lhs){
-            std::string t = v.first;
-            if(lhs.at(t) != rhs.at(t)) return false;
-        }
-    }
-    return true;
-}
 
 TEST(Multest, resAsExpected){
     unit expected("TestUnit", 64, 32, 3);
@@ -58,16 +47,15 @@ TEST(Multest, fileException){
         }
     }, fname+" file does not exist!");
 };
+
 TEST(Multest, stringParsTest){
-    //std::string inp="{\n  \"k1\" : \"This is a test: ' 1 ! \",\n  \"k2\" : 12 ,\n  \"k3\" : \"Name\" \n }";
-    std::string inp="{\n  \"k1\" : \"This is a test: ' 1 ! \",\n  \"k2\" : 12 ,\n  \"k3\" : \"Name\"\n }";
-    std::map<std::string, std::string> exp;
-        exp.insert(std::pair<std::string, std::string> ("k1", "\"This is a test: ' 1 ! \","));
-        exp.insert(std::pair<std::string, std::string> ("k2", "12 ,"));
-        exp.insert(std::pair<std::string, std::string> ("k3", "\"Name\""));
-    std::map<std::string, std::string> res = JSONparser::strInp(inp);
-    EXPECT_EQ(true, map_compare(res, exp));
+    std::string inp="{\n \"k3\" : \"Name\" \n}";
+    JSON exp = JSON::parseFromFile("unit2test3.json");
+    JSON res = JSON::parseFromString(inp);
+    EXPECT_EQ(exp.get<std::string>("k3"),res.get<std::string>("k3"));
+    EXPECT_EQ(exp.count("k3"),res.count("k3"));
 };
+
 TEST(Multest, uselessKeysinJson){
     unit expected("TestUnit", 64, 32, 3);
     unit* result = unit::parseUnit("uselessKeys.json");
@@ -84,9 +72,9 @@ TEST(Multest, gainXp100DMG){
 
     if (u->getHealthPoints() <= re.getDamage()) xp += u->getHealthPoints();
     else xp += re.getDamage();
-    while (xp >= 100) {
-        xp = xp - 100;
-        expected = expected * re.damage_bonus_per_level;
+    while (xp >= re.experience_per_level) {
+        xp = xp - re.experience_per_level;
+        expected = expected + re.damage_bonus_per_level;
     }
 
     
@@ -101,9 +89,9 @@ TEST(Multest, gainXp0DMG){
 
     if (u->getHealthPoints() <= re.getDamage()) xp += u->getHealthPoints();
     else xp += re.getDamage();
-    while (xp >= 100) {
-        xp = xp - 100;
-        expected = expected * re.damage_bonus_per_level;
+    while (xp >= re.experience_per_level) {
+        xp = xp - re.experience_per_level;
+        expected = expected + re.damage_bonus_per_level;
     }
 
     
@@ -118,9 +106,9 @@ TEST(Multest, gainXp_BigDMG){
 
     if (u->getHealthPoints() <= re.getDamage()) xp += u->getHealthPoints();
     else xp += re.getDamage();
-    while (xp >= 100) {
-        xp = xp - 100;
-        expected = expected * re.damage_bonus_per_level;
+    while (xp >= re.experience_per_level) {
+        xp = xp - re.experience_per_level;
+        expected = expected + re.damage_bonus_per_level;
     }
     
     re.dealDamage(u);
@@ -134,9 +122,9 @@ TEST(Multest, gainXp_DmgGTHP){ //damage greather than unit hp
 
     if (u->getHealthPoints() <= re.getDamage()) xp += u->getHealthPoints();
     else xp += re.getDamage();
-    while (xp >= 100) {
-        xp = xp - 100;
-        expected = expected * re.damage_bonus_per_level;
+    while (xp >= re.experience_per_level) {
+        xp = xp - re.experience_per_level;
+        expected = expected + re.damage_bonus_per_level;
     }
     
     re.dealDamage(u);

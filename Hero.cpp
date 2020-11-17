@@ -32,35 +32,30 @@ double Hero::dealDamage(unit* const u){
 
 Hero* Hero::parse(std::string fname) {
     std::string n;
-    double d,h,a;
-    //double e = 0;
-    //double l = 1;
+    double d = -1.0;
+    double h = -1.0;
+    double a = -1.0;
 
     double epl, hpbpl, dbpl, cmpl;
 
-    std::map<std::string,std::string> m;
-    fname = JSONparser::rFVbQ(fname);
-    try{
-        m = JSONparser::fileInp(fname);
-    }catch(const std::string e){
-            std::cerr << e << '\n';
-            std::exit( -1);
-    }        
-    std::map<std::string, std::string>::iterator itr;
-    for (itr = m.begin(); itr != m.end(); ++itr) {
-            if(itr->first == "name") n = JSONparser::rFVbQ(itr->second);
-            else if(itr->first == "base_damage") d = stod(itr->second);
-            else if(itr->first == "base_health_points") h = stod(itr->second);
-            else if(itr->first == "base_attack_cooldown") a = stod(itr->second);
-            //else if(itr->first == "exp") e = stod(itr->second);
-            //else if(itr->first == "lvl") l = stod(itr->second);
-
-            else if(itr->first == "experience_per_level") epl = stod(itr->second);
-            else if(itr->first == "health_point_bonus_per_level") hpbpl = stod(itr->second);
-            else if(itr->first == "damage_bonus_per_level") dbpl = stod(itr->second);
-            else if(itr->first == "cooldown_multiplier_per_level") cmpl = stod(itr->second);
-            else continue;
-    }
+    try
+	{
+		JSON attributes = JSON::parseFromFile(fname);
+		n = attributes.get<std::string>("name");
+		h = attributes.get<double>("base_health_points");
+		d = attributes.get<double>("base_damage");
+		a = attributes.get<double>("base_attack_cooldown");
+        epl = attributes.get<double>("experience_per_level");
+        hpbpl = attributes.get<double>("health_point_bonus_per_level");
+        dbpl = attributes.get<double>("damage_bonus_per_level");
+        cmpl = attributes.get<double>("cooldown_multiplier_per_level");
+        
+	}
+	catch (const std::out_of_range&)
+	{
+		//infile.close();
+		throw(JSON::ParseException());
+	}
     return new Hero(n, h, d, a, 0, 1, epl, hpbpl, dbpl, cmpl);
 }
 
@@ -74,7 +69,6 @@ void Hero::fightTilDeath(Monster &m){
     unit* faster; ///< Initial attacker character
     unit* slower; ///< Initial defender character
     double fasterCD;
-
         /**
     * \brief This loop contains the first two hits.
     */
@@ -88,7 +82,6 @@ void Hero::fightTilDeath(Monster &m){
         slower = this;
     }
     double timer = 0.0;   
-     
         /**
     * \brief This loop contains the timed attacks.
     */

@@ -7,8 +7,6 @@ class Hero : public unit {
 private:
     double exp, lvl, maxhp; //experience, level, maximum health point
 
-    //double experience_per_level, health_point_bonus_per_level, damage_bonus_per_level, cooldown_multiplier_per_level;
-
     void gainXP(unit const* u);
     void heal(double d) {   //heal unit to d hp
         hp = d;
