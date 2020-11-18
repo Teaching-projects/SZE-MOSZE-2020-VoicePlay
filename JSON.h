@@ -28,21 +28,20 @@ public:
 			return lh.List == rh.List;
 		}
 	};
-    static std::string rFVbQ (std::string st){   // alias: returnFirstValuebetweenQuotationmarks, finds the first substd::string that sits between " marks and returns it
+private:
+	std::map<std::string, std::variant<std::string, int, double, JSON::list>> content;
+	static std::string rFVbQ (std::string st){   // alias: returnFirstValuebetweenQuotationmarks, finds the first substd::string that sits between " marks and returns it
         auto fstr = st.find('"');
         if (fstr == std::string::npos) return st; // if doesn't return st
         auto sstr = st.substr(fstr+1).find('"');
         if (sstr == std::string::npos) return st; // if doesn't return st
         return st.substr(fstr+1,sstr);
     }
-private:
-	std::map<std::string, std::variant<std::string, int, double, JSON::list>> content;
 public:
     JSON(){}
 	JSON(std::map<std::string, std::variant<std::string, int, double, JSON::list>> cont) : content(cont) {}
     static std::map<std::string, std::variant<std::string, int, double, JSON::list>> parseFromIstr(std::stringstream& f);
 	static JSON parseFromFile(std::string fname){
-        //std::cout << fname << "eddig ok file\n";
         std::ifstream f(fname);   
         std::string t,w;
         if (!f) throw fname+" file does not exist!" ;
@@ -67,7 +66,6 @@ public:
 
 	template<typename T>
 	T get(const std::string& key){
-        //std::cout << key << " get \n";
 		T returner = std::get<T>(content.at(key));
 		return returner;
 	}

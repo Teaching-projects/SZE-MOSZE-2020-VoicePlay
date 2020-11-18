@@ -40,16 +40,12 @@ int main(int argc, char** argv){
         else {
             hero_file=scenario.get<std::string>("hero");
             JSON::list monster_file_list=scenario.get<JSON::list>("monsters");
-            //std::cout << "mon "<< "\neddig ok\n";
             for(auto monster_file : monster_file_list){
-                //std::cout << "inside"<< "\neddig ok\n";
                 monster_files.push_back(std::get<std::string>(monster_file));}
         }
     } catch (const JSON::ParseException& e) {bad_exit(4);}
-//std::cout << "outsides"<< "\neddig ok\n";
     try { 
         Hero hero{Hero::parse(hero_file)};
-        //std::cout << "hero parse ok"<< "\neddig ok\n";
         std::list<Monster> monsters;
         for (const auto& monster_file : monster_files)
             monsters.push_back(Monster::parse(monster_file));        

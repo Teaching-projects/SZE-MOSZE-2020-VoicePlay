@@ -20,10 +20,8 @@ MAP JSON::parseFromIstr (std::stringstream& f){ // read the given istream file a
     int vartype;
     while (std::getline(f, t)) {
         if (t == "}" || t == "{") continue;
-        //std::cout << t << "\neddig ok line\n";
         try {
             std::string p1,val;
-            //std::cout << t << "\n";
             while(t!=""){
                 p1 = JSON::rFVbQ(t);
                 if ( parsed.find(p1) != parsed.end()) throw -1;
@@ -57,9 +55,7 @@ MAP JSON::parseFromIstr (std::stringstream& f){ // read the given istream file a
                             pos1 = val.find_first_not_of(" \t\v\"");
                             if (pos1 != std::string::npos && val[val.find_first_not_of(" \t\v\"")] == ']') break;
                             std::getline(f, val);
-                            //std::cout << val << "\neddig ok [ val\n";
                         } while (pos1 == std::string::npos || val[val.find_first_not_of(" \t\v")] != ']');
-                        //std::cout << val << "\neddig ok [ val outside \n";
                         t = "";
                     }else{
                         val = val.substr(0,val.find_first_of(","));
@@ -74,7 +70,6 @@ MAP JSON::parseFromIstr (std::stringstream& f){ // read the given istream file a
                     if (t.find_first_not_of(" ,\n\t\"") == std::string::npos || t[t.find_first_not_of(",\n\t\" ")] == '}'){
                         t = "";
                     }
-                    //std::cout << val << "\neddig map ins begin\n";
                     std::variant<std::string, int, double, list> mapvalue;
                     if (vartype == string)
                     {
@@ -90,7 +85,6 @@ MAP JSON::parseFromIstr (std::stringstream& f){ // read the given istream file a
                     }
                     else if (vartype == ls)
                     {
-                        //std::cout << t << "\neddig map ins listval\n";
                         mapvalue = list(listvalues);
                     }
                     parsed[p1] = mapvalue;
@@ -101,9 +95,6 @@ MAP JSON::parseFromIstr (std::stringstream& f){ // read the given istream file a
             case -1:
                 std::cerr << "double declaration of variable name\n";
                 std::exit(-1);
-            case -2:
-                //std::cerr << "no key found";
-                continue;
             case -3:
                 std::cerr << "Invalid json syntax\n";
                 std::exit(-1);
