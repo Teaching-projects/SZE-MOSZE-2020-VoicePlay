@@ -1,13 +1,3 @@
-
-#include <sstream>      // std::istringstream
-#include <map> 
-#include <list>
-#include <fstream>
-#include <exception>
-#include <algorithm>
-#include <string>
-#include <iostream>
-#include <variant>
 #include "JSON.h"
 
 enum vartypes {string, integer, doubl, ls}; ///< enumerate to seperate different datatypes of keys's values
@@ -90,7 +80,7 @@ MAP JSON::parseFromIstr (std::stringstream& f){ // read the given istream file a
                     parsed[p1] = mapvalue;
                 }
             }
-        }catch(const int& e){
+        }catch(const int e){
             switch (e) {
             case -1:
                 std::cerr << "double declaration of variable name\n";
