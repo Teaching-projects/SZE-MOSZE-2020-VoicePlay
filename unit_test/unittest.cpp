@@ -9,7 +9,7 @@
 
 
 TEST(Multest, resAsExpected){
-    unit expected("TestUnit", 64, 32, 3);
+    unit expected("TestUnit", 64, 32, 3,0);
     unit* result = unit::parseUnit("unit2test.json");
 
     EXPECT_EQ(expected.getName(), result->getName());
@@ -24,7 +24,7 @@ TEST(Multest, allElementsFilled){
     EXPECT_NE(NULL, result->getHealthPoints());
 };
 TEST(Multest, faultySyntax){
-    unit expected("TestUnit", 64, 32,3);
+    unit expected("TestUnit", 64, 32,3,0);
     std::string fname = "faultyunit.json";
     EXPECT_DEATH( { 
         try {
@@ -36,7 +36,7 @@ TEST(Multest, faultySyntax){
 
 };
 TEST(Multest, fileException){
-    unit expected("TestUnit", 64, 32, 3);
+    unit expected("TestUnit", 64, 32, 3,0);
     std::string fname = "unit2test.jso";
     const std::string exp = fname+" file does not exist!" ;
     EXPECT_DEATH({
@@ -57,7 +57,7 @@ TEST(Multest, stringParsTest){
 };
 
 TEST(Multest, uselessKeysinJson){
-    unit expected("TestUnit", 64, 32, 3);
+    unit expected("TestUnit", 64, 32, 3,0);
     unit* result = unit::parseUnit("uselessKeys.json");
 
     EXPECT_EQ(expected.getName(), result->getName());
@@ -65,8 +65,8 @@ TEST(Multest, uselessKeysinJson){
     EXPECT_DOUBLE_EQ(expected.getDamage(), result->getDamage());
 };
 TEST(Multest, gainXp100DMG){
-    Hero re("Name",1000,100,1,0,1,100,10,10,0.9);
-    unit* u = (new unit("na",200,1,1));
+    Hero re("Name",1000,100,1,0,1,100,10,10,0.9,0,0);
+    unit* u = (new unit("na",200,1,1,0));
     double expected = re.getDamage();
     double xp = 0;
 
@@ -82,8 +82,8 @@ TEST(Multest, gainXp100DMG){
     EXPECT_EQ(re.getDamage(), expected);
 };
 TEST(Multest, gainXp0DMG){
-    Hero re("Name",1000,0,1,0,1,100,10,10,0.9);
-    unit* u = (new unit("na",200,1,1));
+    Hero re("Name",1000,0,1,0,1,100,10,10,0.9,0,0);
+    unit* u = (new unit("na",200,1,1,0));
     double expected = re.getDamage();
     double xp = 0;
 
@@ -99,8 +99,8 @@ TEST(Multest, gainXp0DMG){
     EXPECT_EQ(re.getDamage(), expected);
 };
 TEST(Multest, gainXp_BigDMG){
-    Hero re("Name",1000,1000,1,0,1,100,10,10,0.9);
-    unit* u = (new unit("na",20000,1,1));
+    Hero re("Name",1000,1000,1,0,1,100,10,10,0.9,0,0);
+    unit* u = (new unit("na",20000,1,1,0));
     double expected = re.getDamage();
     double xp = 0;
 
@@ -115,8 +115,8 @@ TEST(Multest, gainXp_BigDMG){
     EXPECT_EQ(re.getDamage(), expected);
 };
 TEST(Multest, gainXp_DmgGTHP){ //damage greather than unit hp
-    Hero re("Name",1000,1000,1,0,1,100,10,10,0.9);
-    unit* u = (new unit("na",200,1,1));
+    Hero re("Name",1000,1000,1,0,1,100,10,10,0.9,0,0);
+    unit* u = (new unit("na",200,1,1,0));
     double expected = re.getDamage();
     double xp = 0;
 
@@ -131,21 +131,21 @@ TEST(Multest, gainXp_DmgGTHP){ //damage greather than unit hp
     EXPECT_EQ(re.getDamage(), expected);
 };
 TEST(Multest, gainXp_healedAfter){
-    Hero re("Name",1000,1000,1,0,1,100,10,10,0.9);
-    unit* u = (new unit("na",200,1,1));
+    Hero re("Name",1000,1000,1,0,1,100,10,10,0.9,0,0);
+    unit* u = (new unit("na",200,1,1,0));
 
     re.dealDamage(u);
     EXPECT_EQ(re.getHealthPoints(), re.getMaxHealthPoints());
 };
 TEST(Multest, AtkOrDfnd){ //damage greather than unit hp
-    unit re("Name",1000,1000,2);
-    unit* u = (new unit("na",200,1,1));
+    unit re("Name",1000,1000,2,0);
+    unit* u = (new unit("na",200,1,1,0));
     double actime= re.getAttackCoolDown();
     double deftime= u->getAttackCoolDown();
     EXPECT_EQ(re.attackOrDefend(u,actime,deftime), false);
 };
 TEST(Multest, whitespacetest1){ //damage greather than unit hp
-    unit expected("TestUnit", 64, 32, 3);
+    unit expected("TestUnit", 64, 32, 3,0);
     unit* result = unit::parseUnit("whitespaceunit1.json");
 
     EXPECT_EQ(expected.getName(), result->getName());
@@ -153,7 +153,7 @@ TEST(Multest, whitespacetest1){ //damage greather than unit hp
     EXPECT_DOUBLE_EQ(expected.getHealthPoints(), result->getHealthPoints());
 };
 TEST(Multest, whitespacetest2){ //damage greather than unit hp
-    unit expected("TestUnit", 64, 32, 3);
+    unit expected("TestUnit", 64, 32, 3,0);
     unit* result = unit::parseUnit("whitespaceunit2.json");
 
     EXPECT_EQ(expected.getName(), result->getName());
@@ -161,7 +161,7 @@ TEST(Multest, whitespacetest2){ //damage greather than unit hp
     EXPECT_DOUBLE_EQ(expected.getHealthPoints(), result->getHealthPoints());
 };
 TEST(Multest, multiVarsInOneLine){
-    unit expected("TestUnit", 64, 32, 3);
+    unit expected("TestUnit", 64, 32, 3,0);
     unit* result = unit::parseUnit("unit2test2.json");
 
     EXPECT_EQ(expected.getName(), result->getName());

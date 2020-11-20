@@ -2,5 +2,6 @@
     "name" : "TestUnit",
     "hp" : 64,
     "dmg"  32,
-    "acd" : 3
+    "acd" : 3,
+    "defense" : 0
 }
