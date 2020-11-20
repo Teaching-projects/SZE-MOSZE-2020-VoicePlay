@@ -153,7 +153,7 @@ TEST(Multest, whitespacetest1){ //damage greather than unit hp
     EXPECT_DOUBLE_EQ(expected.getHealthPoints(), result->getHealthPoints());
 };
 TEST(Multest, whitespacetest2){ //damage greather than unit hp
-    unit expected("TestUnit", 64, 32, 3,0);
+    unit expected("TestUnit", 64, Damage(32,0), 3,0);
     unit* result = unit::parseUnit("whitespaceunit2.json");
 
     EXPECT_EQ(expected.getName(), result->getName());
