@@ -43,13 +43,14 @@ bool unit::attackOrDefend(unit const *defender, double &atctime, double &deftime
 
 unit* unit::parseUnit(std::string fname){
         std::string n;
-        double d,h,a;     
+        double d,h,a,dfs;     
         try
         {
             JSON attributes = JSON::parseFromFile(fname);
             n = attributes.get<std::string>("name");
             h = attributes.get<double>("health_points");
             d = attributes.get<double>("damage");
+            dfs = attributes.get<double>("defense");
             a = attributes.get<double>("attack_cooldown");
         }
         catch (const std::out_of_range&)
@@ -60,5 +61,8 @@ unit* unit::parseUnit(std::string fname){
             std::cerr << e << '\n';
             std::exit( -1);
         }
-        return new unit(n,h,d,a);
+        return new unit(n,h,d,a,dfs);
 }
+
+
+double unit::getDefense() const {return defense;}
