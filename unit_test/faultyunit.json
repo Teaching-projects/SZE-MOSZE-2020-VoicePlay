@@ -3,5 +3,6 @@
     "hp" : 64,
     "dmg"  32,
     "acd" : 3,
+    "magical-damage" : 0,
     "defense" : 0
 }

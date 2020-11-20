@@ -12,7 +12,7 @@ double Hero::getLevel() const { return lvl; }
 double Hero::getMaxHealthPoints() const { return maxhp; }
 
 void Hero::gainXP(unit const* u) {
-    double actualDmg = this->getDamage()-u->getDefense();  //the damage dealt - the defended damage
+    double actualDmg = this->getPDamage()-u->getDefense()+this->getMDamage();  //the damage dealt - the defended damage
     if (actualDmg > 0){ 
         if (u->getHealthPoints() <= actualDmg) exp += u->getHealthPoints();
         else exp += actualDmg;
@@ -20,7 +20,7 @@ void Hero::gainXP(unit const* u) {
             lvl++;
             exp = exp - experience_per_level;
             this->heal(getMaxHealthPoints()+health_point_bonus_per_level);
-            this->boostDmg(getDamage()+damage_bonus_per_level);
+            this->boostDmg(getPDamage()+damage_bonus_per_level,getMDamage()+magical_damage_bonus_per_level);
             this->changeAcd(getAttackCoolDown()*cooldown_multiplier_per_level);
             this->boostDefense(getDefense()+defense_bonus_per_level);
         }
@@ -28,7 +28,7 @@ void Hero::gainXP(unit const* u) {
 }
 
 double Hero::dealDamage(unit* const u){
-    double ret = u->getHealthPoints()-this->getDamage();
+    double ret = u->getHealthPoints()+u->getDefense()-this->getPDamage()-this->getMDamage();
     gainXP(u);
     
     return ret;
@@ -39,7 +39,7 @@ Hero* Hero::parse(std::string fname) {
     double d = -1.0;
     double h = -1.0;
     double a = -1.0;
-    double dfs,dfsbpl;
+    double dfs,dfsbpl,m,mbpl;
 
     double epl, hpbpl, dbpl, cmpl;
 
@@ -56,6 +56,8 @@ Hero* Hero::parse(std::string fname) {
         cmpl = attributes.get<double>("cooldown_multiplier_per_level");
         dfsbpl = attributes.get<double>("defense_bonus_per_level");
         dfs = attributes.get<double>("defense");
+        m = attributes.get<double>("magical-damage");
+        mbpl = attributes.get<double>("magical_damage_bonus_per_level");
         
 	}
 	catch (const std::out_of_range&)
@@ -63,7 +65,10 @@ Hero* Hero::parse(std::string fname) {
 		//infile.close();
 		throw(JSON::ParseException());
 	}
-    return new Hero(n, h, d, a, 0, 1, epl, hpbpl, dbpl, cmpl,dfs,dfsbpl);
+    Damage dmgs;
+        dmgs.physical=d;
+        dmgs.magical=m;
+    return new Hero(n, h, dmgs, a, 0, 1, epl, hpbpl, dbpl, cmpl,dfs,dfsbpl,mbpl);
 }
 
 void ifUnitDead(unit* const attacker, unit* const defender, std::vector<unit*> &alive){

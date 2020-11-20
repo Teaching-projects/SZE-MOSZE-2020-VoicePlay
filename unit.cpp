@@ -7,12 +7,13 @@
 
 //  getter fügvények
 double unit::getHealthPoints () const { return hp; }
-double unit::getDamage () const { return dmg; }
+double unit::getPDamage () const { return dmg.physical; }
+double unit::getMDamage () const { return dmg.magical; }
 double unit::getAttackCoolDown () const { return attackcooldown; }
 std::string unit::getName () const { return name; }
 bool unit::isAlive() const { return hp>0 ? true : false;}
 double unit::dealDamage(unit* const u){ 
-    return (u->getHealthPoints()-this->getDamage()); }
+    return (u->getHealthPoints()-this->getPDamage()+u->getDefense()-this->getMDamage()); }
 void unit::loseHp(unit *attacker) {
     hp = attacker->dealDamage(this);
     if (hp <= 0) hp = 0;   // hp cant be < 0 
@@ -43,13 +44,14 @@ bool unit::attackOrDefend(unit const *defender, double &atctime, double &deftime
 
 unit* unit::parseUnit(std::string fname){
         std::string n;
-        double d,h,a,dfs;     
+        double d,m,h,a,dfs;     
         try
         {
             JSON attributes = JSON::parseFromFile(fname);
             n = attributes.get<std::string>("name");
             h = attributes.get<double>("health_points");
             d = attributes.get<double>("damage");
+            m = attributes.get<double>("magical-damage");
             dfs = attributes.get<double>("defense");
             a = attributes.get<double>("attack_cooldown");
         }
@@ -61,7 +63,10 @@ unit* unit::parseUnit(std::string fname){
             std::cerr << e << '\n';
             std::exit( -1);
         }
-        return new unit(n,h,d,a,dfs);
+        Damage dmgs;
+        dmgs.physical=d;
+        dmgs.magical=m;
+        return new unit(n,h,dmgs,a,dfs);
 }
 
 

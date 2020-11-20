@@ -21,15 +21,41 @@
 #include <fstream>
 #include <iostream>
 
+struct Damage {
+    int physical;
+    int magical;
+    Damage (){}
+    Damage(double d, double m): physical(d), magical(m){}
+    Damage operator+ (const Damage& d){
+        Damage dmg;
+        dmg.physical = physical+d.physical;
+        dmg.magical = magical+d.magical;
+        return dmg;
+    }
+    Damage& operator+= (const Damage& d){
+        physical+=d.physical;
+        magical+=d.magical;
+        return *this;
+    }
+    Damage& operator*= (const Damage& d){
+        physical*=d.physical;
+        magical*=d.magical;
+        return *this;
+    }
+};
+
+
+
+
 class unit {
 protected:
     const std::string name; ///< the name of the unit
     double hp;  ///< the starting health points of the unit
-    double  dmg; ///< the damage the unit deals to another character in a round
+    Damage  dmg; ///< the damage the unit deals to another character in a round
     double attackcooldown; ///< the cooldown time between the attacks of the same unit
     double defense;
 public:
-    unit(std::string name, double hp, double dmg, double acd, double dfs): name(name), hp(hp), dmg(dmg), attackcooldown(acd), defense(dfs) {}
+    unit(std::string name, double hp, Damage dmg, double acd, double dfs): name(name), hp(hp), dmg(dmg), attackcooldown(acd), defense(dfs) {}
     void loseHp(unit *attacker); ///< public method that decreases the health points of the unit by the attacker's damage
 
     /**
@@ -41,7 +67,8 @@ public:
     * \brief This is a simple getter function for damage points.
     * \return The character's damage points
     */
-    double getDamage() const;
+    double getMDamage() const;
+    double getPDamage() const;
     /**
     * \brief This is a simple getter function for cooldown time.
     * \return The character's cooldown time
