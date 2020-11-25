@@ -69,7 +69,7 @@ public:
         if (level.at(y)[x] == '#') 
             Game::OccupiedException;
         else if(level.at(y)[x] == 'M' && c =='M'){
-            level.at(y)[x] = 'M';
+            //level.at(y)[x] = 'M';
             if(std::find(multMonster.begin(), multMonster.end(), posit(x,y)) == multMonster.end())
                 multMonster.push_back(posit(x,y));
         }
@@ -91,9 +91,10 @@ private:
     bool runing = false;
     bool can_be_run = false;
     void write_out(){
-        for(int i=0; i<=level->getWidth(); i++) //first row
-            std::cout << "||";
-        std::cout << "\n";
+        std::cout << "╔ ";
+        for(int i=1; i<level->getWidth(); i++) //first row
+            std::cout << "═";
+        std::cout << "╗\n";
         for(int j=0; j<=level->getHeight(); j++){
             for(int i=0; i<=level->getWidth(); i++){
                 switch (level->get(j,i)){
@@ -117,6 +118,21 @@ private:
                 }
             }
             std::cout << "\n";
+        }
+        std::cout << "╚";
+        for(int i=1; i<level->getWidth(); i++) //first row
+            std::cout << "═";
+        std::cout << "╝\n";
+    }
+
+    void moveHero(int xc, int yc){
+        int xx = hero_pos.x+xc;
+        int yy = hero_pos.y+yc;
+        if(level->get(xx,yy) != Wall && 0<=xx<=level->getWidth() && 0<=yy<=level->getHeight()){
+            level->put(hero_pos.x,hero_pos.y,' ');
+            hero_pos.x == xx;
+            hero_pos.y == yy;
+            level->put(hero_pos.x,hero_pos.y,'H');
         }
     }
 public:
@@ -156,6 +172,16 @@ public:
                 can_be_run = false;
                 break;
             }
+            std::string s;
+            std::cin >> s;
+            if (s == "north")
+                moveHero(0,1);
+            else if (s == "east")
+                moveHero(1,0);
+            else if (s == "south")
+                moveHero(0,-1);
+            else if (s == "west")
+                moveHero(-1,0);
         }
         if (her->isAlive()) std::cout << her->getName() <<" cleared the map.\n";
     }
