@@ -74,33 +74,39 @@ $(function() {
 <div class="line"><a name="l00005"></a><span class="lineno"><a class="line" href="classMonster.html">    5</a></span>&#160;<span class="keyword">class </span><a class="code" href="classMonster.html">Monster</a> : <span class="keyword">public</span> <a class="code" href="classunit.html">unit</a> {</div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">private</span>:</div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <a class="code" href="classMonster.html">Monster</a>(std::string <a class="code" href="classunit.html#abc53cc772f6fda7d91fde3784823f395">name</a>, <span class="keywordtype">double</span> <a class="code" href="classunit.html#a0319635b19e4fbecfeea1ea7a46530a9">hp</a>, <span class="keywordtype">double</span> <a class="code" href="classunit.html#af8cadc270dc793d8f00fd71592c0ad7c">dmg</a>, <span class="keywordtype">double</span> acd): <a class="code" href="classunit.html">unit</a>(<a class="code" href="classunit.html#abc53cc772f6fda7d91fde3784823f395">name</a>,<a class="code" href="classunit.html#a0319635b19e4fbecfeea1ea7a46530a9">hp</a>,<a class="code" href="classunit.html#af8cadc270dc793d8f00fd71592c0ad7c">dmg</a>,acd) {}</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <a class="code" href="classMonster.html">Monster</a>(std::string <a class="code" href="classunit.html#abc53cc772f6fda7d91fde3784823f395">name</a>, <span class="keywordtype">double</span> <a class="code" href="classunit.html#a0319635b19e4fbecfeea1ea7a46530a9">hp</a>, <a class="code" href="structDamage.html">Damage</a> <a class="code" href="classunit.html#aa7462b700fc5693ee69a513a6c673ea3">dmg</a>, <span class="keywordtype">double</span> acd, <span class="keywordtype">double</span> dfs): <a class="code" href="classunit.html">unit</a>(<a class="code" href="classunit.html#abc53cc772f6fda7d91fde3784823f395">name</a>,<a class="code" href="classunit.html#a0319635b19e4fbecfeea1ea7a46530a9">hp</a>,<a class="code" href="classunit.html#aa7462b700fc5693ee69a513a6c673ea3">dmg</a>,acd,dfs) {}</div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <span class="keyword">static</span> <a class="code" href="classMonster.html">Monster</a> parse(std::string fname){</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;        std::string n;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;        <span class="keywordtype">double</span> d,h,a;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;        <span class="keywordtype">double</span> d,m,h,a,dfs;</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        <span class="keywordflow">try</span></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        {</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;            <a class="code" href="classJSON.html">JSON</a> attributes = JSON::parseFromFile(fname);</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;            n = attributes.get&lt;std::string&gt;(<span class="stringliteral">&quot;name&quot;</span>);</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;            h = attributes.get&lt;<span class="keywordtype">double</span>&gt;(<span class="stringliteral">&quot;health_points&quot;</span>);</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;            d = attributes.get&lt;<span class="keywordtype">double</span>&gt;(<span class="stringliteral">&quot;damage&quot;</span>);</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;            a = attributes.get&lt;<span class="keywordtype">double</span>&gt;(<span class="stringliteral">&quot;attack_cooldown&quot;</span>);</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        }</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <span class="keywordflow">catch</span> (<span class="keyword">const</span> std::out_of_range&amp;)</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        {</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;            <span class="comment">//infile.close();</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;            <span class="keywordflow">throw</span>(<a class="code" href="classJSON_1_1ParseException.html">JSON::ParseException</a>());</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        }</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="classMonster.html">Monster</a>(n, h, d, a);</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    }</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;};</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;            m = attributes.get&lt;<span class="keywordtype">double</span>&gt;(<span class="stringliteral">&quot;magical-damage&quot;</span>);</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;            a = attributes.get&lt;<span class="keywordtype">double</span>&gt;(<span class="stringliteral">&quot;attack_cooldown&quot;</span>);</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;            dfs = attributes.get&lt;<span class="keywordtype">double</span>&gt;(<span class="stringliteral">&quot;defense&quot;</span>);</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        }</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <span class="keywordflow">catch</span> (<span class="keyword">const</span> std::out_of_range&amp;)</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        {</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;            <span class="comment">//infile.close();</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;            <span class="keywordflow">throw</span>(<a class="code" href="classJSON_1_1ParseException.html">JSON::ParseException</a>());</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        }</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <a class="code" href="structDamage.html">Damage</a> dmgs;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        dmgs.physical=d;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        dmgs.magical=m;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="classMonster.html">Monster</a>(n, h, dmgs, a, dfs);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    }</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;};</div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aclassunit_html_af8cadc270dc793d8f00fd71592c0ad7c"><div class="ttname"><a href="classunit.html#af8cadc270dc793d8f00fd71592c0ad7c">unit::dmg</a></div><div class="ttdeci">double dmg</div><div class="ttdoc">the damage the unit deals to another character in a round</div><div class="ttdef"><b>Definition:</b> unit.h:28</div></div>
-<div class="ttc" id="aclassunit_html"><div class="ttname"><a href="classunit.html">unit</a></div><div class="ttdoc">unit class</div><div class="ttdef"><b>Definition:</b> unit.h:24</div></div>
+<div class="ttc" id="aclassunit_html_aa7462b700fc5693ee69a513a6c673ea3"><div class="ttname"><a href="classunit.html#aa7462b700fc5693ee69a513a6c673ea3">unit::dmg</a></div><div class="ttdeci">Damage dmg</div><div class="ttdoc">the damage the unit deals to another character in a round</div><div class="ttdef"><b>Definition:</b> unit.h:54</div></div>
+<div class="ttc" id="aclassunit_html"><div class="ttname"><a href="classunit.html">unit</a></div><div class="ttdoc">unit class</div><div class="ttdef"><b>Definition:</b> unit.h:50</div></div>
 <div class="ttc" id="aclassMonster_html"><div class="ttname"><a href="classMonster.html">Monster</a></div><div class="ttdef"><b>Definition:</b> Monster.h:5</div></div>
 <div class="ttc" id="aclassJSON_html"><div class="ttname"><a href="classJSON.html">JSON</a></div><div class="ttdef"><b>Definition:</b> JSON.h:14</div></div>
-<div class="ttc" id="aclassunit_html_abc53cc772f6fda7d91fde3784823f395"><div class="ttname"><a href="classunit.html#abc53cc772f6fda7d91fde3784823f395">unit::name</a></div><div class="ttdeci">const std::string name</div><div class="ttdoc">the name of the unit</div><div class="ttdef"><b>Definition:</b> unit.h:26</div></div>
-<div class="ttc" id="aclassunit_html_a0319635b19e4fbecfeea1ea7a46530a9"><div class="ttname"><a href="classunit.html#a0319635b19e4fbecfeea1ea7a46530a9">unit::hp</a></div><div class="ttdeci">double hp</div><div class="ttdoc">the starting health points of the unit</div><div class="ttdef"><b>Definition:</b> unit.h:27</div></div>
+<div class="ttc" id="astructDamage_html"><div class="ttname"><a href="structDamage.html">Damage</a></div><div class="ttdef"><b>Definition:</b> unit.h:24</div></div>
+<div class="ttc" id="aclassunit_html_abc53cc772f6fda7d91fde3784823f395"><div class="ttname"><a href="classunit.html#abc53cc772f6fda7d91fde3784823f395">unit::name</a></div><div class="ttdeci">const std::string name</div><div class="ttdoc">the name of the unit</div><div class="ttdef"><b>Definition:</b> unit.h:52</div></div>
+<div class="ttc" id="aclassunit_html_a0319635b19e4fbecfeea1ea7a46530a9"><div class="ttname"><a href="classunit.html#a0319635b19e4fbecfeea1ea7a46530a9">unit::hp</a></div><div class="ttdeci">double hp</div><div class="ttdoc">the starting health points of the unit</div><div class="ttdef"><b>Definition:</b> unit.h:53</div></div>
 <div class="ttc" id="aclassJSON_1_1ParseException_html"><div class="ttname"><a href="classJSON_1_1ParseException.html">JSON::ParseException</a></div><div class="ttdef"><b>Definition:</b> JSON.h:76</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
