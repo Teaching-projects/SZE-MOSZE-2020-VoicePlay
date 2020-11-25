@@ -1,4 +1,4 @@
-OBJS := main.o unit.o Hero.o
+OBJS := main.o unit.o Hero.o JSON.o
 CC := g++-10
 CFLAGS := -Wall -std=c++17
 
@@ -12,6 +12,9 @@ Hero.o: Hero.cpp Hero.h JSON.h
 
 unit.o: unit.cpp unit.h JSON.h
 	$(CC) $(CFLAGS) -c unit.cpp
+
+JSON.o: JSON.h
+	$(CC) $(CFLAGS) -c JSON.cpp
 
 main.o: main.cpp Hero.h Monster.h JSON.h
 	$(CC) $(CFLAGS) -c main.cpp
