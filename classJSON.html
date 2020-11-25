@@ -75,24 +75,32 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classJSON_1_1list.html">list</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classJSON_1_1ParseException.html">ParseException</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aaa0f54f0b5b90c0fa055b81bb9997fa5"><td class="memItemLeft" align="right" valign="top"><a id="aaa0f54f0b5b90c0fa055b81bb9997fa5"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>JSON</b> (MAP content)</td></tr>
-<tr class="separator:aaa0f54f0b5b90c0fa055b81bb9997fa5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a44010f793e2fd22447f6c86415b40839"><td class="memItemLeft" align="right" valign="top"><a id="a44010f793e2fd22447f6c86415b40839"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>count</b> (const std::string &amp;key)</td></tr>
-<tr class="separator:a44010f793e2fd22447f6c86415b40839"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a643a05e2642867fadbe14c33ffdec679"><td class="memItemLeft" align="right" valign="top"><a id="a643a05e2642867fadbe14c33ffdec679"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>JSON</b> (std::map&lt; std::string, std::variant&lt; std::string, int, double, <a class="el" href="classJSON_1_1list.html">JSON::list</a> &gt;&gt; cont)</td></tr>
+<tr class="separator:a643a05e2642867fadbe14c33ffdec679"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abf33296e97b6f8fe3b7df6ff208d6ce8"><td class="memItemLeft" align="right" valign="top"><a id="abf33296e97b6f8fe3b7df6ff208d6ce8"></a>
+<a class="el" href="classJSON.html">JSON</a>&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (std::map&lt; std::string, std::variant&lt; std::string, int, double, <a class="el" href="classJSON_1_1list.html">JSON::list</a> &gt;&gt; other)</td></tr>
+<tr class="separator:abf33296e97b6f8fe3b7df6ff208d6ce8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aebfe4eae3134bdc249f9695c6406bdba"><td class="memTemplParams" colspan="2"><a id="aebfe4eae3134bdc249f9695c6406bdba"></a>
 template&lt;typename T &gt; </td></tr>
 <tr class="memitem:aebfe4eae3134bdc249f9695c6406bdba"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><b>get</b> (const std::string &amp;key)</td></tr>
 <tr class="separator:aebfe4eae3134bdc249f9695c6406bdba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a44010f793e2fd22447f6c86415b40839"><td class="memItemLeft" align="right" valign="top"><a id="a44010f793e2fd22447f6c86415b40839"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>count</b> (const std::string &amp;key)</td></tr>
+<tr class="separator:a44010f793e2fd22447f6c86415b40839"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
+<tr class="memitem:a2b63bc2fc4af37c17a34ee00421a0423"><td class="memItemLeft" align="right" valign="top"><a id="a2b63bc2fc4af37c17a34ee00421a0423"></a>
+static std::map&lt; std::string, std::variant&lt; std::string, int, double, <a class="el" href="classJSON_1_1list.html">JSON::list</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>parseFromIstr</b> (std::stringstream &amp;f)</td></tr>
+<tr class="separator:a2b63bc2fc4af37c17a34ee00421a0423"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac1c1514969892d93f900990fc4e4075e"><td class="memItemLeft" align="right" valign="top"><a id="ac1c1514969892d93f900990fc4e4075e"></a>
 static <a class="el" href="classJSON.html">JSON</a>&#160;</td><td class="memItemRight" valign="bottom"><b>parseFromFile</b> (std::string fname)</td></tr>
 <tr class="separator:ac1c1514969892d93f900990fc4e4075e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -100,8 +108,9 @@ static <a class="el" href="classJSON.html">JSON</a>&#160;</td><td class="memItem
 static <a class="el" href="classJSON.html">JSON</a>&#160;</td><td class="memItemRight" valign="bottom"><b>parseFromString</b> (std::string str)</td></tr>
 <tr class="separator:a955f76a7694ed74ca7a81e3617966dee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<hr/>The documentation for this class was generated from the following file:<ul>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="JSON_8h_source.html">JSON.h</a></li>
+<li>JSON.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
