@@ -5,6 +5,8 @@
   "attack_cooldown" : 3,
   "alma" : "asd",
   "kk" : 12,
+  "defense" : 0,
+  "magical-damage" : 0,
   "lvl" : 1,
   "exp" : 0
 }

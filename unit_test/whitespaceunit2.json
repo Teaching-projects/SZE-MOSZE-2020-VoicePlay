@@ -2,5 +2,7 @@
     "name" : "TestUnit",
     "health_points"   : 64,
           "damage"          : 32,
-    "attack_cooldown" : 3
+    "attack_cooldown" : 3,
+    "magical-damage" : 0,
+    "defense" : 0
 }
