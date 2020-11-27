@@ -10,6 +10,7 @@
 #include "JSON.h"
 #include "Hero.h"
 #include "Monster.h"
+#include "map.h"
 
 
 
@@ -49,8 +50,10 @@ int main(int argc, char** argv){
         std::list<Monster> monsters;
         for (const auto& monster_file : monster_files)
             monsters.push_back(Monster::parse(monster_file));        
-        while (hero.isAlive() && !monsters.empty()) {
-            std::cout 
+        
+        /*
+        while (hero.isAlive() && !monsters.empty()){
+            std::cout
                 << hero.getName() << "(" << hero.getLevel()<<")"
                 << " vs "
                 << monsters.front().getName()
@@ -60,10 +63,21 @@ int main(int argc, char** argv){
         }
         std::cout << (hero.isAlive() ? "The hero won." : "The hero died.") << std::endl;
         std::cout << hero.getName() << ": LVL" << hero.getLevel() << std::endl
-                  << "   HP: "<<hero.getHealthPoints()<<"/"<<hero.getMaxHealthPoints()<<std::endl
-                  << "  DMG: "<<hero.getPDamage()<<std::endl
-                  << "  ACD: "<<hero.getAttackCoolDown()<<std::endl
-                  ;
-    } catch (const JSON::ParseException& e) {bad_exit(4);}
+                << "   HP: "<<hero.hetHealthPoints()<<"/"<<hero.getMaxHealthPoints()<<std::endl
+                << "  DMG: "<<hero.getPDamage()<<std::endl
+                << "  ACD: "<<hero.getAttackCoolDown()<<std::endl
+                ;
+        
+        */
+
+        Game game = Game("map.txt");
+        game.putHero(hero, 1, 2);
+        for(const auto& monster : monsters){
+            game.putMonster(monster, 3, 7);
+
+        }
+        game.run();
+    }
+    catch (const JSON::ParseException& e) {bad_exit(4);}
     return 0;
 }

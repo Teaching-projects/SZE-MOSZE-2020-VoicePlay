@@ -14,20 +14,28 @@
 struct posit{
     int x;
     int y;
-    bool operator=(const posit& o){
+    bool operator==(const posit& o){
         return (x=o.x)&&(y=o.y);
     }
+    posit(int& x2, int& y2){
+        this->x=x2;
+        this->y=y2;
+    }
+    posit(){}
 };
 
-enum type{Free, Wall, Her, Monst};
+class Game;
+
+//enum type{Free, Wall, Her, Monst};
 
 class Map{
 private:
     int width, height;
-    enum type{Free, Wall, Her, Monst};
+    
     std::map<int, std::string> level;
     std::vector<posit> multMonster;
 public:
+    enum type{Free, Wall, Her, Monst};
     class WrongIndexException : std::exception{
 		public:
 		WrongIndexException() {}
@@ -45,37 +53,9 @@ public:
         }
         height = i;
     }
-    Map::type get(int x, int y) const{
-        char t = level.at(y)[x];
-        switch (t) {
-        case ' ':
-            return Free;
-            break;
-        case '#':
-            return Wall;
-            break;
-        case 'M':
-            return Monst;
-            break;
-        case 'H':
-            return Her;
-            break;
-        default:
-            Map::WrongIndexException;
-            break;
-        }
-    }
-    void put(int x, int y, char c){
-        if (level.at(y)[x] == '#') 
-            Game::OccupiedException;
-        else if(level.at(y)[x] == 'M' && c =='M'){
-            //level.at(y)[x] = 'M';
-            if(std::find(multMonster.begin(), multMonster.end(), posit(x,y)) == multMonster.end())
-                multMonster.push_back(posit(x,y));
-        }
-        else
-            level.at(y)[x] = c;
-    }
+    Map(){}
+    Map::type get(int x, int y) const;
+    void put(int x, int y, char c);
     int getHeight(){return height;}
     int getWidth(){return width;}
     bool multMonsterPresent(int x, int y){ return (std::find(multMonster.begin(), multMonster.end(), posit(x,y)) != multMonster.end()); }
@@ -84,31 +64,33 @@ public:
 
 class Game{
 private:
-    Map* level;
+    Map level;
     Hero* her;
     posit hero_pos;
     std::map<Monster*, posit> monster_list;
     bool runing = false;
     bool can_be_run = false;
+    bool level_given = false;
     void write_out(){
         std::cout << "╔ ";
-        for(int i=1; i<level->getWidth(); i++) //first row
+        for(int i=1; i<level.getWidth(); i++) //first row 
             std::cout << "═";
         std::cout << "╗\n";
-        for(int j=0; j<=level->getHeight(); j++){
-            for(int i=0; i<=level->getWidth(); i++){
-                switch (level->get(j,i)){
-                case Free:
+        for(int j=0; j<=level.getHeight(); j++){
+            std::cout << "║";
+            for(int i=0; i<=level.getWidth(); i++){
+                switch (level.get(j,i)){
+                case Map::Free:
                     std::cout << "░░";
                     break;
-                case Wall:
+                case Map::Wall:
                     std::cout << "██";
                     break;
-                case Her:
+                case Map::Her:
                     std::cout << "┣┫";
                     break;
-                case Monst:
-                    if(level->multMonsterPresent(i,j))
+                case Map::Monst:
+                    if(level.multMonsterPresent(i,j))
                         std::cout << "MM";
                     else
                         std::cout << "M░";
@@ -117,10 +99,11 @@ private:
                     break;
                 }
             }
+            std::cout << "║";
             std::cout << "\n";
         }
         std::cout << "╚";
-        for(int i=1; i<level->getWidth(); i++) //first row
+        for(int i=1; i<level.getWidth(); i++) //first row
             std::cout << "═";
         std::cout << "╝\n";
     }
@@ -128,41 +111,43 @@ private:
     void moveHero(int xc, int yc){
         int xx = hero_pos.x+xc;
         int yy = hero_pos.y+yc;
-        if(level->get(xx,yy) != Wall && 0<=xx<=level->getWidth() && 0<=yy<=level->getHeight()){
-            level->put(hero_pos.x,hero_pos.y,' ');
+        if(level.get(xx,yy) != Map::Wall && 0<=xx<=level.getWidth() && 0<=yy<=level.getHeight()){
+            level.put(hero_pos.x,hero_pos.y,' ');
             hero_pos.x == xx;
             hero_pos.y == yy;
-            level->put(hero_pos.x,hero_pos.y,'H');
+            level.put(hero_pos.x,hero_pos.y,'H');
         }
     }
 public:
     Game(){};
     Game(std::string mapfilename) { // Game with the Map initialized
-        level = &Map(mapfilename);
+        level = Map(mapfilename);
+        level_given = true;
     }
     void setMap(Map map){ // Set the map
-        if (her!=nullptr && monster_list.empty()) Game::AlreadyHasUnitsException;
-        level = &map;
+        if (her!=nullptr && monster_list.empty()) Game::AlreadyHasUnitsException();
+        level = map;
+        level_given = true;
     }
     void putHero(Hero hero, int x, int y){
-        if (level == nullptr) Map::WrongIndexException;
-        if (her!=nullptr) Game::AlreadyHasHeroException;
-        if (runing) Game::GameAlreadyStartedException;
+        if (!level_given) Map::WrongIndexException();
+        if (her!=nullptr) Game::AlreadyHasHeroException();
+        if (runing) Game::GameAlreadyStartedException();
         her = &hero;
         hero_pos = posit(x,y);
-        level->put(x,y,'H');
+        level.put(x,y,'H');
         can_be_run = true;
     }
     void putMonster(Monster monster, int x, int y) {
-        if (level == NULL) Map::WrongIndexException;
-        if (runing) Game::GameAlreadyStartedException;
-        level->put(x,y,'M');
+        if (!level_given) Map::WrongIndexException();
+        if (runing) Game::GameAlreadyStartedException();
+        level.put(x,y,'M');
         monster_list.insert(std::pair<Monster*,posit>(&monster,posit(x,y)));
     }
 
     void run(){
         if(runing==true) ;
-        if(level == nullptr || her == nullptr) Game::NotInitializedException;
+        if(!level_given || her == nullptr) Game::NotInitializedException();
 
         std::map<Monster*, posit> m_list = monster_list;
         while(!(m_list.empty())){
@@ -211,3 +196,40 @@ public:
 		NotInitializedException() {}
 	};*/
 };
+
+
+Map::type Map::get(int x, int y) const{
+        char t = level.at(y)[x];
+        switch (t) {
+        case ' ':
+            return Free;
+            break;
+        case '#':
+            return Wall;
+            break;
+        case 'M':
+            return Monst;
+            break;
+        case 'H':
+            return Her;
+            break;
+        default:
+            break;
+        }
+        //if not any of the above
+        Map::WrongIndexException();
+        return Wall; // needed not to get warning
+    }
+
+
+void Map::put(int x, int y, char c){
+        if (level.at(y)[x] == '#') 
+            Game::OccupiedException()   ;
+        else if(level.at(y)[x] == 'M' && c =='M'){
+            //level.at(y)[x] = 'M';
+            if(std::find(multMonster.begin(), multMonster.end(), posit(x,y)) == multMonster.end())
+                multMonster.push_back(posit(x,y));
+        }
+        else
+            level.at(y)[x] = c;
+    }

@@ -16,7 +16,7 @@ unit.o: unit.cpp unit.h JSON.h
 JSON.o: JSON.h
 	$(CC) $(CFLAGS) -c JSON.cpp
 
-main.o: main.cpp Hero.h Monster.h JSON.h
+main.o: main.cpp Hero.h Monster.h JSON.h map.h
 	$(CC) $(CFLAGS) -c main.cpp
 
 Install_Valgrind_and_Cppcheck:
