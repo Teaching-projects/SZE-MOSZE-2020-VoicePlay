@@ -6,6 +6,7 @@
 
 #include <map>
 #include <vector>
+#include <list>
 #include <fstream>
 #include <algorithm>
 #include <exception>
@@ -52,6 +53,13 @@ public:
                 if (width < t.length()) width = t.length();
         }
         height = i;
+        //std::cout << width << " " << height << "\n";
+        for (int i = 0; i<height; i++){
+            if(level[i].length()<width){
+                level[i].resize(width,' ');
+            }
+            //std::cout << level[i] << "\n";
+        }
     }
     Map(){}
     Map::type get(int x, int y) const;
@@ -65,21 +73,22 @@ public:
 class Game{
 private:
     Map level;
-    Hero* her;
+    Hero* her = nullptr;
     posit hero_pos;
     std::map<Monster*, posit> monster_list;
     bool runing = false;
     bool can_be_run = false;
     bool level_given = false;
     void write_out(){
-        std::cout << "╔ ";
+        std::cout << "╔";
         for(int i=1; i<level.getWidth(); i++) //first row 
-            std::cout << "═";
+            std::cout << "══";
         std::cout << "╗\n";
-        for(int j=0; j<=level.getHeight(); j++){
+        for(int j=0; j<level.getHeight(); j++){
             std::cout << "║";
-            for(int i=0; i<=level.getWidth(); i++){
-                switch (level.get(j,i)){
+            for(int i=0; i<level.getWidth(); i++){
+                //std::cout << "\n[" <<i<<","<<j<<"]\n";
+                switch (level.get(i,j)){
                 case Map::Free:
                     std::cout << "░░";
                     break;
@@ -104,7 +113,7 @@ private:
         }
         std::cout << "╚";
         for(int i=1; i<level.getWidth(); i++) //first row
-            std::cout << "═";
+            std::cout << "══";
         std::cout << "╝\n";
     }
 
@@ -113,9 +122,24 @@ private:
         int yy = hero_pos.y+yc;
         if(level.get(xx,yy) != Map::Wall && 0<=xx<=level.getWidth() && 0<=yy<=level.getHeight()){
             level.put(hero_pos.x,hero_pos.y,' ');
-            hero_pos.x == xx;
-            hero_pos.y == yy;
+            hero_pos.x = xx;
+            hero_pos.y = yy;
             level.put(hero_pos.x,hero_pos.y,'H');
+        }
+        std::list<Monster*> m;
+        for (auto i = monster_list.cbegin(); i != monster_list.cend(); ) {
+            if (i->second.x == hero_pos.x && i->second.y == hero_pos.y){
+                m.push_back(i->first);
+                her->fightTilDeath(*i->first);
+                if (!i->first->isAlive()){
+                    std::cout << "monsterdied\n";
+                    monster_list.erase(i++);
+                }else{
+                    ++i;
+                }
+            }else{
+                    ++i;
+                }   
         }
     }
 public:
@@ -125,46 +149,49 @@ public:
         level_given = true;
     }
     void setMap(Map map){ // Set the map
-        if (her!=nullptr && monster_list.empty()) Game::AlreadyHasUnitsException();
+        if (her!=nullptr && monster_list.empty()) throw Game::AlreadyHasUnitsException();
         level = map;
         level_given = true;
     }
     void putHero(Hero hero, int x, int y){
-        if (!level_given) Map::WrongIndexException();
-        if (her!=nullptr) Game::AlreadyHasHeroException();
-        if (runing) Game::GameAlreadyStartedException();
+        if (!level_given) throw Map::WrongIndexException();
+        if (her!=nullptr) throw Game::AlreadyHasHeroException();
+        if (runing) throw Game::GameAlreadyStartedException();
         her = &hero;
         hero_pos = posit(x,y);
         level.put(x,y,'H');
         can_be_run = true;
+        std::cout << her->getHealthPoints() << "\n";
     }
     void putMonster(Monster monster, int x, int y) {
-        if (!level_given) Map::WrongIndexException();
-        if (runing) Game::GameAlreadyStartedException();
+        std::cout << her->getHealthPoints() << "\n";
+        if (!level_given) throw Map::WrongIndexException();
+        if (runing) throw Game::GameAlreadyStartedException();
         level.put(x,y,'M');
         monster_list.insert(std::pair<Monster*,posit>(&monster,posit(x,y)));
     }
 
     void run(){
         if(runing==true) ;
-        if(!level_given || her == nullptr) Game::NotInitializedException();
-
+        if(!level_given || her == nullptr) throw Game::NotInitializedException();
         std::map<Monster*, posit> m_list = monster_list;
         while(!(m_list.empty())){
             write_out();
+            std::cout << her->getHealthPoints() << "\n";
             if(!(her->isAlive())){
                 std::cout << "The hero died.\n";
                 can_be_run = false;
                 break;
             }
+            std::cout << "Command: ";
             std::string s;
             std::cin >> s;
             if (s == "north")
-                moveHero(0,1);
+                moveHero(0,-1);
             else if (s == "east")
                 moveHero(1,0);
             else if (s == "south")
-                moveHero(0,-1);
+                moveHero(0,1);
             else if (s == "west")
                 moveHero(-1,0);
         }
@@ -199,6 +226,7 @@ public:
 
 
 Map::type Map::get(int x, int y) const{
+        //std::cout << "\n1" << level.at(y)[x] << "1\n";
         char t = level.at(y)[x];
         switch (t) {
         case ' ':
