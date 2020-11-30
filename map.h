@@ -148,6 +148,12 @@ public:
         level = Map(mapfilename);
         level_given = true;
     }
+    ~Game() {
+        std::cout << "destructor called\n";
+        delete her;
+        for (auto it = monster_list.begin(); it != monster_list.end(); ++it)
+            delete it->first;
+    }
     void setMap(Map map){ // Set the map
         if (her!=nullptr && monster_list.empty()) throw Game::AlreadyHasUnitsException();
         level = map;
