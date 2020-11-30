@@ -126,10 +126,8 @@ private:
             hero_pos.y = yy;
             level.put(hero_pos.x,hero_pos.y,'H');
         }
-        std::list<Monster*> m;
         for (auto i = monster_list.cbegin(); i != monster_list.cend(); ) {
             if (i->second.x == hero_pos.x && i->second.y == hero_pos.y){
-                m.push_back(i->first);
                 her->fightTilDeath(*i->first);
                 if (!i->first->isAlive()){
                     std::cout << i->first->getName() <<" monster died\n";
@@ -149,7 +147,6 @@ public:
         level_given = true;
     }
     ~Game() {
-        std::cout << "destructor called\n";
         delete her;
         for (auto it = monster_list.begin(); it != monster_list.end(); ++it)
             delete it->first;
