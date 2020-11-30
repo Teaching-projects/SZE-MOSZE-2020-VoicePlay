@@ -8,4 +8,4 @@ then
 	rm $FILE
 fi
 
-./a.out $INPF >> $FILE
+cat steps.txt | ./a.out >> $FILE
