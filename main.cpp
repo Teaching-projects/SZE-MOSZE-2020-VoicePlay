@@ -32,7 +32,7 @@ void bad_exit(int exitcode){
 int main(int argc, char** argv){
     if (argc != 2) bad_exit(1);
     if (!std::filesystem::exists(argv[1])) bad_exit(2);
-/*
+
     std::string hero_file;
     std::list<std::string> monster_files;
     try {
@@ -45,19 +45,23 @@ int main(int argc, char** argv){
                 monster_files.push_back(std::get<std::string>(monster_file));}
         }
     } catch (const JSON::ParseException& e) {bad_exit(4);}
-    */
+    
     try { 
-        /*
+        
         std::list<Monster> monsters;
         for (const auto& monster_file : monster_files)
             monsters.push_back(Monster::parse(monster_file));        
-        */
+        
 
-        Hero hero{Hero::parse("Dark_Wanderer.json")};
+        Hero hero{Hero::parse(hero_file)};
+        Monster Fallen{Monster::parse("Fallen.json")};
+        Monster Blood_Raven{Monster::parse("Blood_Raven.json")};
+
         Game game = Game("map.txt");
         game.putHero(hero, 1, 2);
-        
-        game.putMonster(Monster::parse("Fallen.json"),4,2);
+        game.putMonster(Fallen,4,2);
+        game.putMonster(Fallen,5,2);
+        game.putMonster(Blood_Raven,4,4 );
         game.run();
     }
     catch (const JSON::ParseException& e) {bad_exit(4);}

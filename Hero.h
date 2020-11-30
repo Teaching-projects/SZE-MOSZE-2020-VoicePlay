@@ -31,6 +31,7 @@ public:
                     defense_bonus_per_level(l->defense_bonus_per_level), magical_damage_bonus_per_level(l->magical_damage_bonus_per_level){
                         delete l;
                     }
+
     //getter functions
     double getExp() const;
     double getLevel() const;
