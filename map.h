@@ -120,7 +120,7 @@ private:
     void moveHero(int xc, int yc){
         int xx = hero_pos.x+xc;
         int yy = hero_pos.y+yc;
-        if(level.get(xx,yy) != Map::Wall && 0<=xx && xx<=level.getWidth() && 0<=yy<=level.getHeight()){
+        if(level.get(xx,yy) != Map::Wall && 0<=xx && xx<=level.getWidth() && 0<=yy && yy<=level.getHeight()){
             level.put(hero_pos.x,hero_pos.y,' ');
             hero_pos.x = xx;
             hero_pos.y = yy;
