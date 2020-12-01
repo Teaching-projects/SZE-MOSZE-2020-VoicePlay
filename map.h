@@ -80,7 +80,7 @@ private:
     bool can_be_run = false;
     bool level_given = false;
     void write_out(){
-        std::cout << "╔═";
+        std::cout << "\n╔═";
         for(int i=1; i<level.getWidth(); i++) //first row 
             std::cout << "══";
         std::cout << "═╗\n";
@@ -175,7 +175,7 @@ public:
     void run(){
         if(runing==true) ;
         if(!level_given || her == nullptr) throw Game::NotInitializedException();
-        std::map<Monster*, posit> m_list = monster_list;
+        std::map<Monster*, posit> m_list(monster_list);
         while(!(m_list.empty())){
             write_out();
             if(!(her->isAlive())){
