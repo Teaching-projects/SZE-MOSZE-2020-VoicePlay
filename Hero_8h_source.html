@@ -100,17 +100,18 @@ $(function() {
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;                    defense_bonus_per_level(l-&gt;defense_bonus_per_level), magical_damage_bonus_per_level(l-&gt;magical_damage_bonus_per_level){</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;                        <span class="keyword">delete</span> l;</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;                    }</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="comment">//getter functions</span></div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keywordtype">double</span> getExp() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordtype">double</span> getLevel() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordtype">double</span> getMaxHealthPoints() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordtype">double</span> getDefenseBonus() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keyword">static</span> <a class="code" href="classHero.html">Hero</a>* parse(std::string fname);</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordtype">double</span> dealDamage(<a class="code" href="classunit.html">unit</a>* <span class="keyword">const</span> u);</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classHero.html#a18abd632b99a549e725f2b6a83b4f553">fightTilDeath</a>(<a class="code" href="classMonster.html">Monster</a> &amp;m);</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;};</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="comment">//getter functions</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordtype">double</span> getExp() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordtype">double</span> getLevel() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordtype">double</span> getMaxHealthPoints() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordtype">double</span> getDefenseBonus() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keyword">static</span> <a class="code" href="classHero.html">Hero</a>* parse(std::string fname);</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordtype">double</span> dealDamage(<a class="code" href="classunit.html">unit</a>* <span class="keyword">const</span> u);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classHero.html#a18abd632b99a549e725f2b6a83b4f553">fightTilDeath</a>(<a class="code" href="classMonster.html">Monster</a> &amp;m);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;};</div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="aclassunit_html_aa7462b700fc5693ee69a513a6c673ea3"><div class="ttname"><a href="classunit.html#aa7462b700fc5693ee69a513a6c673ea3">unit::dmg</a></div><div class="ttdeci">Damage dmg</div><div class="ttdoc">the damage the unit deals to another character in a round</div><div class="ttdef"><b>Definition:</b> unit.h:54</div></div>
 <div class="ttc" id="aclassunit_html_aff36c1a9b37e2c983f9599d2dd4b9769"><div class="ttname"><a href="classunit.html#aff36c1a9b37e2c983f9599d2dd4b9769">unit::attackcooldown</a></div><div class="ttdeci">double attackcooldown</div><div class="ttdoc">the cooldown time between the attacks of the same unit</div><div class="ttdef"><b>Definition:</b> unit.h:55</div></div>
@@ -120,7 +121,7 @@ $(function() {
 <div class="ttc" id="aclassunit_html_a8b0023f36b304a09cbf86d7add44afd6"><div class="ttname"><a href="classunit.html#a8b0023f36b304a09cbf86d7add44afd6">unit::getMDamage</a></div><div class="ttdeci">double getMDamage() const</div><div class="ttdoc">This is a simple getter function for damage points.</div><div class="ttdef"><b>Definition:</b> unit.cpp:11</div></div>
 <div class="ttc" id="aclassunit_html_a88773b01978a96587d138a5cd8ea3082"><div class="ttname"><a href="classunit.html#a88773b01978a96587d138a5cd8ea3082">unit::getAttackCoolDown</a></div><div class="ttdeci">double getAttackCoolDown() const</div><div class="ttdoc">This is a simple getter function for cooldown time.</div><div class="ttdef"><b>Definition:</b> unit.cpp:12</div></div>
 <div class="ttc" id="aclassunit_html_a9c781ff4bacb5ec36ba7c16ad947e327"><div class="ttname"><a href="classunit.html#a9c781ff4bacb5ec36ba7c16ad947e327">unit::getHealthPoints</a></div><div class="ttdeci">double getHealthPoints() const</div><div class="ttdoc">This is a simple getter function for current health points.</div><div class="ttdef"><b>Definition:</b> unit.cpp:9</div></div>
-<div class="ttc" id="aclassMonster_html"><div class="ttname"><a href="classMonster.html">Monster</a></div><div class="ttdef"><b>Definition:</b> Monster.h:5</div></div>
+<div class="ttc" id="aclassMonster_html"><div class="ttname"><a href="classMonster.html">Monster</a></div><div class="ttdef"><b>Definition:</b> Monster.h:6</div></div>
 <div class="ttc" id="aclassunit_html_a7a8906186e2c3ae5c050f32b0c1369e8"><div class="ttname"><a href="classunit.html#a7a8906186e2c3ae5c050f32b0c1369e8">unit::getName</a></div><div class="ttdeci">std::string getName() const</div><div class="ttdoc">This is a simple getter function for unit's name.</div><div class="ttdef"><b>Definition:</b> unit.cpp:13</div></div>
 <div class="ttc" id="astructDamage_html"><div class="ttname"><a href="structDamage.html">Damage</a></div><div class="ttdef"><b>Definition:</b> unit.h:24</div></div>
 <div class="ttc" id="aclassunit_html_abc53cc772f6fda7d91fde3784823f395"><div class="ttname"><a href="classunit.html#abc53cc772f6fda7d91fde3784823f395">unit::name</a></div><div class="ttdeci">const std::string name</div><div class="ttdoc">the name of the unit</div><div class="ttdef"><b>Definition:</b> unit.h:52</div></div>

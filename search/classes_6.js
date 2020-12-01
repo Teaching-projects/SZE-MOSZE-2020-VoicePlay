@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['unit_40',['unit',['../classunit.html',1,'']]]
+  ['map_50',['Map',['../classMap.html',1,'']]],
+  ['monster_51',['Monster',['../classMonster.html',1,'']]]
 ];
