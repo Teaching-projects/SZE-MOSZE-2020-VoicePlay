@@ -10,7 +10,5 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: g++-10 -std=c++17 *.cpp
-      - run: ./a.out scenario1.json >> out1.txt
-      - run: ./a.out scenario2.json >> out2.txt
+      - run: cat steps.txt | ./a.out >> out1.txt
       - run: diff output1.txt out1.txt
-      - run: diff output2.txt out2.txt

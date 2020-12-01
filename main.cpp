@@ -10,6 +10,7 @@
 #include "JSON.h"
 #include "Hero.h"
 #include "Monster.h"
+#include "map.h"
 
 
 
@@ -29,10 +30,10 @@ void bad_exit(int exitcode){
 }
 
 int main(int argc, char** argv){
-    if (argc != 2) bad_exit(1);
+   /* if (argc != 2) bad_exit(1);
     if (!std::filesystem::exists(argv[1])) bad_exit(2);
 
-    std::string hero_file;
+   /* std::string hero_file;
     std::list<std::string> monster_files;
     try {
         JSON scenario = JSON::parseFromFile(argv[1]); 
@@ -43,27 +44,21 @@ int main(int argc, char** argv){
             for(auto monster_file : monster_file_list){
                 monster_files.push_back(std::get<std::string>(monster_file));}
         }
-    } catch (const JSON::ParseException& e) {bad_exit(4);}
+    } catch (const JSON::ParseException& e) {bad_exit(4);} */
+    
     try { 
-        Hero hero{Hero::parse(hero_file)};
-        std::list<Monster> monsters;
-        for (const auto& monster_file : monster_files)
-            monsters.push_back(Monster::parse(monster_file));        
-        while (hero.isAlive() && !monsters.empty()) {
-            std::cout 
-                << hero.getName() << "(" << hero.getLevel()<<")"
-                << " vs "
-                << monsters.front().getName()
-                <<std::endl;
-            hero.fightTilDeath(monsters.front());
-            if (!monsters.front().isAlive()) monsters.pop_front();
-        }
-        std::cout << (hero.isAlive() ? "The hero won." : "The hero died.") << std::endl;
-        std::cout << hero.getName() << ": LVL" << hero.getLevel() << std::endl
-                  << "   HP: "<<hero.getHealthPoints()<<"/"<<hero.getMaxHealthPoints()<<std::endl
-                  << "  DMG: "<<hero.getPDamage()<<std::endl
-                  << "  ACD: "<<hero.getAttackCoolDown()<<std::endl
-                  ;
-    } catch (const JSON::ParseException& e) {bad_exit(4);}
+
+        Hero hero{Hero::parse("Dark_Wanderer.json")};
+        Monster Fallen{Monster::parse("Fallen.json")};
+        Monster Blood_Raven{Monster::parse("Blood_Raven.json")};
+
+        Game game = Game("map.txt");
+        game.putHero(hero, 1, 2);
+        game.putMonster(Fallen,4,2);
+        game.putMonster(Fallen,5,2);
+        game.putMonster(Blood_Raven,4,4 );
+        game.run();
+    }
+    catch (const JSON::ParseException& e) {bad_exit(4);}
     return 0;
 }
