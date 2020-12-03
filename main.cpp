@@ -30,6 +30,8 @@ void bad_exit(int exitcode){
 }
 
 int main(int argc, char** argv){
+    if (argc != 2) bad_exit(1);
+    if (!std::filesystem::exists(argv[1])) bad_exit(2);
     try { 
         PreparedGame game("prepared.txt");
         game.run();
