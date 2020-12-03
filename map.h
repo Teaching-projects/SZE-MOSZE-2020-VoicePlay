@@ -91,26 +91,10 @@ private:
         else top = 0;
         if(her->getLightRadius() < (level.getHeight() - hero_pos.y)) bottom = hero_pos.y + her->getLightRadius()+1;
         else bottom = level.getHeight();
-        /*if(hero.getLightRadius()*2+1 >= level.getWidth()){
-            left = hero_pos.x;
-            right = level.getWidth() - hero_pos.x - 1;
-        }
-        if(hero.getLightRadius()*2+1 >= level.getHeight()){
-            left = hero_pos.y;
-            right = level.getHeight() - hero_pos.y - 1;
-        }*/
-        /*for(int i=0; i<level.getWidth(); i++){
-            for(int j=0; i<level.getHeight(); j++){
-                if(level.get(i, j) == Map::Her){
-                    left = () ? () :
-                }
-            }
-        }*/
-
-
+        
 
         std::cout << "\n╔═";
-        for(int i=left+1; i<right; i++) //first row 
+        for(int i=left+1; i<right; i++) //border 
             std::cout << "══";
         std::cout << "═╗\n";
         for(int j=top; j<bottom; j++){
@@ -141,7 +125,7 @@ private:
             std::cout << "\n";
         }
         std::cout << "╚═";
-        for(int i=left+1; i<right; i++) //first row
+        for(int i=left+1; i<right; i++) //border
             std::cout << "══";
         std::cout << "═╝\n";
     }
@@ -215,13 +199,13 @@ public:
             std::cout << "Command: ";
             std::string s;
             std::cin >> s;
-            if (s == "north")
+            if ((s == "north") && (hero_pos.y > 0)) 
                 moveHero(0,-1);
-            else if (s == "east")
+            else if ((s == "east") && (hero_pos.x < level.getWidth()-1))
                 moveHero(1,0);
-            else if (s == "south")
+            else if ((s == "south") && (hero_pos.y < level.getHeight()-1))
                 moveHero(0,1);
-            else if (s == "west")
+            else if ((s == "west") && (hero_pos.x > 0))
                 moveHero(-1,0);
         }
         if (her->isAlive()) std::cout << her->getName() <<" cleared the map.\n";
