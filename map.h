@@ -80,13 +80,42 @@ private:
     bool can_be_run = false;
     bool level_given = false;
     void write_out(){
+
+
+        double left, right, top, bottom;
+        if(her->getLightRadius() <= hero_pos.x) left = hero_pos.x - her->getLightRadius();
+        else left = 0;
+        if(her->getLightRadius() < (level.getWidth() - hero_pos.x)) right = hero_pos.x + her->getLightRadius() + 1;
+        else right = level.getWidth();
+        if(her->getLightRadius() <= hero_pos.y) top = hero_pos.y - her->getLightRadius();
+        else top = 0;
+        if(her->getLightRadius() < (level.getHeight() - hero_pos.y)) bottom = hero_pos.y + her->getLightRadius()+1;
+        else bottom = level.getHeight();
+        /*if(hero.getLightRadius()*2+1 >= level.getWidth()){
+            left = hero_pos.x;
+            right = level.getWidth() - hero_pos.x - 1;
+        }
+        if(hero.getLightRadius()*2+1 >= level.getHeight()){
+            left = hero_pos.y;
+            right = level.getHeight() - hero_pos.y - 1;
+        }*/
+        /*for(int i=0; i<level.getWidth(); i++){
+            for(int j=0; i<level.getHeight(); j++){
+                if(level.get(i, j) == Map::Her){
+                    left = () ? () :
+                }
+            }
+        }*/
+
+
+
         std::cout << "\n╔═";
-        for(int i=1; i<level.getWidth(); i++) //first row 
+        for(int i=left+1; i<right; i++) //first row 
             std::cout << "══";
         std::cout << "═╗\n";
-        for(int j=0; j<level.getHeight(); j++){
+        for(int j=top; j<bottom; j++){
             std::cout << "║";
-            for(int i=0; i<level.getWidth(); i++){
+            for(int i=left; i<right; i++){
                 //std::cout << "\n[" <<i<<","<<j<<"]\n";
                 switch (level.get(i,j)){
                 case Map::Free:
@@ -112,7 +141,7 @@ private:
             std::cout << "\n";
         }
         std::cout << "╚═";
-        for(int i=1; i<level.getWidth(); i++) //first row
+        for(int i=left+1; i<right; i++) //first row
             std::cout << "══";
         std::cout << "═╝\n";
     }

@@ -10,6 +10,7 @@
 double Hero::getExp() const { return exp; }
 double Hero::getLevel() const { return lvl; }
 double Hero::getMaxHealthPoints() const { return maxhp; }
+int Hero::getLightRadius() const { return light_radius; }
 
 void Hero::gainXP(unit const* u) {
     double actualDmg = this->getPDamage()-u->getDefense()+this->getMDamage();  //the damage dealt - the defended damage
@@ -40,6 +41,7 @@ Hero* Hero::parse(std::string fname) {
     double h = -1.0;
     double a = -1.0;
     double dfs,dfsbpl,m,mbpl;
+    double lr;
 
     double epl, hpbpl, dbpl, cmpl;
 
@@ -58,6 +60,7 @@ Hero* Hero::parse(std::string fname) {
         dfs = attributes.get<double>("defense");
         m = attributes.get<double>("magical-damage");
         mbpl = attributes.get<double>("magical_damage_bonus_per_level");
+        lr = attributes.get<double>("lightradius");
         
 	}
 	catch (const std::out_of_range&)
@@ -68,7 +71,7 @@ Hero* Hero::parse(std::string fname) {
     Damage dmgs;
         dmgs.physical=d;
         dmgs.magical=m;
-    return new Hero(n, h, dmgs, a, 0, 1, epl, hpbpl, dbpl, cmpl,dfs,dfsbpl,mbpl);
+    return new Hero(n, h, dmgs, a, 0, 1, epl, hpbpl, dbpl, cmpl,dfs,dfsbpl,mbpl,lr);
 }
 
 void ifUnitDead(unit* const attacker, unit* const defender, std::vector<unit*> &alive){
