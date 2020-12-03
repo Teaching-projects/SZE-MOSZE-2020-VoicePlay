@@ -1,11 +1,11 @@
 #!/bin/bash
 
 FILE=output.txt
-INPF=scenario1.json
+INPF=prepared.txt
 
 if test -f $FILE
 then
 	rm $FILE
 fi
 
-cat steps.txt | ./a.out >> $FILE
+cat steps.txt | ./a.out $INPF >> $FILE
