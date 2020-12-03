@@ -1,7 +1,7 @@
 #!/bin/bash
 
 FILE=output.txt
-INPF=prepared.txt
+INPF=prepared.json
 
 if test -f $FILE
 then

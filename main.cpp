@@ -33,7 +33,7 @@ int main(int argc, char** argv){
     if (argc != 2) bad_exit(1);
     if (!std::filesystem::exists(argv[1])) bad_exit(2);
     try { 
-        PreparedGame game("prepared.txt");
+        PreparedGame game(argv[1]);
         game.run();
     }
     catch (const JSON::ParseException& e) {bad_exit(4);}
