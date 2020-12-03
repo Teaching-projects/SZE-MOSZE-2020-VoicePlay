@@ -17,7 +17,6 @@ class MarkedMap: public Map{
 private:
     posit hero_pos;
     std::map<char,posit> mon_pos;
-    std::map<int, std::string> level;
 public:
     MarkedMap(){}
     MarkedMap(std::string fname) {
