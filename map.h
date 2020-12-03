@@ -30,7 +30,7 @@ class Game;
 //enum type{Free, Wall, Her, Monst};
 
 class Map{
-private:
+protected:
     int width, height;
     
     std::map<int, std::string> level;
@@ -53,12 +53,10 @@ public:
                 if (width < t.length()) width = t.length();
         }
         height = i;
-        //std::cout << width << " " << height << "\n";
         for (int i = 0; i<height; i++){
             if(level[i].length()<width){
                 level[i].resize(width,' ');
             }
-            //std::cout << level[i] << "\n";
         }
     }
     Map(){}
@@ -73,13 +71,14 @@ public:
 class Game{
 private:
     Map level;
+protected:
     Hero* her = nullptr;
     posit hero_pos;
     std::map<Monster*, posit> monster_list;
     bool runing = false;
     bool can_be_run = false;
     bool level_given = false;
-    void write_out(){
+    virtual void write_out(){
         std::cout << "\n╔═";
         for(int i=1; i<level.getWidth(); i++) //first row 
             std::cout << "══";
@@ -87,7 +86,6 @@ private:
         for(int j=0; j<level.getHeight(); j++){
             std::cout << "║";
             for(int i=0; i<level.getWidth(); i++){
-                //std::cout << "\n[" <<i<<","<<j<<"]\n";
                 switch (level.get(i,j)){
                 case Map::Free:
                     std::cout << "░░";
@@ -117,7 +115,7 @@ private:
         std::cout << "═╝\n";
     }
 
-    void moveHero(int xc, int yc){
+    virtual void moveHero(int xc, int yc){
         int xx = hero_pos.x+xc;
         int yy = hero_pos.y+yc;
         if(level.get(xx,yy) != Map::Wall && 0<=xx && xx<=level.getWidth() && 0<=yy && yy<=level.getHeight()){
@@ -172,7 +170,7 @@ public:
         monster_list.insert(std::pair<Monster*,posit>(new Monster(monster),posit(x,y)));
     }
 
-    void run(){
+    virtual void run(){
         if(runing==true) ;
         if(!level_given || her == nullptr) throw Game::NotInitializedException();
         std::map<Monster*, posit> m_list(monster_list);
