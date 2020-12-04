@@ -61,10 +61,6 @@ public:
     void put(int x, int y, char c){
         if (level.at(y)[x] == '#') 
             throw Game::OccupiedException()   ;
-        else if(level.at(y)[x] == 'M' && c =='M'){
-            if(std::find(multMonster.begin(), multMonster.end(), posit(x,y)) == multMonster.end())
-                multMonster.push_back(posit(x,y));
-        }
         else
             level.at(y)[x] = c;
     }
@@ -136,10 +132,7 @@ private:
                     std::cout << "┣┫";
                     break;
                 case Map::Monst:
-                    if(level.multMonsterPresent(i,j))
-                        std::cout << "MM";
-                    else
-                        std::cout << "M░";
+                    std::cout << "M░";
                     break;
                 default:
                     break;
