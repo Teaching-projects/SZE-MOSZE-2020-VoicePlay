@@ -192,4 +192,34 @@ public:
             throw(JSON::ParseException());
         } 
     }
+    void run(){
+        if(runing==true) ;
+        if(!level_given || her == nullptr) throw Game::NotInitializedException();
+        std::map<Monster*, posit> m_list(monster_list);
+        while(!(m_list.empty())){
+            write_out();
+            if(!(her->isAlive())){
+                std::cout << "The hero died.\n";
+                level.put(hero_pos.x,hero_pos.y,'M');
+                can_be_run = false;
+                break;
+            }
+            std::cout << "Command: ";
+            std::string s;
+            std::cin >> s;
+            if (s == "north")
+                moveHero(0,-1);
+            else if (s == "east")
+                moveHero(1,0);
+            else if (s == "south")
+                moveHero(0,1);
+            else if (s == "west")
+                moveHero(-1,0);
+        }
+        if (her->isAlive()) std::cout << her->getName() <<" cleared the map.\n";
+        else {
+            delete her;
+            her = nullptr;
+            }
+    }
 };
