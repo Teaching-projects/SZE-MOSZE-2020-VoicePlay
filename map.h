@@ -193,6 +193,7 @@ public:
             write_out();
             if(!(her->isAlive())){
                 std::cout << "The hero died.\n";
+                level.put(hero_pos.x,hero_pos.y,'M');
                 can_be_run = false;
                 break;
             }
@@ -209,6 +210,10 @@ public:
                 moveHero(-1,0);
         }
         if (her->isAlive()) std::cout << her->getName() <<" cleared the map.\n";
+        else {
+            delete her;
+            her = nullptr;
+            }
     }
 
     class OccupiedException : std::exception{
