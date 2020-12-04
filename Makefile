@@ -1,4 +1,4 @@
-OBJS := main.o unit.o Hero.o JSON.o map.o
+OBJS := main.o unit.o Hero.o JSON.o
 CC := g++-10
 CFLAGS := -Wall -std=c++17
 
@@ -16,10 +16,7 @@ unit.o: unit.cpp unit.h JSON.h
 JSON.o: JSON.h
 	$(CC) $(CFLAGS) -c JSON.cpp
 
-map.o: map.h
-	$(CC) $(CFLAGS) -c map.cpp
-
-main.o: main.cpp Hero.h Monster.h JSON.h map.h Mmap.h map.cpp
+main.o: main.cpp Hero.h Monster.h JSON.h map.h Mmap.h 
 	$(CC) $(CFLAGS) -c main.cpp
 
 Install_Valgrind_and_Cppcheck:
