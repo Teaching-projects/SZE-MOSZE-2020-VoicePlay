@@ -190,13 +190,17 @@ public:
         if(!level_given || her == nullptr) throw Game::NotInitializedException();
         std::map<Monster*, posit> m_list(monster_list);
         while(!(m_list.empty())){
-            write_out();
+            
             if(!(her->isAlive())){
-                std::cout << "The hero died.\n";
                 level.put(hero_pos.x,hero_pos.y,'M');
+                write_out();
+                std::cout << "The hero died.\n";
                 can_be_run = false;
                 break;
             }
+            write_out();
+            if(monster_list.empty()) break;
+            
             std::cout << "Command: ";
             std::string s;
             std::cin >> s;

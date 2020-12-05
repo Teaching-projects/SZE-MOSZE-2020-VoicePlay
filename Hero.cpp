@@ -10,7 +10,8 @@
 double Hero::getExp() const { return exp; }
 double Hero::getLevel() const { return lvl; }
 double Hero::getMaxHealthPoints() const { return maxhp; }
-int Hero::getLightRadius() const { return light_radius; }
+double Hero::getLightRadius() const { return light_radius; }
+double Hero::getLightBonus() const { return light_radius_bonus_per_level; }
 
 void Hero::gainXP(unit const* u) {
     double actualDmg = this->getPDamage()-u->getDefense()+this->getMDamage();  //the damage dealt - the defended damage
@@ -24,6 +25,7 @@ void Hero::gainXP(unit const* u) {
             this->boostDmg(getPDamage()+damage_bonus_per_level,getMDamage()+magical_damage_bonus_per_level);
             this->changeAcd(getAttackCoolDown()*cooldown_multiplier_per_level);
             this->boostDefense(getDefense()+defense_bonus_per_level);
+            this->boostLightRadius(getLightRadius()+light_radius_bonus_per_level);
         }
     }
 }
@@ -42,6 +44,7 @@ Hero* Hero::parse(std::string fname) {
     double a = -1.0;
     double dfs,dfsbpl,m,mbpl;
     double lr;
+    double lrpl = 1;
 
     double epl, hpbpl, dbpl, cmpl;
 
@@ -60,18 +63,24 @@ Hero* Hero::parse(std::string fname) {
         dfs = attributes.get<double>("defense");
         m = attributes.get<double>("magical-damage");
         mbpl = attributes.get<double>("magical_damage_bonus_per_level");
-        lr = attributes.get<double>("lightradius");
-        
+        lr = attributes.get<double>("light_radius");
+        try{
+        lrpl = attributes.get<double>("light_radius_bonus_per_level");
+        }
+        catch(const std::out_of_range&){
+        lrpl = 1;
+        }
 	}
 	catch (const std::out_of_range&)
 	{
 		//infile.close();
 		throw(JSON::ParseException());
 	}
+    
     Damage dmgs;
         dmgs.physical=d;
         dmgs.magical=m;
-    return new Hero(n, h, dmgs, a, 0, 1, epl, hpbpl, dbpl, cmpl,dfs,dfsbpl,mbpl,lr);
+    return new Hero(n, h, dmgs, a, 0, 1, epl, hpbpl, dbpl, cmpl,dfs,dfsbpl,mbpl,lr, lrpl);
 }
 
 void ifUnitDead(unit* const attacker, unit* const defender, std::vector<unit*> &alive){
