@@ -42,8 +42,7 @@ Command:
 ║░░░░░░░░░░║
 ║░░░░░░M░░░║
 ╚══════════╝
-Command:
-Fallen monster died
+Command: Fallen monster died
 
 ╔══════════════════╗
 ║██████████████████║
@@ -53,8 +52,7 @@ Fallen monster died
 ║░░░░░░░░M░░░░░░░░░║
 ║██████████████████║
 ╚══════════════════╝
-Command:
-Fallen monster died
+Command: Fallen monster died
 
 ╔════════════════════════╗
 ║████████████████████████║
@@ -84,8 +82,7 @@ Command:
 ║░░░░░░░░M░┣┫░░░░░░░░░░░░║
 ║██████████████████░░░░░░║
 ╚════════════════════════╝
-Command:
-Blood Raven monster died
+Command: Blood Raven monster died
 
 ╔════════════════════════════╗
 ║████████████████████████████║
