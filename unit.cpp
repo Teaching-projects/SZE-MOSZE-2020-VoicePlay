@@ -5,7 +5,7 @@
 #include "unit.h"
 #include "JSON.h"
 
-//  getter fügvények
+
 double unit::getHealthPoints () const { return hp; }
 double unit::getPDamage () const { return dmg.physical; }
 double unit::getMDamage () const { return dmg.magical; }
@@ -16,7 +16,7 @@ double unit::dealDamage(unit* const u){
     return (u->getHealthPoints()-this->getPDamage()+u->getDefense()-this->getMDamage()); }
 void unit::loseHp(unit *attacker) {
     hp = attacker->dealDamage(this);
-    if (hp <= 0) hp = 0;   // hp cant be < 0 
+    if (hp <= 0) hp = 0;
 }
 
 bool unit::battle(unit *u1){

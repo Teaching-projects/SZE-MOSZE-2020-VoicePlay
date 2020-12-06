@@ -13,7 +13,6 @@ public:
                     }
     static Monster parse(std::string fname){
         std::string name;
-        //std::cout << g.gethhp() << "monst\n";
 
         double dmg,magic,hp,atck,dfss;
         try
@@ -28,7 +27,6 @@ public:
         }
         catch (const std::out_of_range&)
         {
-            //infile.close();
             throw(JSON::ParseException());
         }
         Damage dmgs;

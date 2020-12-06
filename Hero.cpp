@@ -13,7 +13,7 @@ double Hero::getMaxHealthPoints() const { return maxhp; }
 int Hero::getLightRadius() const { return light_radius; }
 
 void Hero::gainXP(unit const* u) {
-    double actualDmg = this->getPDamage()-u->getDefense()+this->getMDamage();  //the damage dealt - the defended damage
+    double actualDmg = this->getPDamage()-u->getDefense()+this->getMDamage();
     if (actualDmg > 0){ 
         if (u->getHealthPoints() <= actualDmg) exp += u->getHealthPoints();
         else exp += actualDmg;
@@ -71,7 +71,6 @@ Hero* Hero::parse(std::string fname) {
 	}
 	catch (const std::out_of_range&)
 	{
-		//infile.close();
         std::cout << "Parse error hero\n";
 		throw(JSON::ParseException());
 	}

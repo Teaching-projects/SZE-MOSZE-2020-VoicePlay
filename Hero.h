@@ -5,15 +5,15 @@
 
 class Hero : public unit {
 private:
-    double exp, lvl, maxhp; //experience, level, maximum health point
+    double exp, lvl, maxhp;
     double defense_bonus_per_level,magical_damage_bonus_per_level;
     double light_radius, light_radius_bonus_per_level;
     void gainXP(unit const* u);
-    void heal(double d) {   //heal unit to d hp
+    void heal(double d) { 
         hp = d;
         maxhp = d;
     }     
-    void boostDmg(double d, double m) { dmg.physical = d; dmg.magical = m; } //boost damage to d
+    void boostDmg(double d, double m) { dmg.physical = d; dmg.magical = m; }
     void changeAcd(double d) { attackcooldown=d;}
     void boostDefense(double d) { defense = d;}
     void boostLightRadius(double d) {light_radius = d;}
@@ -35,7 +35,7 @@ public:
                         delete l;
                     }
 
-    //getter functions
+    
     double getExp() const;
     double getLevel() const;
     double getMaxHealthPoints() const;

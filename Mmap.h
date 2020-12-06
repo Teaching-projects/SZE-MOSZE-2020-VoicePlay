@@ -79,7 +79,7 @@ public:
         case 'H':
             return Her;
             break;
-        default:         //if not any of the above
+        default:
             throw Map::WrongIndexException();
             break;
         }
@@ -125,7 +125,7 @@ private:
         else bottom = level.getHeight();
         
         std::cout << "\n╔═";
-        for(int i=left+1; i<right; i++) //border 
+        for(int i=left+1; i<right; i++)
             std::cout << "══";
         std::cout << "═╗\n";
         for(int j=top; j<bottom; j++){
@@ -152,7 +152,7 @@ private:
             std::cout << "\n";
         }
         std::cout << "╚═";
-        for(int i=left+1; i<right; i++) //border
+        for(int i=left+1; i<right; i++)
             std::cout << "══";
         std::cout << "═╝\n";
     }

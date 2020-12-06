@@ -1,6 +1,6 @@
 #pragma once
 
-#include <sstream>      // std::istringstream
+#include <sstream>
 #include <map> 
 #include <list>
 #include <fstream>

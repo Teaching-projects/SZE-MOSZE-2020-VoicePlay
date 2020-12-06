@@ -1,3 +1,19 @@
+/**
+* \class Map
+*
+* \brief Map class
+*
+* This class reads the map of the game from a txt
+*
+* \author Vorös Bonce, team VoicePlay
+*
+* \version 1.0
+*
+* \date 2020/12/06 19:46
+*
+* Created on: 2020/12/06 19:46
+
+*/
 #pragma once
 
 #include "unit.h"
@@ -27,14 +43,13 @@ struct posit{
 
 class Game;
 
-//enum type{Free, Wall, Her, Monst};
 
 class Map{
 protected:
-    int width, height;
+    int width, height; ///< the width and height of the map
     
-    std::map<int, std::string> level;
-    std::vector<posit> multMonster;
+    std::map<int, std::string> level; ///< the actual map
+    std::vector<posit> multMonster; ///< vector that contains the monsters on the same spot of the map
 public:
     enum type{Free, Wall, Her, Monst};
     class WrongIndexException : std::exception{
@@ -60,25 +75,69 @@ public:
         }
     }
     Map(){}
+    /**
+    * \brief This function reads the characters from the map and decides its type.
+    * \param x The x coordinate of a point on the map
+    * \param y The y coordinate of a point on the map
+    */
     Map::type get(int x, int y) const;
+    /**
+    * \brief This function puts the characters from the txt file to the map.
+    * \param x The x coordinate of a point on the map
+    * \param y The y coordinate of a point on the map
+    */
     void put(int x, int y, char c);
+    /**
+    * \brief This is a simple getter function for the height of the map.
+    * \param x The x coordinate of a point on the map
+    * \param y The y coordinate of a point on the map
+    * \param c The character needed to be placed to the (x,y) coordinates
+    * \return The height of the map
+    */
     int getHeight(){return height;}
+    /**
+    * \brief This is a simple getter function for the width of the map.
+    * \return The width of the map
+    */
     int getWidth(){return width;}
+    /**
+    * \brief This function indicates if there are multiple monsters on the map.
+    * \return The quantity of the monsters (true - >1, false - 1)
+    */
     bool multMonsterPresent(int x, int y){ return (std::find(multMonster.begin(), multMonster.end(), posit(x,y)) != multMonster.end()); }
 };
 
+/**
+* \class Game
+*
+* \brief Game class
+*
+* This class starts the game, coordinates the hero's movement and checks if the units are alive
+*
+* \author Vorös Bonce, Kovacs Kira, team VoicePlay
+*
+* \version 1.0
+*
+* \date 2020/12/06 19:57
+*
+* Created on: 2020/12/06 19:57
+
+*/
 
 class Game{
 private:
-    Map level;
+    Map level; ///< The current map
 protected:
-    Hero* her = nullptr;
+    Hero* her = nullptr; ///< The current hero character
     posit hero_pos;
     std::map<Monster*, posit> monster_list;
-    bool runing = false;
-    bool can_be_run = false;
-    bool level_given = false;
+    bool runing = false; ///< This variable tells if the game is running
+    bool can_be_run = false; ///< This variable tells if the game can be run
+    bool level_given = false; ///< This variable tells if the level can be started
 
+    /**
+    * \brief This function writes the map to the screen.
+    */
     virtual void write_out(){
         double left, right, top, bottom;
         if(her->getLightRadius() <= hero_pos.x) left = hero_pos.x - her->getLightRadius();
@@ -91,7 +150,7 @@ protected:
         else bottom = level.getHeight();
         
         std::cout << "\n╔═";
-        for(int i=left+1; i<right; i++) //border 
+        for(int i=left+1; i<right; i++)
             std::cout << "══";
         std::cout << "═╗\n";
         for(int j=top; j<bottom; j++){
@@ -121,11 +180,16 @@ protected:
             std::cout << "\n";
         }
         std::cout << "╚═";
-        for(int i=left+1; i<right; i++) //border
+        for(int i=left+1; i<right; i++)
             std::cout << "══";
         std::cout << "═╝\n";
     }
 
+    /**
+    * \brief This function moves the hero from one position to another, fighting monsters if there is one.
+    * \param xc The direction of vertical movement
+    * \param yc The direction of horizontal movement
+    */
     virtual void moveHero(int xc, int yc){
         int xx = hero_pos.x+xc;
         int yy = hero_pos.y+yc;
@@ -152,7 +216,7 @@ protected:
     }
 public:
     Game(){};
-    Game(std::string mapfilename) { // Game with the Map initialized
+    Game(std::string mapfilename) {
         level = Map(mapfilename);
         level_given = true;
     }
@@ -165,11 +229,21 @@ public:
             }
         }
     }
-    void setMap(Map map){ // Set the map
+    /**
+    * \brief This function sets the map.
+    * \param map The current map of the game
+    */
+    void setMap(Map map){
         if (her!=nullptr && monster_list.empty()) throw Game::AlreadyHasUnitsException();
         level = map;
         level_given = true;
     }
+     /**
+    * \brief This function puts a new hero to the map.
+    * \param hero The current hero
+    * \param x The x coordinate of the hero
+    * \param y The y coordinate of the hero
+    */
     void putHero(Hero hero, int x, int y){
         if (!level_given) throw Map::WrongIndexException();
         if (her!=nullptr) throw Game::AlreadyHasHeroException();
@@ -179,6 +253,12 @@ public:
         level.put(x,y,'H');
         can_be_run = true;
     }
+     /**
+    * \brief This function puts a new monster to the map.
+    * \param hero The current monster
+    * \param x The x coordinate of the monster
+    * \param y The y coordinate of the monster
+    */
     void putMonster(Monster monster, int x, int y) {
         if (!level_given) throw Map::WrongIndexException();
         if (runing) throw Game::GameAlreadyStartedException();
@@ -186,6 +266,9 @@ public:
         monster_list.insert(std::pair<Monster*,posit>(new Monster(monster),posit(x,y)));
     }
 
+     /**
+    * \brief This function runs the game and waits for the player's moves.
+    */
     virtual void run(){
         if(runing==true) ;
         if(!level_given || her == nullptr) throw Game::NotInitializedException();
@@ -257,7 +340,7 @@ Map::type Map::get(int x, int y) const{
         case 'H':
             return Her;
             break;
-        default:         //if not any of the above
+        default:
             throw Map::WrongIndexException();
             break;
         }
