@@ -1,9 +1,5 @@
 south
-east
-east
-north
-east
-east
 south
-south
-west
+east
+east
+east
