@@ -114,13 +114,23 @@ private:
     }
 
     virtual void write_out(){
+        double left, right, top, bottom;
+        if(her->getLightRadius() <= hero_pos.x) left = hero_pos.x - her->getLightRadius();
+        else left = 0;
+        if(her->getLightRadius() < (level.getWidth() - hero_pos.x)) right = hero_pos.x + her->getLightRadius() + 1;
+        else right = level.getWidth();
+        if(her->getLightRadius() <= hero_pos.y) top = hero_pos.y - her->getLightRadius();
+        else top = 0;
+        if(her->getLightRadius() < (level.getHeight() - hero_pos.y)) bottom = hero_pos.y + her->getLightRadius()+1;
+        else bottom = level.getHeight();
+        
         std::cout << "\n╔═";
-        for(int i=1; i<level.getWidth(); i++) //first row 
+        for(int i=left+1; i<right; i++) //border 
             std::cout << "══";
         std::cout << "═╗\n";
-        for(int j=0; j<level.getHeight(); j++){
+        for(int j=top; j<bottom; j++){
             std::cout << "║";
-            for(int i=0; i<level.getWidth(); i++){
+            for(int i=left; i<right; i++){
                 switch (level.get(i,j)){
                 case Map::Free:
                     std::cout << "░░";
@@ -142,10 +152,11 @@ private:
             std::cout << "\n";
         }
         std::cout << "╚═";
-        for(int i=1; i<level.getWidth(); i++) //first row
+        for(int i=left+1; i<right; i++) //border
             std::cout << "══";
         std::cout << "═╝\n";
     }
+
 
     virtual void moveHero(int xc, int yc){
         int xx = hero_pos.x+xc;
@@ -161,6 +172,7 @@ private:
                 her->fightTilDeath(*i->first);
                 if (!i->first->isAlive()){
                     std::cout << i->first->getName() <<" monster died\n";
+                    delete i->first;
                     monster_list.erase(i++);
                 }else{
                     ++i;
@@ -195,15 +207,16 @@ public:
     void run(){
         if(runing==true) ;
         if(!level_given || her == nullptr) throw Game::NotInitializedException();
-        std::map<Monster*, posit> m_list(monster_list);
-        while(!(m_list.empty())){
-            write_out();
+        while(!(monster_list.empty())){
             if(!(her->isAlive())){
+                level.put(hero_pos.x,hero_pos.y,'M');
+                write_out();
                 std::cout << "The hero died.\n";
                 level.put(hero_pos.x,hero_pos.y,'M');
                 can_be_run = false;
                 break;
             }
+            write_out();
             std::cout << "Command: ";
             std::string s;
             std::cin >> s;

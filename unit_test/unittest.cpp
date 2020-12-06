@@ -65,7 +65,7 @@ TEST(Multest, uselessKeysinJson){
     EXPECT_DOUBLE_EQ(expected.getPDamage(), result->getPDamage());
 };
 TEST(Multest, gainXp100DMG){
-    Hero re("Name",1000,Damage(100,0),1,0,1,100,10,10,0.9,0,0,0);
+    Hero re("Name",1000,Damage(100,0),1,0,1,100,10,10,0.9,0,0,0,2,1);
     unit* u = (new unit("na",200,Damage(1,0),1,0));
     double expected = re.getPDamage();
     double xp = 0;
@@ -82,7 +82,7 @@ TEST(Multest, gainXp100DMG){
     EXPECT_EQ(re.getPDamage(), expected);
 };
 TEST(Multest, gainXp0DMG){
-    Hero re("Name",1000,Damage(0,0),1,0,1,100,10,10,0.9,0,0,0);
+    Hero re("Name",1000,Damage(0,0),1,0,1,100,10,10,0.9,0,0,0,2,1);
     unit* u = (new unit("na",200,Damage(1,0),1,0));
     double expected = re.getPDamage();
     double xp = 0;
@@ -99,7 +99,7 @@ TEST(Multest, gainXp0DMG){
     EXPECT_EQ(re.getPDamage(), expected);
 };
 TEST(Multest, gainXp_BigDMG){
-    Hero re("Name",1000,Damage(1000,0),1,0,1,100,10,10,0.9,0,0,0);
+    Hero re("Name",1000,Damage(1000,0),1,0,1,100,10,10,0.9,0,0,0,2,1);
     unit* u = (new unit("na",20000,Damage(1,0),1,0));
     double expected = re.getPDamage();
     double xp = 0;
@@ -115,7 +115,7 @@ TEST(Multest, gainXp_BigDMG){
     EXPECT_EQ(re.getPDamage(), expected);
 };
 TEST(Multest, gainXp_DmgGTHP){ //damage greather than unit hp
-    Hero re("Name",1000,Damage(1000,0),1,0,1,100,10,10,0.9,0,0,0);
+    Hero re("Name",1000,Damage(1000,0),1,0,1,100,10,10,0.9,0,0,0,2,1);
     unit* u = (new unit("na",200,Damage(1,0),1,0));
     double expected = re.getPDamage();
     double xp = 0;
@@ -131,7 +131,7 @@ TEST(Multest, gainXp_DmgGTHP){ //damage greather than unit hp
     EXPECT_EQ(re.getPDamage(), expected);
 };
 TEST(Multest, gainXp_healedAfter){
-    Hero re("Name",1000,Damage(10000,0),1,0,1,100,10,10,0.9,0,0,0);
+    Hero re("Name",1000,Damage(10000,0),1,0,1,100,10,10,0.9,0,0,0,2,1);
     unit* u = (new unit("na",200,Damage(1,0),1,0));
 
     re.dealDamage(u);

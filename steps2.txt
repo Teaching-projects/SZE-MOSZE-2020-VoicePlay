@@ -3,6 +3,3 @@ south
 east
 east
 east
-north
-north
-east

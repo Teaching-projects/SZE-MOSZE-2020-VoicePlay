@@ -10,6 +10,7 @@
 double Hero::getExp() const { return exp; }
 double Hero::getLevel() const { return lvl; }
 double Hero::getMaxHealthPoints() const { return maxhp; }
+int Hero::getLightRadius() const { return light_radius; }
 
 void Hero::gainXP(unit const* u) {
     double actualDmg = this->getPDamage()-u->getDefense()+this->getMDamage();  //the damage dealt - the defended damage
@@ -23,6 +24,7 @@ void Hero::gainXP(unit const* u) {
             this->boostDmg(getPDamage()+damage_bonus_per_level,getMDamage()+magical_damage_bonus_per_level);
             this->changeAcd(getAttackCoolDown()*cooldown_multiplier_per_level);
             this->boostDefense(getDefense()+defense_bonus_per_level);
+            this->boostLightRadius(getLightRadius()+light_radius_bonus_per_level);
         }
     }
 }
@@ -40,6 +42,7 @@ Hero* Hero::parse(std::string fname) {
     double h = -1.0;
     double a = -1.0;
     double dfs,dfsbpl,m,mbpl;
+    double lr,lrbl;
 
     double epl, hpbpl, dbpl, cmpl;
 
@@ -58,17 +61,24 @@ Hero* Hero::parse(std::string fname) {
         dfs = attributes.get<double>("defense");
         m = attributes.get<double>("magical-damage");
         mbpl = attributes.get<double>("magical_damage_bonus_per_level");
+        try{
+            lrbl = attributes.get<double>("light_radius_bonus_per_level");
+        }catch(const std::out_of_range&){
+            lrbl=1;
+        }
+        lr = attributes.get<double>("light_radius");
         
 	}
 	catch (const std::out_of_range&)
 	{
 		//infile.close();
+        std::cout << "Parse error hero\n";
 		throw(JSON::ParseException());
 	}
     Damage dmgs;
         dmgs.physical=d;
         dmgs.magical=m;
-    return new Hero(n, h, dmgs, a, 0, 1, epl, hpbpl, dbpl, cmpl,dfs,dfsbpl,mbpl);
+    return new Hero(n, h, dmgs, a, 0, 1, epl, hpbpl, dbpl, cmpl,dfs,dfsbpl,mbpl,lr,lrbl);
 }
 
 void ifUnitDead(unit* const attacker, unit* const defender, std::vector<unit*> &alive){
