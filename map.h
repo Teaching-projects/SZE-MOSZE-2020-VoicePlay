@@ -5,7 +5,7 @@
 *
 * This class reads the map of the game from a txt
 *
-* \author Vorös Bonce, team VoicePlay
+* \author Voros Bonce, team VoicePlay
 *
 * \version 1.0
 *
@@ -89,9 +89,6 @@ public:
     void put(int x, int y, char c);
     /**
     * \brief This is a simple getter function for the height of the map.
-    * \param x The x coordinate of a point on the map
-    * \param y The y coordinate of a point on the map
-    * \param c The character needed to be placed to the (x,y) coordinates
     * \return The height of the map
     */
     int getHeight(){return height;}
@@ -102,6 +99,8 @@ public:
     int getWidth(){return width;}
     /**
     * \brief This function indicates if there are multiple monsters on the map.
+    * \param x The x coordinate of a point on the map
+    * \param y The y coordinate of a point on the map
     * \return The quantity of the monsters (true - >1, false - 1)
     */
     bool multMonsterPresent(int x, int y){ return (std::find(multMonster.begin(), multMonster.end(), posit(x,y)) != multMonster.end()); }
@@ -266,7 +265,7 @@ public:
         monster_list.insert(std::pair<Monster*,posit>(new Monster(monster),posit(x,y)));
     }
 
-     /**
+    /**
     * \brief This function runs the game and waits for the player's moves.
     */
     virtual void run(){
