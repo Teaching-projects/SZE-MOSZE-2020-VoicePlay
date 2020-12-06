@@ -207,6 +207,7 @@ public:
     void run(){
         if(runing==true) ;
         if(!level_given || her == nullptr) throw Game::NotInitializedException();
+        write_out();
         while(!(monster_list.empty())){
             if(!(her->isAlive())){
                 level.put(hero_pos.x,hero_pos.y,'M');
@@ -216,7 +217,7 @@ public:
                 can_be_run = false;
                 break;
             }
-            write_out();
+            
             std::cout << "Command: ";
             std::string s;
             std::cin >> s;
@@ -228,6 +229,7 @@ public:
                 moveHero(0,1);
             else if (s == "west")
                 moveHero(-1,0);
+            write_out();
         }
         if (her->isAlive()) std::cout << her->getName() <<" cleared the map.\n";
         else {
