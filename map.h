@@ -144,6 +144,7 @@ private:
                 her->fightTilDeath(*i->first);
                 if (!i->first->isAlive()){
                     std::cout << i->first->getName() <<" monster died\n";
+                    delete i->first;
                     monster_list.erase(i++);
                 }else{
                     ++i;
@@ -186,9 +187,7 @@ public:
         if (!level_given) throw Map::WrongIndexException();
         if (runing) throw Game::GameAlreadyStartedException();
         level.put(x,y,'M');
-        Monster* tmp = new Monster(monster);
-        monster_list.insert(std::pair<Monster*,posit>(tmp,posit(x,y)));
-        delete tmp;
+        monster_list.insert(std::pair<Monster*,posit>(new Monster(monster),posit(x,y)));
     }
 
     void run(){
