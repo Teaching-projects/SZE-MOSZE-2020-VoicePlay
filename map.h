@@ -79,7 +79,7 @@ protected:
     bool can_be_run = false;
     bool level_given = false;
 
-    void write_out(){
+    virtual void write_out(){
         double left, right, top, bottom;
         if(her->getLightRadius() <= hero_pos.x) left = hero_pos.x - her->getLightRadius();
         else left = 0;
@@ -189,7 +189,6 @@ public:
     virtual void run(){
         if(runing==true) ;
         if(!level_given || her == nullptr) throw Game::NotInitializedException();
-        write_out();
         while(!(monster_list.empty())){
             if(!(her->isAlive())){
                 level.put(hero_pos.x,hero_pos.y,'M');
@@ -199,6 +198,7 @@ public:
                 can_be_run = false;
                 break;
             }
+            write_out();
             std::cout << "Command: ";
             std::string s;
             std::cin >> s;

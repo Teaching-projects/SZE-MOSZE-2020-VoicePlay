@@ -12,3 +12,5 @@ jobs:
       - run: g++-10 -std=c++17 *.cpp
       - run: cat steps.txt | ./a.out prepared.json >> out1.txt
       - run: diff output1.txt out1.txt
+      - run: cat steps2.txt | ./a.out prepared2.json >> out2.txt
+      - run: diff output2.txt out2.txt
