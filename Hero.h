@@ -16,6 +16,7 @@ private:
     void boostDmg(double d, double m) { dmg.physical = d; dmg.magical = m; } //boost damage to d
     void changeAcd(double d) { attackcooldown=d;}
     void boostDefense(double d) { defense = d;}
+    void boostLightRadius(double d) {light_radius = d;}
 public:
     double experience_per_level, health_point_bonus_per_level, damage_bonus_per_level, cooldown_multiplier_per_level;
 

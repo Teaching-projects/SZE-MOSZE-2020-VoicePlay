@@ -24,6 +24,7 @@ void Hero::gainXP(unit const* u) {
             this->boostDmg(getPDamage()+damage_bonus_per_level,getMDamage()+magical_damage_bonus_per_level);
             this->changeAcd(getAttackCoolDown()*cooldown_multiplier_per_level);
             this->boostDefense(getDefense()+defense_bonus_per_level);
+            this->boostLightRadius(getLightRadius()+light_radius_bonus_per_level);
         }
     }
 }
