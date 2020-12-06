@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['dmg_82',['dmg',['../classunit.html#aa7462b700fc5693ee69a513a6c673ea3',1,'unit']]]
+  ['can_5fbe_5frun_111',['can_be_run',['../classGame.html#a9d8fe71efca1bba33503cda747a8a19c',1,'Game']]]
 ];

@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['fighttildeath_8',['fightTilDeath',['../classHero.html#a18abd632b99a549e725f2b6a83b4f553',1,'Hero']]],
-  ['fileinp_9',['fileInp',['../classjsonparser.html#ad38859be96cdb0aeb4ef3b674ac583fc',1,'jsonparser']]]
+  ['damage_6',['Damage',['../structDamage.html',1,'']]],
+  ['dealdamage_7',['dealDamage',['../classplayer.html#a4ffcc6c9d3f483f3a8645bba67fa01cc',1,'player']]],
+  ['dmg_8',['dmg',['../classunit.html#aa7462b700fc5693ee69a513a6c673ea3',1,'unit']]]
 ];

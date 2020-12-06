@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['parseplayer_77',['parsePlayer',['../classplayer.html#ae8a7a50f6ee77a8d2ed520e57620385e',1,'player']]],
-  ['parseunit_78',['parseUnit',['../classunit.html#a7667b6539a75c074bd68872dba5615f5',1,'unit']]]
+  ['movehero_98',['moveHero',['../classGame.html#a9f871741b7e80ba624bebe0615f7f4b2',1,'Game']]],
+  ['multmonsterpresent_99',['multMonsterPresent',['../classMap.html#aea00be2776599f6cd48592bf39d604b8',1,'Map']]]
 ];

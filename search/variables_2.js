@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['hp_83',['hp',['../classunit.html#a0319635b19e4fbecfeea1ea7a46530a9',1,'unit']]]
+  ['dmg_112',['dmg',['../classunit.html#aa7462b700fc5693ee69a513a6c673ea3',1,'unit']]]
 ];

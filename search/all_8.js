@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['list_24',['list',['../classJSON_1_1list.html',1,'JSON']]],
-  ['losehp_25',['loseHp',['../classunit.html#aa2abd626cf95bb20a72ecf75190997bd',1,'unit']]]
+  ['json_28',['JSON',['../classJSON.html',1,'']]],
+  ['jsonparser_29',['jsonparser',['../classjsonparser.html',1,'']]]
 ];

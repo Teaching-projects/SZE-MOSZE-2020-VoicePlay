@@ -104,14 +104,14 @@ $(function() {
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;                        t[j] = <span class="charliteral">&#39; &#39;</span>;</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                    }</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;                }</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                level[i]=t;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                <a class="code" href="classMap.html#a8826e4ac1e4f92ae56740c2ee218e799">level</a>[i]=t;</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                i++;</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                <span class="keywordflow">if</span> (width &lt; t.length()) width = t.length();</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        }</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        height = i;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i&lt;height; i++){</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            <span class="keywordflow">if</span>(level[i].length()&lt;width){</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                level[i].resize(width,<span class="charliteral">&#39; &#39;</span>);</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <a class="code" href="classMap.html#a0546fef98caebe38385bb2e0c7a15da1">height</a> = i;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i&lt;<a class="code" href="classMap.html#a0546fef98caebe38385bb2e0c7a15da1">height</a>; i++){</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            <span class="keywordflow">if</span>(<a class="code" href="classMap.html#a8826e4ac1e4f92ae56740c2ee218e799">level</a>[i].length()&lt;width){</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                <a class="code" href="classMap.html#a8826e4ac1e4f92ae56740c2ee218e799">level</a>[i].resize(width,<span class="charliteral">&#39; &#39;</span>);</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            }</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        }</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    }</div>
@@ -128,13 +128,13 @@ $(function() {
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <span class="keywordflow">return</span> ret;</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    }</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordtype">void</span> put(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">char</span> c){</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="keywordflow">if</span> (level.at(y)[x] == <span class="charliteral">&#39;#&#39;</span>) </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="classMap.html#a8826e4ac1e4f92ae56740c2ee218e799">level</a>.at(y)[x] == <span class="charliteral">&#39;#&#39;</span>) </div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            <span class="keywordflow">throw</span> <a class="code" href="classGame_1_1OccupiedException.html">Game::OccupiedException</a>()   ;</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            level.at(y)[x] = c;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            <a class="code" href="classMap.html#a8826e4ac1e4f92ae56740c2ee218e799">level</a>.at(y)[x] = c;</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    }</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    Map::type get(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y)<span class="keyword"> const</span>{</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="keywordtype">char</span> t = level.at(y)[x];</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="keywordtype">char</span> t = <a class="code" href="classMap.html#a8826e4ac1e4f92ae56740c2ee218e799">level</a>.at(y)[x];</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="keywordflow">switch</span> (t) {</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <span class="keywordflow">case</span> <span class="charliteral">&#39; &#39;</span>:</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            <span class="keywordflow">return</span> Free;</div>
@@ -148,7 +148,7 @@ $(function() {
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <span class="keywordflow">case</span> <span class="charliteral">&#39;H&#39;</span>:</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            <span class="keywordflow">return</span> Her;</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        <span class="keywordflow">default</span>:         <span class="comment">//if not any of the above</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        <span class="keywordflow">default</span>:</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            <span class="keywordflow">throw</span> <a class="code" href="classMap_1_1WrongIndexException.html">Map::WrongIndexException</a>();</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;            <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        }</div>
@@ -163,18 +163,18 @@ $(function() {
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="keywordtype">void</span> initHero(std::string fname){</div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        <a class="code" href="structposit.html">posit</a> pos = level.getHeroPosition();</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        <span class="keywordflow">if</span> (!level_given) <span class="keywordflow">throw</span> <a class="code" href="classMap_1_1WrongIndexException.html">Map::WrongIndexException</a>();</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        <span class="keywordflow">if</span> (her!=<span class="keyword">nullptr</span>) <span class="keywordflow">throw</span> <a class="code" href="classGame_1_1AlreadyHasHeroException.html">Game::AlreadyHasHeroException</a>();</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        <span class="keywordflow">if</span> (runing) <span class="keywordflow">throw</span> <a class="code" href="classGame_1_1GameAlreadyStartedException.html">Game::GameAlreadyStartedException</a>();</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        <span class="keywordflow">if</span> (!<a class="code" href="classGame.html#aab9677ca2fa1c8126fde77e383d45f0c">level_given</a>) <span class="keywordflow">throw</span> <a class="code" href="classMap_1_1WrongIndexException.html">Map::WrongIndexException</a>();</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="classGame.html#a37cb4d1f6da3a8f1fb0a802ca2ec8c6e">her</a>!=<span class="keyword">nullptr</span>) <span class="keywordflow">throw</span> <a class="code" href="classGame_1_1AlreadyHasHeroException.html">Game::AlreadyHasHeroException</a>();</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="classGame.html#a75afe952edf81f88d5dd89fbf7012aca">runing</a>) <span class="keywordflow">throw</span> <a class="code" href="classGame_1_1GameAlreadyStartedException.html">Game::GameAlreadyStartedException</a>();</div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        her = <span class="keyword">new</span> <a class="code" href="classHero.html">Hero</a>(Hero::parse(fname));</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        <a class="code" href="classGame.html#a37cb4d1f6da3a8f1fb0a802ca2ec8c6e">her</a> = <span class="keyword">new</span> <a class="code" href="classHero.html">Hero</a>(Hero::parse(fname));</div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        hero_pos = <a class="code" href="structposit.html">posit</a>(pos.x,pos.y);</div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        level.put(hero_pos.x,hero_pos.y,<span class="charliteral">&#39;H&#39;</span>);</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        can_be_run = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        <a class="code" href="classGame.html#a9d8fe71efca1bba33503cda747a8a19c">can_be_run</a> = <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    }</div>
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <span class="keywordtype">void</span> initMonsters(std::string fname, <span class="keywordtype">char</span> c){</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        <span class="keywordflow">if</span> (!level_given) <span class="keywordflow">throw</span> <a class="code" href="classMap_1_1WrongIndexException.html">Map::WrongIndexException</a>();</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        <span class="keywordflow">if</span> (runing) <span class="keywordflow">throw</span> <a class="code" href="classGame_1_1GameAlreadyStartedException.html">Game::GameAlreadyStartedException</a>();</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        <span class="keywordflow">if</span> (!<a class="code" href="classGame.html#aab9677ca2fa1c8126fde77e383d45f0c">level_given</a>) <span class="keywordflow">throw</span> <a class="code" href="classMap_1_1WrongIndexException.html">Map::WrongIndexException</a>();</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="classGame.html#a75afe952edf81f88d5dd89fbf7012aca">runing</a>) <span class="keywordflow">throw</span> <a class="code" href="classGame_1_1GameAlreadyStartedException.html">Game::GameAlreadyStartedException</a>();</div>
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        std::list&lt;posit&gt; pos = level.getMonsterPositions(c);</div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        <span class="keywordflow">for</span>(<span class="keyword">auto</span> v: pos){</div>
 <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;            level.put(v.x,v.y,<span class="charliteral">&#39;M&#39;</span>);</div>
@@ -184,17 +184,17 @@ $(function() {
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> write_out(){</div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        <span class="keywordtype">double</span> left, right, top, bottom;</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        <span class="keywordflow">if</span>(her-&gt;getLightRadius() &lt;= hero_pos.x) left = hero_pos.x - her-&gt;getLightRadius();</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        <span class="keywordflow">if</span>(<a class="code" href="classGame.html#a37cb4d1f6da3a8f1fb0a802ca2ec8c6e">her</a>-&gt;getLightRadius() &lt;= hero_pos.x) left = hero_pos.x - <a class="code" href="classGame.html#a37cb4d1f6da3a8f1fb0a802ca2ec8c6e">her</a>-&gt;getLightRadius();</div>
 <div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        <span class="keywordflow">else</span> left = 0;</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        <span class="keywordflow">if</span>(her-&gt;getLightRadius() &lt; (level.getWidth() - hero_pos.x)) right = hero_pos.x + her-&gt;getLightRadius() + 1;</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        <span class="keywordflow">else</span> right = level.getWidth();</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        <span class="keywordflow">if</span>(her-&gt;getLightRadius() &lt;= hero_pos.y) top = hero_pos.y - her-&gt;getLightRadius();</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        <span class="keywordflow">if</span>(<a class="code" href="classGame.html#a37cb4d1f6da3a8f1fb0a802ca2ec8c6e">her</a>-&gt;getLightRadius() &lt; (level.<a class="code" href="classMap.html#afd34d12227676b3cebeed9f5fae2508f">getWidth</a>() - hero_pos.x)) right = hero_pos.x + <a class="code" href="classGame.html#a37cb4d1f6da3a8f1fb0a802ca2ec8c6e">her</a>-&gt;getLightRadius() + 1;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        <span class="keywordflow">else</span> right = level.<a class="code" href="classMap.html#afd34d12227676b3cebeed9f5fae2508f">getWidth</a>();</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        <span class="keywordflow">if</span>(<a class="code" href="classGame.html#a37cb4d1f6da3a8f1fb0a802ca2ec8c6e">her</a>-&gt;getLightRadius() &lt;= hero_pos.y) top = hero_pos.y - <a class="code" href="classGame.html#a37cb4d1f6da3a8f1fb0a802ca2ec8c6e">her</a>-&gt;getLightRadius();</div>
 <div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        <span class="keywordflow">else</span> top = 0;</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        <span class="keywordflow">if</span>(her-&gt;getLightRadius() &lt; (level.getHeight() - hero_pos.y)) bottom = hero_pos.y + her-&gt;getLightRadius()+1;</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        <span class="keywordflow">else</span> bottom = level.getHeight();</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        <span class="keywordflow">if</span>(<a class="code" href="classGame.html#a37cb4d1f6da3a8f1fb0a802ca2ec8c6e">her</a>-&gt;getLightRadius() &lt; (level.<a class="code" href="classMap.html#a2b09c8875af2efb711fc3a022e70427d">getHeight</a>() - hero_pos.y)) bottom = hero_pos.y + <a class="code" href="classGame.html#a37cb4d1f6da3a8f1fb0a802ca2ec8c6e">her</a>-&gt;getLightRadius()+1;</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        <span class="keywordflow">else</span> bottom = level.<a class="code" href="classMap.html#a2b09c8875af2efb711fc3a022e70427d">getHeight</a>();</div>
 <div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        </div>
 <div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;\n╔═&quot;</span>;</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;        <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=left+1; i&lt;right; i++) <span class="comment">//border </span></div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;        <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=left+1; i&lt;right; i++)</div>
 <div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;            std::cout &lt;&lt; <span class="stringliteral">&quot;══&quot;</span>;</div>
 <div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;═╗\n&quot;</span>;</div>
 <div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        <span class="keywordflow">for</span>(<span class="keywordtype">int</span> j=top; j&lt;bottom; j++){</div>
@@ -221,7 +221,7 @@ $(function() {
 <div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;            std::cout &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
 <div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;        }</div>
 <div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;╚═&quot;</span>;</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;        <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=left+1; i&lt;right; i++) <span class="comment">//border</span></div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;        <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=left+1; i&lt;right; i++)</div>
 <div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;            std::cout &lt;&lt; <span class="stringliteral">&quot;══&quot;</span>;</div>
 <div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;═╝\n&quot;</span>;</div>
 <div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    }</div>
@@ -230,7 +230,7 @@ $(function() {
 <div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> moveHero(<span class="keywordtype">int</span> xc, <span class="keywordtype">int</span> yc){</div>
 <div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;        <span class="keywordtype">int</span> xx = hero_pos.x+xc;</div>
 <div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;        <span class="keywordtype">int</span> yy = hero_pos.y+yc;</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;        <span class="keywordflow">if</span>(level.get(xx,yy) != Map::Wall &amp;&amp; 0&lt;=xx &amp;&amp; xx&lt;=level.getWidth() &amp;&amp; 0&lt;=yy &amp;&amp; yy&lt;=level.getHeight()){</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;        <span class="keywordflow">if</span>(level.get(xx,yy) != Map::Wall &amp;&amp; 0&lt;=xx &amp;&amp; xx&lt;=level.<a class="code" href="classMap.html#afd34d12227676b3cebeed9f5fae2508f">getWidth</a>() &amp;&amp; 0&lt;=yy &amp;&amp; yy&lt;=level.<a class="code" href="classMap.html#a2b09c8875af2efb711fc3a022e70427d">getHeight</a>()){</div>
 <div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;            level.put(hero_pos.x,hero_pos.y,<span class="charliteral">&#39; &#39;</span>);</div>
 <div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;            hero_pos.x = xx;</div>
 <div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;            hero_pos.y = yy;</div>
@@ -238,7 +238,7 @@ $(function() {
 <div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;        }</div>
 <div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">auto</span> i = monster_list.cbegin(); i != monster_list.cend(); ) {</div>
 <div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;            <span class="keywordflow">if</span> (i-&gt;second.x == hero_pos.x &amp;&amp; i-&gt;second.y == hero_pos.y){</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;                her-&gt;<a class="code" href="classHero.html#a18abd632b99a549e725f2b6a83b4f553">fightTilDeath</a>(*i-&gt;first);</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;                <a class="code" href="classGame.html#a37cb4d1f6da3a8f1fb0a802ca2ec8c6e">her</a>-&gt;<a class="code" href="classHero.html#a18abd632b99a549e725f2b6a83b4f553">fightTilDeath</a>(*i-&gt;first);</div>
 <div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;                <span class="keywordflow">if</span> (!i-&gt;first-&gt;isAlive()){</div>
 <div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;                    std::cout &lt;&lt; i-&gt;first-&gt;getName() &lt;&lt;<span class="stringliteral">&quot; monster died\n&quot;</span>;</div>
 <div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;                    <span class="keyword">delete</span> i-&gt;first;</div>
@@ -259,7 +259,7 @@ $(function() {
 <div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;        <span class="keywordflow">try</span>{</div>
 <div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;            <a class="code" href="classJSON.html">JSON</a> attributes = JSON::parseFromFile(fname);</div>
 <div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;            level = <a class="code" href="classMarkedMap.html">MarkedMap</a>(attributes.get&lt;std::string&gt;(<span class="stringliteral">&quot;map&quot;</span>));</div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;            level_given = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;            <a class="code" href="classGame.html#aab9677ca2fa1c8126fde77e383d45f0c">level_given</a> = <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;            std::string her_file = attributes.get&lt;std::string&gt;(<span class="stringliteral">&quot;hero&quot;</span>);</div>
 <div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;            std::string mon1 = attributes.get&lt;std::string&gt;(<span class="stringliteral">&quot;monster-1&quot;</span>);</div>
 <div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;            std::string mon2 = attributes.get&lt;std::string&gt;(<span class="stringliteral">&quot;monster-2&quot;</span>);</div>
@@ -273,55 +273,66 @@ $(function() {
 <div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;            <span class="keywordflow">throw</span>(<a class="code" href="classJSON_1_1ParseException.html">JSON::ParseException</a>());</div>
 <div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;        } </div>
 <div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;    }</div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;    <span class="keywordtype">void</span> run(){</div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;        <span class="keywordflow">if</span>(runing==<span class="keyword">true</span>) ;</div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;        <span class="keywordflow">if</span>(!level_given || her == <span class="keyword">nullptr</span>) <span class="keywordflow">throw</span> <a class="code" href="classGame_1_1NotInitializedException.html">Game::NotInitializedException</a>();</div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;        <span class="keywordflow">while</span>(!(monster_list.empty())){</div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;            <span class="keywordflow">if</span>(!(her-&gt;isAlive())){</div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;                level.put(hero_pos.x,hero_pos.y,<span class="charliteral">&#39;M&#39;</span>);</div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;                write_out();</div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;                std::cout &lt;&lt; <span class="stringliteral">&quot;The hero died.\n&quot;</span>;</div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;                level.put(hero_pos.x,hero_pos.y,<span class="charliteral">&#39;M&#39;</span>);</div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;                can_be_run = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;                <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;            }</div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;            write_out();</div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;            std::cout &lt;&lt; <span class="stringliteral">&quot;Command: &quot;</span>;</div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;            std::string s;</div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;            std::cin &gt;&gt; s;</div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;            <span class="keywordflow">if</span> (s == <span class="stringliteral">&quot;north&quot;</span>)</div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;                moveHero(0,-1);</div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (s == <span class="stringliteral">&quot;east&quot;</span>)</div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;                moveHero(1,0);</div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (s == <span class="stringliteral">&quot;south&quot;</span>)</div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;                moveHero(0,1);</div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (s == <span class="stringliteral">&quot;west&quot;</span>)</div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;                moveHero(-1,0);</div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;        }</div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;        <span class="keywordflow">if</span> (her-&gt;isAlive()) std::cout &lt;&lt; her-&gt;<a class="code" href="classunit.html#a7a8906186e2c3ae5c050f32b0c1369e8">getName</a>() &lt;&lt;<span class="stringliteral">&quot; cleared the map.\n&quot;</span>;</div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;        <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;            <span class="keyword">delete</span> her;</div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;            her = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;            }</div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;    }</div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;};</div>
+<div class="line"><a name="l00207"></a><span class="lineno"><a class="line" href="classPreparedGame.html#affbffce464ec1b07ad312953436ef0fd">  207</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classPreparedGame.html#affbffce464ec1b07ad312953436ef0fd">run</a>(){</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;        <span class="keywordflow">if</span>(<a class="code" href="classGame.html#a75afe952edf81f88d5dd89fbf7012aca">runing</a>==<span class="keyword">true</span>) ;</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;        <span class="keywordflow">if</span>(!<a class="code" href="classGame.html#aab9677ca2fa1c8126fde77e383d45f0c">level_given</a> || <a class="code" href="classGame.html#a37cb4d1f6da3a8f1fb0a802ca2ec8c6e">her</a> == <span class="keyword">nullptr</span>) <span class="keywordflow">throw</span> <a class="code" href="classGame_1_1NotInitializedException.html">Game::NotInitializedException</a>();</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;        write_out();</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;        <span class="keywordflow">while</span>(!(monster_list.empty())){</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;            <span class="keywordflow">if</span>(!(<a class="code" href="classGame.html#a37cb4d1f6da3a8f1fb0a802ca2ec8c6e">her</a>-&gt;isAlive())){</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;                level.put(hero_pos.x,hero_pos.y,<span class="charliteral">&#39;M&#39;</span>);</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;                write_out();</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;                std::cout &lt;&lt; <span class="stringliteral">&quot;The hero died.\n&quot;</span>;</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;                level.put(hero_pos.x,hero_pos.y,<span class="charliteral">&#39;M&#39;</span>);</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;                <a class="code" href="classGame.html#a9d8fe71efca1bba33503cda747a8a19c">can_be_run</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;            }</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;            </div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;            std::cout &lt;&lt; <span class="stringliteral">&quot;Command: &quot;</span>;</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;            std::string s;</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;            std::cin &gt;&gt; s;</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;            <span class="keywordflow">if</span> (s == <span class="stringliteral">&quot;north&quot;</span>)</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;                moveHero(0,-1);</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (s == <span class="stringliteral">&quot;east&quot;</span>)</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;                moveHero(1,0);</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (s == <span class="stringliteral">&quot;south&quot;</span>)</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;                moveHero(0,1);</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (s == <span class="stringliteral">&quot;west&quot;</span>)</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;                moveHero(-1,0);</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;            <span class="keywordflow">if</span>(<a class="code" href="classGame.html#a37cb4d1f6da3a8f1fb0a802ca2ec8c6e">her</a>-&gt;isAlive()) write_out();</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;        }</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="classGame.html#a37cb4d1f6da3a8f1fb0a802ca2ec8c6e">her</a>-&gt;isAlive()) std::cout &lt;&lt; <a class="code" href="classGame.html#a37cb4d1f6da3a8f1fb0a802ca2ec8c6e">her</a>-&gt;<a class="code" href="classunit.html#a7a8906186e2c3ae5c050f32b0c1369e8">getName</a>() &lt;&lt;<span class="stringliteral">&quot; cleared the map.\n&quot;</span>;</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;        <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;            <span class="keyword">delete</span> <a class="code" href="classGame.html#a37cb4d1f6da3a8f1fb0a802ca2ec8c6e">her</a>;</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;            <a class="code" href="classGame.html#a37cb4d1f6da3a8f1fb0a802ca2ec8c6e">her</a> = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;            }</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;    }</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;};</div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aclassGame_1_1AlreadyHasHeroException_html"><div class="ttname"><a href="classGame_1_1AlreadyHasHeroException.html">Game::AlreadyHasHeroException</a></div><div class="ttdef"><b>Definition:</b> map.h:226</div></div>
-<div class="ttc" id="astructposit_html"><div class="ttname"><a href="structposit.html">posit</a></div><div class="ttdef"><b>Definition:</b> map.h:15</div></div>
+<div class="ttc" id="aclassGame_html_a75afe952edf81f88d5dd89fbf7012aca"><div class="ttname"><a href="classGame.html#a75afe952edf81f88d5dd89fbf7012aca">Game::runing</a></div><div class="ttdeci">bool runing</div><div class="ttdoc">This variable tells if the game is running.</div><div class="ttdef"><b>Definition:</b> map.h:134</div></div>
+<div class="ttc" id="aclassGame_1_1AlreadyHasHeroException_html"><div class="ttname"><a href="classGame_1_1AlreadyHasHeroException.html">Game::AlreadyHasHeroException</a></div><div class="ttdef"><b>Definition:</b> map.h:309</div></div>
+<div class="ttc" id="astructposit_html"><div class="ttname"><a href="structposit.html">posit</a></div><div class="ttdef"><b>Definition:</b> map.h:31</div></div>
+<div class="ttc" id="aclassGame_html_a37cb4d1f6da3a8f1fb0a802ca2ec8c6e"><div class="ttname"><a href="classGame.html#a37cb4d1f6da3a8f1fb0a802ca2ec8c6e">Game::her</a></div><div class="ttdeci">Hero * her</div><div class="ttdoc">The current hero character.</div><div class="ttdef"><b>Definition:</b> map.h:131</div></div>
 <div class="ttc" id="aclassHero_html"><div class="ttname"><a href="classHero.html">Hero</a></div><div class="ttdef"><b>Definition:</b> Hero.h:6</div></div>
-<div class="ttc" id="aclassGame_1_1GameAlreadyStartedException_html"><div class="ttname"><a href="classGame_1_1GameAlreadyStartedException.html">Game::GameAlreadyStartedException</a></div><div class="ttdef"><b>Definition:</b> map.h:238</div></div>
-<div class="ttc" id="aclassGame_1_1OccupiedException_html"><div class="ttname"><a href="classGame_1_1OccupiedException.html">Game::OccupiedException</a></div><div class="ttdef"><b>Definition:</b> map.h:222</div></div>
-<div class="ttc" id="aclassHero_html_a18abd632b99a549e725f2b6a83b4f553"><div class="ttname"><a href="classHero.html#a18abd632b99a549e725f2b6a83b4f553">Hero::fightTilDeath</a></div><div class="ttdeci">void fightTilDeath(Monster &amp;m)</div><div class="ttdef"><b>Definition:</b> Hero.cpp:89</div></div>
-<div class="ttc" id="aclassGame_1_1NotInitializedException_html"><div class="ttname"><a href="classGame_1_1NotInitializedException.html">Game::NotInitializedException</a></div><div class="ttdef"><b>Definition:</b> map.h:234</div></div>
+<div class="ttc" id="aclassGame_1_1GameAlreadyStartedException_html"><div class="ttname"><a href="classGame_1_1GameAlreadyStartedException.html">Game::GameAlreadyStartedException</a></div><div class="ttdef"><b>Definition:</b> map.h:321</div></div>
+<div class="ttc" id="aclassGame_1_1OccupiedException_html"><div class="ttname"><a href="classGame_1_1OccupiedException.html">Game::OccupiedException</a></div><div class="ttdef"><b>Definition:</b> map.h:305</div></div>
+<div class="ttc" id="aclassMap_html_a8826e4ac1e4f92ae56740c2ee218e799"><div class="ttname"><a href="classMap.html#a8826e4ac1e4f92ae56740c2ee218e799">Map::level</a></div><div class="ttdeci">std::map&lt; int, std::string &gt; level</div><div class="ttdoc">the actual map</div><div class="ttdef"><b>Definition:</b> map.h:51</div></div>
+<div class="ttc" id="aclassHero_html_a18abd632b99a549e725f2b6a83b4f553"><div class="ttname"><a href="classHero.html#a18abd632b99a549e725f2b6a83b4f553">Hero::fightTilDeath</a></div><div class="ttdeci">void fightTilDeath(Monster &amp;m)</div><div class="ttdef"><b>Definition:</b> Hero.cpp:88</div></div>
+<div class="ttc" id="aclassGame_1_1NotInitializedException_html"><div class="ttname"><a href="classGame_1_1NotInitializedException.html">Game::NotInitializedException</a></div><div class="ttdef"><b>Definition:</b> map.h:317</div></div>
 <div class="ttc" id="aclassMonster_html"><div class="ttname"><a href="classMonster.html">Monster</a></div><div class="ttdef"><b>Definition:</b> Monster.h:6</div></div>
 <div class="ttc" id="aclassJSON_html"><div class="ttname"><a href="classJSON.html">JSON</a></div><div class="ttdef"><b>Definition:</b> JSON.h:14</div></div>
+<div class="ttc" id="aclassMap_html_a2b09c8875af2efb711fc3a022e70427d"><div class="ttname"><a href="classMap.html#a2b09c8875af2efb711fc3a022e70427d">Map::getHeight</a></div><div class="ttdeci">int getHeight()</div><div class="ttdoc">This is a simple getter function for the height of the map.</div><div class="ttdef"><b>Definition:</b> map.h:97</div></div>
+<div class="ttc" id="aclassMap_html_a0546fef98caebe38385bb2e0c7a15da1"><div class="ttname"><a href="classMap.html#a0546fef98caebe38385bb2e0c7a15da1">Map::height</a></div><div class="ttdeci">int height</div><div class="ttdoc">the width and height of the map</div><div class="ttdef"><b>Definition:</b> map.h:49</div></div>
 <div class="ttc" id="aclassMarkedMap_html"><div class="ttname"><a href="classMarkedMap.html">MarkedMap</a></div><div class="ttdef"><b>Definition:</b> Mmap.h:16</div></div>
 <div class="ttc" id="aclassunit_html_a7a8906186e2c3ae5c050f32b0c1369e8"><div class="ttname"><a href="classunit.html#a7a8906186e2c3ae5c050f32b0c1369e8">unit::getName</a></div><div class="ttdeci">std::string getName() const</div><div class="ttdoc">This is a simple getter function for unit's name.</div><div class="ttdef"><b>Definition:</b> unit.cpp:13</div></div>
+<div class="ttc" id="aclassGame_html_a9d8fe71efca1bba33503cda747a8a19c"><div class="ttname"><a href="classGame.html#a9d8fe71efca1bba33503cda747a8a19c">Game::can_be_run</a></div><div class="ttdeci">bool can_be_run</div><div class="ttdoc">This variable tells if the game can be run.</div><div class="ttdef"><b>Definition:</b> map.h:135</div></div>
 <div class="ttc" id="aclassPreparedGame_html"><div class="ttname"><a href="classPreparedGame.html">PreparedGame</a></div><div class="ttdef"><b>Definition:</b> Mmap.h:90</div></div>
-<div class="ttc" id="aclassMap_html"><div class="ttname"><a href="classMap.html">Map</a></div><div class="ttdef"><b>Definition:</b> map.h:32</div></div>
-<div class="ttc" id="aclassGame_html"><div class="ttname"><a href="classGame.html">Game</a></div><div class="ttdef"><b>Definition:</b> map.h:71</div></div>
+<div class="ttc" id="aclassGame_html_aab9677ca2fa1c8126fde77e383d45f0c"><div class="ttname"><a href="classGame.html#aab9677ca2fa1c8126fde77e383d45f0c">Game::level_given</a></div><div class="ttdeci">bool level_given</div><div class="ttdoc">This variable tells if the level can be started.</div><div class="ttdef"><b>Definition:</b> map.h:136</div></div>
+<div class="ttc" id="aclassMap_html"><div class="ttname"><a href="classMap.html">Map</a></div><div class="ttdoc">Map class.</div><div class="ttdef"><b>Definition:</b> map.h:47</div></div>
+<div class="ttc" id="aclassGame_html"><div class="ttname"><a href="classGame.html">Game</a></div><div class="ttdoc">Game class.</div><div class="ttdef"><b>Definition:</b> map.h:127</div></div>
+<div class="ttc" id="aclassMap_html_afd34d12227676b3cebeed9f5fae2508f"><div class="ttname"><a href="classMap.html#afd34d12227676b3cebeed9f5fae2508f">Map::getWidth</a></div><div class="ttdeci">int getWidth()</div><div class="ttdoc">This is a simple getter function for the width of the map.</div><div class="ttdef"><b>Definition:</b> map.h:102</div></div>
+<div class="ttc" id="aclassPreparedGame_html_affbffce464ec1b07ad312953436ef0fd"><div class="ttname"><a href="classPreparedGame.html#affbffce464ec1b07ad312953436ef0fd">PreparedGame::run</a></div><div class="ttdeci">void run()</div><div class="ttdoc">This function runs the game and waits for the player's moves.</div><div class="ttdef"><b>Definition:</b> Mmap.h:207</div></div>
 <div class="ttc" id="aclassJSON_1_1ParseException_html"><div class="ttname"><a href="classJSON_1_1ParseException.html">JSON::ParseException</a></div><div class="ttdef"><b>Definition:</b> JSON.h:76</div></div>
-<div class="ttc" id="aclassMap_1_1WrongIndexException_html"><div class="ttname"><a href="classMap_1_1WrongIndexException.html">Map::WrongIndexException</a></div><div class="ttdef"><b>Definition:</b> map.h:40</div></div>
+<div class="ttc" id="aclassMap_1_1WrongIndexException_html"><div class="ttname"><a href="classMap_1_1WrongIndexException.html">Map::WrongIndexException</a></div><div class="ttdef"><b>Definition:</b> map.h:55</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">
