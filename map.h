@@ -160,9 +160,13 @@ public:
         level_given = true;
     }
     ~Game() {
-        delete her;
-        for (auto it = monster_list.begin(); it != monster_list.end(); ++it)
-            delete it->first;
+        if(her!=nullptr)
+            delete her;
+        if(!monster_list.empty()){
+            for (auto it = monster_list.begin(); it != monster_list.end(); ++it){
+                delete it->first;
+            }
+        }
     }
     void setMap(Map map){ // Set the map
         if (her!=nullptr && monster_list.empty()) throw Game::AlreadyHasUnitsException();
@@ -182,13 +186,14 @@ public:
         if (!level_given) throw Map::WrongIndexException();
         if (runing) throw Game::GameAlreadyStartedException();
         level.put(x,y,'M');
-        monster_list.insert(std::pair<Monster*,posit>(new Monster(monster),posit(x,y)));
+        Monster* tmp = new Monster(monster);
+        monster_list.insert(std::pair<Monster*,posit>(tmp,posit(x,y)));
+        delete tmp;
     }
 
     void run(){
         if(runing==true) ;
         if(!level_given || her == nullptr) throw Game::NotInitializedException();
-        std::map<Monster*, posit> m_list(monster_list);
         write_out();
         while(!(monster_list.empty())){
             if(!(her->isAlive())){
