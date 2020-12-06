@@ -229,7 +229,7 @@ public:
                 moveHero(0,1);
             else if (s == "west")
                 moveHero(-1,0);
-            write_out();
+            if(her->isAlive()) write_out();
         }
         if (her->isAlive()) std::cout << her->getName() <<" cleared the map.\n";
         else {
