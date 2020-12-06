@@ -188,9 +188,8 @@ public:
     void run(){
         if(runing==true) ;
         if(!level_given || her == nullptr) throw Game::NotInitializedException();
-        //std::map<Monster*, posit> m_list(monster_list);
-        //!(m_list.empty())
-        while(true){
+        std::map<Monster*, posit> m_list(monster_list);
+        while(!(m_list.empty())){
             
             if(!(her->isAlive())){
                 level.put(hero_pos.x,hero_pos.y,'M');
@@ -215,10 +214,10 @@ public:
                 moveHero(-1,0);
         }
         if (her->isAlive()) std::cout << her->getName() <<" cleared the map.\n";
-        else {
+        //else {
             delete her;
             her = nullptr;
-            }
+            //}
     }
 
     class OccupiedException : std::exception{
