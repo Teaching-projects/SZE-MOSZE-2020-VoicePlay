@@ -66,11 +66,34 @@ $(function() {
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pro-methods">Protected Member Functions</a> &#124;
+<a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="classGame-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Game Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+<div class="dynheader">
+Inheritance diagram for Game:</div>
+<div class="dyncontent">
+<div class="center"><img src="classGame__inherit__graph.png" border="0" usemap="#Game_inherit__map" alt="Inheritance graph"/></div>
+<map name="Game_inherit__map" id="Game_inherit__map">
+<area shape="rect" title=" " alt="" coords="34,5,95,32"/>
+<area shape="rect" href="classPreparedGame.html" title=" " alt="" coords="5,80,124,107"/>
+</map>
+<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
+<div class="dynheader">
+Collaboration diagram for Game:</div>
+<div class="dyncontent">
+<div class="center"><img src="classGame__coll__graph.png" border="0" usemap="#Game_coll__map" alt="Collaboration graph"/></div>
+<map name="Game_coll__map" id="Game_coll__map">
+<area shape="rect" title=" " alt="" coords="49,260,110,287"/>
+<area shape="rect" href="structposit.html" title=" " alt="" coords="5,171,60,197"/>
+<area shape="rect" href="classHero.html" title=" " alt="" coords="101,171,154,197"/>
+<area shape="rect" href="classunit.html" title="unit class" alt="" coords="104,95,151,121"/>
+<area shape="rect" href="structDamage.html" title=" " alt="" coords="89,5,166,32"/>
+</map>
+<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
@@ -99,9 +122,39 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>putHero</b> (<a class
 <tr class="memitem:a5fc59a7c9f21b26c9b6502217dc5aa5d"><td class="memItemLeft" align="right" valign="top"><a id="a5fc59a7c9f21b26c9b6502217dc5aa5d"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>putMonster</b> (<a class="el" href="classMonster.html">Monster</a> monster, int x, int y)</td></tr>
 <tr class="separator:a5fc59a7c9f21b26c9b6502217dc5aa5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1ab78f5ed0d5ea879157357cf2fb2afa"><td class="memItemLeft" align="right" valign="top"><a id="a1ab78f5ed0d5ea879157357cf2fb2afa"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>run</b> ()</td></tr>
-<tr class="separator:a1ab78f5ed0d5ea879157357cf2fb2afa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a701403e278b6f4849f12dda2bf26fd2f"><td class="memItemLeft" align="right" valign="top"><a id="a701403e278b6f4849f12dda2bf26fd2f"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>run</b> ()</td></tr>
+<tr class="separator:a701403e278b6f4849f12dda2bf26fd2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
+Protected Member Functions</h2></td></tr>
+<tr class="memitem:a8f4b60f3b041e6a8e4af0ef9debb5caa"><td class="memItemLeft" align="right" valign="top"><a id="a8f4b60f3b041e6a8e4af0ef9debb5caa"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>write_out</b> ()</td></tr>
+<tr class="separator:a8f4b60f3b041e6a8e4af0ef9debb5caa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f871741b7e80ba624bebe0615f7f4b2"><td class="memItemLeft" align="right" valign="top"><a id="a9f871741b7e80ba624bebe0615f7f4b2"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>moveHero</b> (int xc, int yc)</td></tr>
+<tr class="separator:a9f871741b7e80ba624bebe0615f7f4b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
+<tr class="memitem:a37cb4d1f6da3a8f1fb0a802ca2ec8c6e"><td class="memItemLeft" align="right" valign="top"><a id="a37cb4d1f6da3a8f1fb0a802ca2ec8c6e"></a>
+<a class="el" href="classHero.html">Hero</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>her</b> = nullptr</td></tr>
+<tr class="separator:a37cb4d1f6da3a8f1fb0a802ca2ec8c6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae7fe7102c510a9984de5ca51baa4408a"><td class="memItemLeft" align="right" valign="top"><a id="ae7fe7102c510a9984de5ca51baa4408a"></a>
+<a class="el" href="structposit.html">posit</a>&#160;</td><td class="memItemRight" valign="bottom"><b>hero_pos</b></td></tr>
+<tr class="separator:ae7fe7102c510a9984de5ca51baa4408a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa54ff6dcdb6de86cfadc6d7c5276da95"><td class="memItemLeft" align="right" valign="top"><a id="aa54ff6dcdb6de86cfadc6d7c5276da95"></a>
+std::map&lt; <a class="el" href="classMonster.html">Monster</a> *, <a class="el" href="structposit.html">posit</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>monster_list</b></td></tr>
+<tr class="separator:aa54ff6dcdb6de86cfadc6d7c5276da95"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a75afe952edf81f88d5dd89fbf7012aca"><td class="memItemLeft" align="right" valign="top"><a id="a75afe952edf81f88d5dd89fbf7012aca"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>runing</b> = false</td></tr>
+<tr class="separator:a75afe952edf81f88d5dd89fbf7012aca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9d8fe71efca1bba33503cda747a8a19c"><td class="memItemLeft" align="right" valign="top"><a id="a9d8fe71efca1bba33503cda747a8a19c"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>can_be_run</b> = false</td></tr>
+<tr class="separator:a9d8fe71efca1bba33503cda747a8a19c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab9677ca2fa1c8126fde77e383d45f0c"><td class="memItemLeft" align="right" valign="top"><a id="aab9677ca2fa1c8126fde77e383d45f0c"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>level_given</b> = false</td></tr>
+<tr class="separator:aab9677ca2fa1c8126fde77e383d45f0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li><a class="el" href="map_8h_source.html">map.h</a></li>
