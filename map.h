@@ -189,11 +189,12 @@ public:
         if(runing==true) ;
         if(!level_given || her == nullptr) throw Game::NotInitializedException();
         std::map<Monster*, posit> m_list(monster_list);
-        while(!(m_list.empty())){
-            write_out();
+        write_out();
+        while(!(monster_list.empty())){
             if(!(her->isAlive())){
-                std::cout << "The hero died.\n";
                 level.put(hero_pos.x,hero_pos.y,'M');
+                write_out();
+                std::cout << "The hero died.\n";
                 can_be_run = false;
                 break;
             }
@@ -208,6 +209,7 @@ public:
                 moveHero(0,1);
             else if ((s == "west") && (hero_pos.x > 0))
                 moveHero(-1,0);
+            if(her->isAlive()) write_out();
         }
         if (her->isAlive()) std::cout << her->getName() <<" cleared the map.\n";
         else {
