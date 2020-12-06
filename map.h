@@ -214,10 +214,10 @@ public:
                 moveHero(-1,0);
         }
         if (her->isAlive()) std::cout << her->getName() <<" cleared the map.\n";
-        //else {
+        else {
             delete her;
             her = nullptr;
-            //}
+            }
     }
 
     class OccupiedException : std::exception{
