@@ -1,6 +1,23 @@
+/**
+* \class JSON
+*
+* \brief JSON class
+*
+* This class defines the hero, meaning the player character
+*
+* \author Voros Bence, Varga Mate team VoicePlay
+*
+* \version 1.0
+*
+* \date 2020/12/06 21:20
+*
+* Created on: 2020/12/06 21:20
+
+*/
+
 #pragma once
 
-#include <sstream>      // std::istringstream
+#include <sstream>
 #include <map> 
 #include <list>
 #include <fstream>
@@ -30,7 +47,12 @@ public:
 	};
 private:
 	std::map<std::string, std::variant<std::string, int, double, JSON::list>> content;
-	static std::string rFVbQ (std::string st){   // alias: returnFirstValuebetweenQuotationmarks, finds the first substd::string that sits between " marks and returns it
+	/**
+	* \brief This function finds the first substd::string that sits between " marks and returns it.
+	* \param st The line from the file
+	* \return The value between " marks
+	*/
+	static std::string rFVbQ (std::string st){   // alias: returnFirstValuebetweenQuotationmarks
         auto fstr = st.find('"');
         if (fstr == std::string::npos) return st; // if doesn't return st
         auto sstr = st.substr(fstr+1).find('"');
@@ -41,6 +63,11 @@ public:
     JSON(){}
 	JSON(std::map<std::string, std::variant<std::string, int, double, JSON::list>> cont) : content(cont) {}
     static std::map<std::string, std::variant<std::string, int, double, JSON::list>> parseFromIstr(std::stringstream& f);
+	/**
+	* \brief This function parses the data from file.
+	* \param fname The name of the file
+	* \return The parsed data
+	*/
 	static JSON parseFromFile(std::string fname){
         std::ifstream f(fname);   
         std::string t,w;
@@ -54,6 +81,11 @@ public:
         std::map<std::string, std::variant<std::string, int, double, JSON::list>> res = JSON::parseFromIstr(istr);
         return JSON(res);
     }
+	/**
+	* \brief This function parses the data from string.
+	* \param str The string we are parsing from
+	* \return The parsed data
+	*/
     static JSON parseFromString(std::string str){
         std::stringstream f(str);
         std::map<std::string, std::variant<std::string, int, double, JSON::list>> res = JSON::parseFromIstr(f);

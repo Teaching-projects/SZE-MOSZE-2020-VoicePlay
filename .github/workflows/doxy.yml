@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - master
+      - cleaning
 
 jobs:
   deploy:

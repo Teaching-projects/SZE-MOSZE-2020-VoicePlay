@@ -1,3 +1,19 @@
+/**
+* \class MarkedMap
+*
+* \brief MarkedMap class
+*
+* This class reads the advanced map of the game from a txt
+*
+* \author Voros Bence, team VoicePlay
+*
+* \version 1.0
+*
+* \date 2020/12/06 20:28
+*
+* Created on: 2020/12/06 20:28
+
+*/
 #pragma once
 
 #include "unit.h"
@@ -15,8 +31,8 @@
 
 class MarkedMap: public Map{
 private:
-    posit hero_pos;
-    std::map<char,posit> mon_pos;
+    posit hero_pos; ///< position of the hero
+    std::map<char,posit> mon_pos; ///< positions of the monsters
 public:
     MarkedMap(){}
     MarkedMap(std::string fname) {
@@ -46,9 +62,17 @@ public:
             }
         }
     }
+    /**
+    * \brief This is a simple getter function for the position of the hero.
+    * \return The position of the hero
+    */
     posit getHeroPosition() const{
         return hero_pos;
     }
+    /**
+    * \brief This is a getter function for the positions of the monsters.
+    * \return The positions of the monsters
+    */
     std::list<posit> getMonsterPositions(char c) const{
         std::list<posit> ret;
         for(auto v: mon_pos){
@@ -58,12 +82,22 @@ public:
         }
         return ret;
     }
+    /**
+    * \brief This function puts the characters from the txt file to the map.
+    * \param x The x coordinate of a point on the map
+    * \param y The y coordinate of a point on the map
+    */
     void put(int x, int y, char c){
         if (level.at(y)[x] == '#') 
             throw Game::OccupiedException()   ;
         else
             level.at(y)[x] = c;
     }
+    /**
+    * \brief This function reads the characters from the map and decides its type.
+    * \param x The x coordinate of a point on the map
+    * \param y The y coordinate of a point on the map
+    */
     Map::type get(int x, int y) const{
         char t = level.at(y)[x];
         switch (t) {
@@ -79,18 +113,37 @@ public:
         case 'H':
             return Her;
             break;
-        default:         //if not any of the above
+        default:
             throw Map::WrongIndexException();
             break;
         }
     }
 };
 
+/**
+* \class PreparedGame
+*
+* \brief PreparedGame class
+*
+* This class starts the game, coordinates the hero's movement and checks if the units are alive
+*
+* \author Vorös Bonce, Kovacs Kira, team VoicePlay
+*
+* \version 1.0
+*
+* \date 2020/12/06 20:38
+*
+* Created on: 2020/12/06 20:38
+
+*/
 
 class PreparedGame: public Game{
 private:
-    MarkedMap level;
-
+    MarkedMap level; ///< the actual map
+    /**
+    * \brief This function initializes the hero.
+    * \param fname The name of the file from which the hero is read
+    */
     void initHero(std::string fname){
         posit pos = level.getHeroPosition();
 
@@ -103,6 +156,10 @@ private:
         level.put(hero_pos.x,hero_pos.y,'H');
         can_be_run = true;
     }
+    /**
+    * \brief This function initializes the monsters.
+    * \param fname The name of the file from which the monsters are read
+    */
     void initMonsters(std::string fname, char c){
         if (!level_given) throw Map::WrongIndexException();
         if (runing) throw Game::GameAlreadyStartedException();
@@ -113,6 +170,9 @@ private:
         }
     }
 
+    /**
+    * \brief This function writes the map to the screen.
+    */
     virtual void write_out(){
         double left, right, top, bottom;
         if(her->getLightRadius() <= hero_pos.x) left = hero_pos.x - her->getLightRadius();
@@ -125,7 +185,7 @@ private:
         else bottom = level.getHeight();
         
         std::cout << "\n╔═";
-        for(int i=left+1; i<right; i++) //border 
+        for(int i=left+1; i<right; i++)
             std::cout << "══";
         std::cout << "═╗\n";
         for(int j=top; j<bottom; j++){
@@ -152,12 +212,16 @@ private:
             std::cout << "\n";
         }
         std::cout << "╚═";
-        for(int i=left+1; i<right; i++) //border
+        for(int i=left+1; i<right; i++)
             std::cout << "══";
         std::cout << "═╝\n";
     }
 
-
+    /**
+    * \brief This function moves the hero from one position to another, fighting monsters if there is one.
+    * \param xc The direction of vertical movement
+    * \param yc The direction of horizontal movement
+    */
     virtual void moveHero(int xc, int yc){
         int xx = hero_pos.x+xc;
         int yy = hero_pos.y+yc;
@@ -204,9 +268,14 @@ public:
             throw(JSON::ParseException());
         } 
     }
+
+    /**
+    * \brief This function runs the game and waits for the player's moves.
+    */
     void run(){
         if(runing==true) ;
         if(!level_given || her == nullptr) throw Game::NotInitializedException();
+        write_out();
         while(!(monster_list.empty())){
             if(!(her->isAlive())){
                 level.put(hero_pos.x,hero_pos.y,'M');
@@ -216,7 +285,7 @@ public:
                 can_be_run = false;
                 break;
             }
-            write_out();
+            
             std::cout << "Command: ";
             std::string s;
             std::cin >> s;
@@ -228,6 +297,7 @@ public:
                 moveHero(0,1);
             else if (s == "west")
                 moveHero(-1,0);
+            if(her->isAlive()) write_out();
         }
         if (her->isAlive()) std::cout << her->getName() <<" cleared the map.\n";
         else {
