@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['parse_50',['parse',['../classHero.html#afc5e0d18d27da92c7da9f8c2d0af57ac',1,'Hero']]],
+  ['parse_50',['parse',['../classHero.html#afc5e0d18d27da92c7da9f8c2d0af57ac',1,'Hero::parse()'],['../classMonster.html#a9d5108da7b6f4a74c21d89566cd64d95',1,'Monster::parse()']]],
   ['parseexception_51',['ParseException',['../classJSON_1_1ParseException.html',1,'JSON']]],
   ['parsefromfile_52',['parseFromFile',['../classJSON.html#ac1c1514969892d93f900990fc4e4075e',1,'JSON']]],
   ['parsefromstring_53',['parseFromString',['../classJSON.html#a955f76a7694ed74ca7a81e3617966dee',1,'JSON']]],
