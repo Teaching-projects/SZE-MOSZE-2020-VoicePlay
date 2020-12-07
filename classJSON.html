@@ -72,6 +72,11 @@ $(function() {
 <div class="title">JSON Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><a class="el" href="classJSON.html" title="JSON class.">JSON</a> class.  
+ <a href="classJSON.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="JSON_8h_source.html">JSON.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
@@ -101,13 +106,91 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a2b63bc2fc4af37c17a34ee00421a0423"><td class="memItemLeft" align="right" valign="top"><a id="a2b63bc2fc4af37c17a34ee00421a0423"></a>
 static std::map&lt; std::string, std::variant&lt; std::string, int, double, <a class="el" href="classJSON_1_1list.html">JSON::list</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>parseFromIstr</b> (std::stringstream &amp;f)</td></tr>
 <tr class="separator:a2b63bc2fc4af37c17a34ee00421a0423"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac1c1514969892d93f900990fc4e4075e"><td class="memItemLeft" align="right" valign="top"><a id="ac1c1514969892d93f900990fc4e4075e"></a>
-static <a class="el" href="classJSON.html">JSON</a>&#160;</td><td class="memItemRight" valign="bottom"><b>parseFromFile</b> (std::string fname)</td></tr>
+<tr class="memitem:ac1c1514969892d93f900990fc4e4075e"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classJSON.html">JSON</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classJSON.html#ac1c1514969892d93f900990fc4e4075e">parseFromFile</a> (std::string fname)</td></tr>
+<tr class="memdesc:ac1c1514969892d93f900990fc4e4075e"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function parses the data from file.  <a href="classJSON.html#ac1c1514969892d93f900990fc4e4075e">More...</a><br /></td></tr>
 <tr class="separator:ac1c1514969892d93f900990fc4e4075e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a955f76a7694ed74ca7a81e3617966dee"><td class="memItemLeft" align="right" valign="top"><a id="a955f76a7694ed74ca7a81e3617966dee"></a>
-static <a class="el" href="classJSON.html">JSON</a>&#160;</td><td class="memItemRight" valign="bottom"><b>parseFromString</b> (std::string str)</td></tr>
+<tr class="memitem:a955f76a7694ed74ca7a81e3617966dee"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classJSON.html">JSON</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classJSON.html#a955f76a7694ed74ca7a81e3617966dee">parseFromString</a> (std::string str)</td></tr>
+<tr class="memdesc:a955f76a7694ed74ca7a81e3617966dee"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function parses the data from string.  <a href="classJSON.html#a955f76a7694ed74ca7a81e3617966dee">More...</a><br /></td></tr>
 <tr class="separator:a955f76a7694ed74ca7a81e3617966dee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><a class="el" href="classJSON.html" title="JSON class.">JSON</a> class. </p>
+<p>This class defines the hero, meaning the player character</p>
+<dl class="section author"><dt>Author</dt><dd>Voros Bence, Varga Mate team VoicePlay</dd></dl>
+<dl class="section version"><dt>Version</dt><dd>1.0</dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2020/12/06 21:20</dd></dl>
+<p>Created on: 2020/12/06 21:20 </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="ac1c1514969892d93f900990fc4e4075e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac1c1514969892d93f900990fc4e4075e">&#9670;&nbsp;</a></span>parseFromFile()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="classJSON.html">JSON</a> JSON::parseFromFile </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>fname</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>This function parses the data from file. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fname</td><td>The name of the file </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The parsed data </dd></dl>
+
+</div>
+</div>
+<a id="a955f76a7694ed74ca7a81e3617966dee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a955f76a7694ed74ca7a81e3617966dee">&#9670;&nbsp;</a></span>parseFromString()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="classJSON.html">JSON</a> JSON::parseFromString </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>str</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>This function parses the data from string. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">str</td><td>The string we are parsing from </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The parsed data </dd></dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="JSON_8h_source.html">JSON.h</a></li>
 <li>JSON.cpp</li>
