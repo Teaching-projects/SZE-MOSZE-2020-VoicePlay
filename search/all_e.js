@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['rfvbq_62',['rFVbQ',['../classjsonparser.html#a48ed9df5ed7bda259ca034abef033ddf',1,'jsonparser']]],
-  ['run_63',['run',['../classGame.html#a701403e278b6f4849f12dda2bf26fd2f',1,'Game::run()'],['../classPreparedGame.html#affbffce464ec1b07ad312953436ef0fd',1,'PreparedGame::run()']]],
-  ['runing_64',['runing',['../classGame.html#a75afe952edf81f88d5dd89fbf7012aca',1,'Game']]]
+  ['sze_2dmosze_2d2020_2dvoiceplay_61',['SZE-MOSZE-2020-VoicePlay',['../md_README.html',1,'']]],
+  ['setmap_62',['setMap',['../classGame.html#ab83e25f737717d7bb4ec95b22efc82d9',1,'Game']]]
 ];

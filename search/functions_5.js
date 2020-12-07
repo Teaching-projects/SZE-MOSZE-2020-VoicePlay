@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['istrminp_112',['istrmInp',['../classjsonparser.html#a66ccc47feccc653d6d26d0c085388452',1,'jsonparser']]]
+  ['losehp_105',['loseHp',['../classunit.html#aa2abd626cf95bb20a72ecf75190997bd',1,'unit']]]
 ];

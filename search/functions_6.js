@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['losehp_113',['loseHp',['../classunit.html#aa2abd626cf95bb20a72ecf75190997bd',1,'unit']]]
+  ['movehero_106',['moveHero',['../classGame.html#a9f871741b7e80ba624bebe0615f7f4b2',1,'Game']]],
+  ['multmonsterpresent_107',['multMonsterPresent',['../classMap.html#aea00be2776599f6cd48592bf39d604b8',1,'Map']]]
 ];

@@ -1,7 +1,9 @@
 var searchData=
 [
-  ['level_37',['level',['../classMap.html#a8826e4ac1e4f92ae56740c2ee218e799',1,'Map']]],
-  ['level_5fgiven_38',['level_given',['../classGame.html#aab9677ca2fa1c8126fde77e383d45f0c',1,'Game']]],
-  ['list_39',['list',['../classJSON_1_1list.html',1,'JSON']]],
-  ['losehp_40',['loseHp',['../classunit.html#aa2abd626cf95bb20a72ecf75190997bd',1,'unit']]]
+  ['map_38',['Map',['../classMap.html',1,'']]],
+  ['markedmap_39',['MarkedMap',['../classMarkedMap.html',1,'']]],
+  ['monster_40',['Monster',['../classMonster.html',1,'']]],
+  ['movehero_41',['moveHero',['../classGame.html#a9f871741b7e80ba624bebe0615f7f4b2',1,'Game']]],
+  ['multmonster_42',['multMonster',['../classMap.html#afe85a8629d1272ceb92f6d84ac540957',1,'Map']]],
+  ['multmonsterpresent_43',['multMonsterPresent',['../classMap.html#aea00be2776599f6cd48592bf39d604b8',1,'Map']]]
 ];

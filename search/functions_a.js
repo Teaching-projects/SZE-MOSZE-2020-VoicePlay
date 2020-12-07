@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['setmap_126',['setMap',['../classGame.html#ab83e25f737717d7bb4ec95b22efc82d9',1,'Game']]],
-  ['strinp_127',['strInp',['../classjsonparser.html#a0ae5b1c387758953f012efa121ecc348',1,'jsonparser']]]
+  ['write_5fout_118',['write_out',['../classGame.html#a8f4b60f3b041e6a8e4af0ef9debb5caa',1,'Game']]]
 ];
