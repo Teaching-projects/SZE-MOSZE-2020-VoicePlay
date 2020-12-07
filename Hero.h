@@ -5,7 +5,7 @@
 *
 * This class defines the hero, meaning the player character
 *
-* \author Voros Bonce, Kovacs Kira, Varga Mate team VoicePlay
+* \author Voros Bence, Kovacs Kira, Varga Mate team VoicePlay
 *
 * \version 1.0
 *

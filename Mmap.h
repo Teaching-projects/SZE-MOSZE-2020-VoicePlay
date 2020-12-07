@@ -5,7 +5,7 @@
 *
 * This class reads the advanced map of the game from a txt
 *
-* \author Voros Bonce, team VoicePlay
+* \author Voros Bence, team VoicePlay
 *
 * \version 1.0
 *
