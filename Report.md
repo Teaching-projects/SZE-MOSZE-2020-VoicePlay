@@ -2,9 +2,9 @@
 
 | Név | Github azonosito  | Javasolt relatív érdemjegy | Becsült óra | Indoklás  | 
 | --- | ---- | --- | ------------------ | --------- |
-| Kovács Kira | @kkira07 | 0 | 97 | Szépen csinálta a dolgát, mindig kivette a részét a feladatokból, a megoldásaira a reviewerek általában pozitiv visszajelzést adtak. |
-| Varga Máté | @VMatthew | -1 | 69 | Néha be kellett segiteni a feladatokban, de alapvetően megcsinálta amit kértünk tőle. |
-| Vörös Bence László | @vbence121 | 0 | 125 | Mindent megcsinált |
+| Kovács Kira | @kkira07 | 0 | 40-50 | Szépen csinálta a dolgát, mindig kivette a részét a feladatokból, a megoldásaira a reviewerek általában pozitiv visszajelzést adtak. |
+| Varga Máté | @VMatthew | -1 | 30-40 | Néha be kellett segiteni a feladatokban, de alapvetően megcsinálta amit kértünk tőle. |
+| Vörös Bence László | @vbence121 | 0 | 60-80 | Mindent megcsinált, a kód gerincét adta |
 
 
 # Videók
@@ -73,7 +73,7 @@
 Olyanok, amik nem a tárgy anyaga, de muszáj/hasznos volt elsajátítani:
  - alapvető shell scripting
  - `std::variant`
- - ...
+ - A Linux rendszer alapvető használata (minimum egy csapattagnak ez új volt)
 
 # Feedback (optional)
  
@@ -83,3 +83,4 @@ Melyik részt találtátok a leghasznosabbnak, miért. Használtátok-e az itt m
 # Üzenet a jövőbe (optional)
 
 Így, hogy túlvagytok rajta, mi az, aminek örültetek volna, ha első héten elmondom, avagy: jövőre mit lenne jó, ha elmondanék majd?
+- A feladatok tervezett számát, függetlenül attól, hogy ebből végül mennyire jut idő
