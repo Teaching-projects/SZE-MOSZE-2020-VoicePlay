@@ -2,7 +2,7 @@
 
 | Név | Github azonosito  | Javasolt relatív érdemjegy | Becsült óra | Indoklás  | 
 | --- | ---- | --- | ------------------ | --------- |
-| Kovács Kira | @kkira07 | 4 | 97 | Szépen csinálta a dolgozott, mindig kivette a részét a feladatokból, a megoldásaira a reviewerek általában pozitiv visszajelzést adtak. |
+| Kovács Kira | @kkira07 | 4 | 97 | Szépen csinálta a dolgát, mindig kivette a részét a feladatokból, a megoldásaira a reviewerek általában pozitiv visszajelzést adtak. |
 | Varga Máté | @VMatthew | 3 | 69 | Néha be kellett segiteni a feladatokban, de alapvetően megcsinálta amit kértünk tőle. |
 | Vörös Bence László | @vbence121 | 4 | 125 | Mindent megcsinált |
 
