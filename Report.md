@@ -4,7 +4,7 @@
 | --- | ---- | --- | ------------------ | --------- |
 | Kovács Kira | @kkira07 | 0 | 40-50 | Szépen csinálta a dolgát, mindig kivette a részét a feladatokból, a megoldásaira a reviewerek általában pozitiv visszajelzést adtak. |
 | Varga Máté | @VMatthew | -1 | 30-40 | Néha be kellett segiteni a feladatokban, de alapvetően megcsinálta amit kértünk tőle. |
-| Vörös Bence László | @vbence121 | 0 | 60-80 | Mindent megcsinált, a kód gerincét adta |
+| Vörös Bence László | @vbence121 | +1 | 60-80 | Mindent megcsinált, a kód gerincét adta |
 
 
 # Videók
